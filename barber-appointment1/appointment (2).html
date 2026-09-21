@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Appointment – Menn & Co Salon Rohini</title>
+  <meta name="description" content="Book your premium grooming appointment at Menn & Co Salon Rohini. Haircut, beard styling, spa, facial & more." />
+  <meta name="theme-color" content="#f7f2e8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Palette */
+      --cream:        #f7f2e8;
+      --cream-deep:   #ede6d6;
+      --parchment:    #e8dfc8;
+      --maroon:       #6b1a2a;
+      --maroon-light: #8b2438;
+      --maroon-deep:  #4d1020;
+      --maroon-tint:  rgba(107,26,42,0.06);
+      --maroon-tint2: rgba(107,26,42,0.11);
+      --gold:         #b8872a;
+      --gold-light:   #d4a84b;
+      --gold-dim:     rgba(184,135,42,0.15);
+      --gold-border:  rgba(184,135,42,0.3);
+      --text-dark:    #1e0d10;
+      --text-mid:     #5a3d40;
+      --text-muted:   #9a7a7e;
+      --white:        #ffffff;
+      --border:       rgba(107,26,42,0.14);
+      --radius:       16px;
+      --radius-sm:    10px;
+      --shadow-card:  0 2px 6px rgba(107,26,42,0.06), 0 12px 40px rgba(107,26,42,0.1), 0 1px 0 rgba(255,255,255,0.9) inset;
+      --shadow-input: 0 1px 3px rgba(107,26,42,0.08);
+      --t:            0.24s cubic-bezier(.4,0,.2,1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      min-height: 100dvh;
+      overflow-x: hidden;
+    }
+
+    /* ── Background ── */
+    .bg-canvas {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 70% 55% at 50% 0%,   rgba(107,26,42,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 0%  80%,  rgba(184,135,42,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 40% 35% at 100% 20%, rgba(107,26,42,0.05) 0%, transparent 50%),
+        linear-gradient(175deg, #f9f4ea 0%, #ede6d5 100%);
+    }
+
+    /* Subtle damask-style texture using CSS */
+    .bg-pattern {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.028;
+      background-image: repeating-linear-gradient(
+        45deg, var(--gold) 0px, var(--gold) 1px, transparent 1px, transparent 14px
+      ), repeating-linear-gradient(
+        -45deg, var(--gold) 0px, var(--gold) 1px, transparent 1px, transparent 14px
+      );
+    }
+
+    /* ── Layout ── */
+    .page {
+      position: relative; z-index: 1;
+      min-height: 100dvh;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 52px 16px 88px;
+    }
+
+    /* ── Header ── */
+    .header { text-align: center; margin-bottom: 40px; animation: fadeDown .7s ease both; }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--maroon);
+      color: #f7e8b8;
+      font-size: 0.67rem; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      padding: 6px 18px; border-radius: 50px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 12px rgba(107,26,42,0.2);
+    }
+    .badge svg { color: #d4a84b; }
+
+    .crest {
+      width: 88px; height: 88px; margin: 0 auto 18px;
+      background: var(--white);
+      border-radius: 50%;
+      border: 2px solid var(--gold-border);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(107,26,42,0.12), 0 1px 0 rgba(255,255,255,0.9) inset;
+      position: relative;
+    }
+    .crest::before {
+      content: ''; position: absolute; inset: 5px; border-radius: 50%;
+      border: 1px dashed rgba(184,135,42,0.35);
+    }
+    .crest svg { color: var(--maroon); }
+
+    .salon-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 7.5vw, 3.4rem);
+      font-weight: 800;
+      color: var(--maroon-deep);
+      letter-spacing: 0.03em;
+      line-height: 1.08;
+    }
+    .salon-name span { color: var(--gold); }
+
+    .ornament {
+      display: flex; align-items: center; gap: 10px;
+      margin: 14px auto 12px; width: fit-content;
+    }
+    .orn-line {
+      height: 1px; width: 44px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+    .orn-line.r { background: linear-gradient(90deg, var(--gold), transparent); }
+    .orn-diamond {
+      width: 7px; height: 7px; transform: rotate(45deg);
+      background: var(--gold); flex-shrink: 0;
+    }
+
+    .tagline {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400; font-size: clamp(0.8rem, 3vw, 0.93rem);
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ── Card ── */
+    .card {
+      width: 100%; max-width: 530px;
+      background: var(--white);
+      border: 1px solid rgba(107,26,42,0.1);
+      border-radius: 22px;
+      padding: clamp(28px, 6vw, 48px) clamp(24px, 6vw, 44px);
+      box-shadow: var(--shadow-card);
+      animation: fadeUp .85s .1s ease both;
+      position: relative; overflow: hidden;
+    }
+    .card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--maroon-deep), var(--gold), var(--maroon-deep));
+    }
+
+    .card-header {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 28px;
+      padding-bottom: 20px; border-bottom: 1px solid var(--border);
+    }
+    .card-icon {
+      width: 42px; height: 42px; border-radius: 10px;
+      background: var(--maroon); display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .card-icon svg { color: #f7e8b8; }
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem; font-weight: 700;
+      color: var(--maroon-deep); letter-spacing: 0.01em;
+      line-height: 1.2;
+    }
+    .card-sub { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+
+    /* ── Form ── */
+    .form { display: flex; flex-direction: column; gap: 17px; }
+
+    .field { display: flex; flex-direction: column; gap: 7px; }
+
+    label {
+      font-size: 0.71rem; font-weight: 600;
+      letter-spacing: 0.13em; text-transform: uppercase;
+      color: var(--maroon);
+      display: flex; align-items: center; gap: 6px;
+    }
+    label svg { color: var(--gold); }
+    label .req { color: var(--gold); font-size: 0.9em; }
+
+    .input-wrap { position: relative; }
+    .field-icon {
+      position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
+      color: rgba(107,26,42,0.38); pointer-events: none; z-index: 1;
+    }
+
+    input, select, textarea {
+      width: 100%; padding: 12px 13px 12px 40px;
+      background: var(--cream);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text-dark);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.93rem; font-weight: 400;
+      outline: none;
+      transition: border-color var(--t), background var(--t), box-shadow var(--t);
+      -webkit-appearance: none; appearance: none;
+      box-shadow: var(--shadow-input);
+    }
+    select { cursor: pointer; }
+    select option { background: #fff; color: var(--text-dark); }
+    textarea { padding-left: 13px; resize: vertical; min-height: 88px; }
+    .textarea-wrap .field-icon { top: 14px; transform: none; }
+
+    input::placeholder, textarea::placeholder { color: var(--text-muted); }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--maroon);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(107,26,42,0.1), var(--shadow-input);
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator,
+    input[type="time"]::-webkit-calendar-picker-indicator {
+      cursor: pointer; opacity: 0.45;
+      filter: sepia(1) saturate(2) hue-rotate(300deg) brightness(0.6);
+    }
+
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    /* Error */
+    .field.error input, .field.error select {
+      border-color: #c0392b; box-shadow: 0 0 0 3px rgba(192,57,43,0.1);
+    }
+    .error-msg {
+      font-size: 0.71rem; color: #c0392b; letter-spacing: 0.03em;
+      display: none; align-items: center; gap: 4px;
+    }
+    .field.error .error-msg { display: flex; }
+
+    /* ── Button ── */
+    .btn {
+      position: relative; overflow: hidden;
+      width: 100%; padding: 15px 24px;
+      border: none; border-radius: var(--radius-sm);
+      background: var(--maroon);
+      color: #f7e8b8;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.87rem; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      cursor: pointer; margin-top: 6px;
+      transition: background var(--t), transform var(--t), box-shadow var(--t);
+      box-shadow: 0 4px 18px rgba(107,26,42,0.28), 0 1px 0 rgba(255,255,255,0.15) inset;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .btn-accent { /* gold strip */
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 40%; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+      border-radius: 2px; opacity: 0.7;
+    }
+    .btn:hover {
+      background: var(--maroon-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(107,26,42,0.36);
+    }
+    .btn:active { transform: translateY(0); }
+    .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    .spinner {
+      width: 18px; height: 18px; border-radius: 50%;
+      border: 2.5px solid rgba(247,232,184,0.25);
+      border-top-color: #f7e8b8;
+      animation: spin .7s linear infinite; display: none;
+    }
+    .btn.loading .btn-text, .btn.loading .btn-icon { display: none; }
+    .btn.loading .spinner { display: block; }
+
+    /* ── Trust strip ── */
+    .trust {
+      display: flex; align-items: center; justify-content: center;
+      gap: 18px; margin-top: 20px; flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.04em;
+    }
+    .trust-item svg { color: var(--gold); }
+
+    /* ── Manual fallback link (shown if popup blocked) ── */
+    .fallback-link {
+      display: none;
+      margin-top: 14px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-mid);
+    }
+    .fallback-link.show { display: block; animation: fadeUp .4s ease both; }
+    .fallback-link a {
+      color: var(--maroon);
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-color: rgba(184,135,42,0.5);
+    }
+
+    /* ── Toast ── */
+    .toast {
+      position: fixed; bottom: 28px; left: 50%;
+      transform: translateX(-50%) translateY(16px);
+      background: var(--maroon-deep);
+      border: 1px solid rgba(184,135,42,0.4);
+      border-radius: 50px; padding: 13px 26px;
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.84rem; font-weight: 500; color: #f7e8b8;
+      box-shadow: 0 8px 32px rgba(107,26,42,0.35);
+      z-index: 100; opacity: 0;
+      transition: opacity .32s ease, transform .32s ease;
+      pointer-events: none; white-space: nowrap;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .toast svg { color: var(--gold-light); }
+
+    /* ── Floating WhatsApp ── */
+    .wa-float {
+      position: fixed; right: 20px; bottom: 28px; z-index: 50;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, #25d366 0%, #128c4e 100%);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+      cursor: pointer; text-decoration: none;
+      transition: transform var(--t), box-shadow var(--t);
+      animation: pulse-wa 3.5s 2s ease-in-out infinite;
+    }
+    .wa-float:hover { transform: scale(1.11); box-shadow: 0 8px 30px rgba(37,211,102,0.5); animation: none; }
+    .wa-float svg { color: #fff; }
+
+    /* ── Footer ── */
+    .footer-note {
+      margin-top: 26px; text-align: center;
+      font-size: 0.7rem; color: var(--text-muted);
+      letter-spacing: 0.05em; line-height: 1.8;
+      animation: fadeUp 1s .25s ease both;
+    }
+    .footer-note strong { color: var(--maroon); font-weight: 600; }
+
+    /* ── Animations ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes pulse-wa {
+      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.35); }
+      50% { box-shadow: 0 4px 32px rgba(37,211,102,0.6); transform: scale(1.06); }
+    }
+
+    @media (max-width: 400px) { .field-row { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-canvas"></div>
+<div class="bg-pattern"></div>
+
+<main class="page">
+
+  <!-- Header -->
+  <header class="header" role="banner">
+    <div class="badge">
+      <i data-lucide="star" width="11" height="11"></i>
+      Premium Men's Grooming
+    </div>
+    <div class="crest" aria-hidden="true">
+      <i data-lucide="scissors" width="32" height="32"></i>
+    </div>
+    <h1 class="salon-name">MENN <span>&amp;</span> CO<br>SALON ROHINI</h1>
+    <div class="ornament" aria-hidden="true">
+      <div class="orn-line"></div>
+      <div class="orn-diamond"></div>
+      <div class="orn-line r"></div>
+    </div>
+    <p class="tagline">Book Your Appointment in Seconds</p>
+  </header>
+
+  <!-- Card -->
+  <section class="card" aria-labelledby="form-title">
+    <div class="card-header">
+      <div class="card-icon">
+        <i data-lucide="calendar-check" width="20" height="20"></i>
+      </div>
+      <div>
+        <h2 class="card-title" id="form-title">Book Your Appointment</h2>
+        <p class="card-sub">Fill in your details — we'll confirm via WhatsApp</p>
+      </div>
+    </div>
+
+    <form class="form" id="bookingForm" novalidate>
+
+      <!-- Name -->
+      <div class="field" id="field-fullName">
+        <label for="fullName">
+          <i data-lucide="user" width="12" height="12"></i>
+          Full Name <span class="req">*</span>
+        </label>
+        <div class="input-wrap">
+          <i data-lucide="user" width="16" height="16" class="field-icon" aria-hidden="true"></i>
+          <input type="text" id="fullName" name="fullName" placeholder="Your full name" autocomplete="name" required />
+        </div>
+        <span class="error-msg" role="alert">
+          <i data-lucide="alert-circle" width="12" height="12"></i> Please enter your full name
+        </span>
+      </div>
+
+      <!-- Mobile -->
+      <div class="field" id="field-mobile">
+        <label for="mobile">
+          <i data-lucide="phone" width="12" height="12"></i>
+          Mobile Number <span class="req">*</span>
+        </label>
+        <div class="input-wrap">
+          <i data-lucide="phone" width="16" height="16" class="field-icon" aria-hidden="true"></i>
+          <input type="tel" id="mobile" name="mobile" placeholder="+91 00000 00000" autocomplete="tel" required maxlength="13" />
+        </div>
+        <span class="error-msg" role="alert">
+          <i data-lucide="alert-circle" width="12" height="12"></i> Enter a valid mobile number
+        </span>
+      </div>
+
+      <!-- Service -->
+      <div class="field" id="field-service">
+        <label for="service">
+          <i data-lucide="sparkles" width="12" height="12"></i>
+          Select Service <span class="req">*</span>
+        </label>
+        <div class="input-wrap">
+          <i data-lucide="sparkles" width="16" height="16" class="field-icon" aria-hidden="true"></i>
+          <select id="service" name="service" required style="padding-right:36px">
+            <option value="" disabled selected>Choose a service…</option>
+            <option value="Hair Cut">✂️ Hair Cut</option>
+            <option value="Beard Styling">🧔 Beard Styling</option>
+            <option value="Hair Spa">💆 Hair Spa</option>
+            <option value="Facial">✨ Facial</option>
+            <option value="Hair Coloring">🎨 Hair Coloring</option>
+            <option value="Shaving">🪒 Shaving</option>
+          </select>
+        </div>
+        <span class="error-msg" role="alert">
+          <i data-lucide="alert-circle" width="12" height="12"></i> Please choose a service
+        </span>
+      </div>
+
+      <!-- Date + Time -->
+      <div class="field-row">
+        <div class="field" id="field-date">
+          <label for="date">
+            <i data-lucide="calendar" width="12" height="12"></i>
+            Date <span class="req">*</span>
+          </label>
+          <div class="input-wrap">
+            <i data-lucide="calendar" width="16" height="16" class="field-icon" aria-hidden="true"></i>
+            <input type="date" id="date" name="date" required style="padding-left:40px" />
+          </div>
+          <span class="error-msg" role="alert">
+            <i data-lucide="alert-circle" width="12" height="12"></i> Pick a date
+          </span>
+        </div>
+
+        <div class="field" id="field-time">
+          <label for="time">
+            <i data-lucide="clock" width="12" height="12"></i>
+            Time <span class="req">*</span>
+          </label>
+          <div class="input-wrap">
+            <i data-lucide="clock" width="16" height="16" class="field-icon" aria-hidden="true"></i>
+            <input type="time" id="time" name="time" required style="padding-left:40px" />
+          </div>
+          <span class="error-msg" role="alert">
+            <i data-lucide="alert-circle" width="12" height="12"></i> Pick a time
+          </span>
+        </div>
+      </div>
+
+      <!-- Message -->
+      <div class="field">
+        <label for="message">
+          <i data-lucide="message-square" width="12" height="12"></i>
+          Message
+          <span style="font-weight:400; text-transform:none; letter-spacing:0; color:var(--text-muted); font-size:0.67rem">(optional)</span>
+        </label>
+        <div class="input-wrap textarea-wrap">
+          <i data-lucide="message-square" width="16" height="16" class="field-icon" aria-hidden="true"></i>
+          <textarea id="message" name="message" placeholder="Any special requests or notes…"></textarea>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="btn" id="submitBtn" aria-label="Book appointment via WhatsApp">
+        <i data-lucide="send" width="16" height="16" class="btn-icon"></i>
+        <span class="btn-text">Book Appointment</span>
+        <div class="spinner" aria-hidden="true"></div>
+        <div class="btn-accent" aria-hidden="true"></div>
+      </button>
+
+      <!-- Fallback link shown only if the auto-open gets blocked -->
+      <div class="fallback-link" id="fallbackLink">
+        WhatsApp apne aap nahi khula? <a id="fallbackAnchor" href="#" target="_blank" rel="noopener noreferrer">Yahan tap karein</a>
+      </div>
+
+    </form>
+
+    <!-- Trust Strip -->
+    <div class="trust" aria-label="Trust indicators">
+      <span class="trust-item">
+        <i data-lucide="shield-check" width="14" height="14"></i>
+        Instant Confirmation
+      </span>
+      <span class="trust-item">
+        <i data-lucide="star" width="14" height="14"></i>
+        Premium Service
+      </span>
+      <span class="trust-item">
+        <i data-lucide="clock" width="14" height="14"></i>
+        No Waiting
+      </span>
+    </div>
+  </section>
+
+  <p class="footer-note">
+    You will be redirected to <strong>WhatsApp</strong> to confirm your booking.<br>
+    © 2025 Menn &amp; Co Salon Rohini — All rights reserved.
+  </p>
+
+</main>
+
+<!-- Floating WhatsApp -->
+<a class="wa-float" href="https://wa.me/919205002319" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- Toast -->
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <i data-lucide="check-circle-2" width="18" height="18"></i>
+  <span>Opening WhatsApp…</span>
+</div>
+
+<script>
+  try {
+    lucide.createIcons();
+  } catch (e) {
+    console.warn('Lucide icons failed to load, continuing without them:', e);
+  }
+
+  const dateInput = document.getElementById('date');
+  dateInput.setAttribute('min', new Date().toISOString().split('T')[0]);
+
+  const form  = document.getElementById('bookingForm');
+  const btn   = document.getElementById('submitBtn');
+  const toast = document.getElementById('toast');
+  const fallbackBox = document.getElementById('fallbackLink');
+  const fallbackAnchor = document.getElementById('fallbackAnchor');
+
+  function showToast() {
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3200);
+  }
+
+  function validateField(id, testFn) {
+    const wrap = document.getElementById('field-' + id);
+    const el   = document.getElementById(id);
+    if (!wrap || !el) return true;
+    const ok = testFn(el.value.trim());
+    wrap.classList.toggle('error', !ok);
+    return ok;
+  }
+
+  ['fullName','mobile','service','date','time'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', () => {
+      const wrap = document.getElementById('field-' + id);
+      if (wrap) wrap.classList.remove('error');
+    });
+  });
+
+  function formatDate(d) {
+    if (!d) return '—';
+    const [y,m,day] = d.split('-');
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return `${day} ${months[parseInt(m)-1]} ${y}`;
+  }
+
+  function formatTime(t) {
+    if (!t) return '—';
+    const [h, m] = t.split(':').map(Number);
+    const suffix = h >= 12 ? 'PM' : 'AM';
+    return `${h % 12 || 12}:${String(m).padStart(2,'0')} ${suffix}`;
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    fallbackBox.classList.remove('show');
+
+    const name    = document.getElementById('fullName').value.trim();
+    const mobile  = document.getElementById('mobile').value.trim();
+    const service = document.getElementById('service').value;
+    const date    = document.getElementById('date').value;
+    const time    = document.getElementById('time').value;
+    const message = document.getElementById('message').value.trim();
+
+    const phoneRe = /^[+]?[0-9\s\-]{7,14}$/;
+    let valid = true;
+
+    if (!validateField('fullName', v => v.length >= 2))  valid = false;
+    if (!validateField('mobile',   v => phoneRe.test(v))) valid = false;
+    if (!validateField('service',  v => v !== ''))         valid = false;
+    if (!validateField('date',     v => v !== ''))         valid = false;
+    if (!validateField('time',     v => v !== ''))         valid = false;
+
+    if (!valid) {
+      const firstErr = form.querySelector('.field.error input, .field.error select');
+      if (firstErr) firstErr.focus();
+      return;
+    }
+
+    // Build the WhatsApp message
+    const msgLines = [
+      `Hello Menn & Co Salon,`,
+      ``,
+      `I would like to book an appointment.`,
+      ``,
+      `👤 *Name:* ${name}`,
+      `📱 *Phone:* ${mobile}`,
+      `✂️ *Service:* ${service}`,
+      `📅 *Date:* ${formatDate(date)}`,
+      `⏰ *Time:* ${formatTime(time)}`,
+      message ? `💬 *Message:* ${message}` : null,
+    ].filter(Boolean).join('\n');
+
+    // ⚠️ This goes to YOUR business WhatsApp number (the owner), not the customer's.
+    const OWNER_WHATSAPP_NUMBER = '919205002319';
+    const waUrl = `https://wa.me/${OWNER_WHATSAPP_NUMBER}?text=${encodeURIComponent(msgLines)}`;
+
+    // window.open() runs SYNCHRONOUSLY inside the submit handler so the
+    // browser treats it as a user-initiated action and doesn't block it.
+    const newTab = window.open(waUrl, '_blank', 'noopener,noreferrer');
+    fallbackAnchor.setAttribute('href', waUrl);
+
+    const wasBlocked = !newTab || newTab.closed || typeof newTab.closed === 'undefined';
+
+    if (wasBlocked) {
+      fallbackBox.classList.add('show');
+    } else {
+      showToast();
+    }
+
+    // Cosmetic-only loading flash, does not delay window.open above
+    btn.classList.add('loading');
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.classList.remove('loading');
+      btn.disabled = false;
+    }, 500);
+  });
+</script>
+</body>
+</html>

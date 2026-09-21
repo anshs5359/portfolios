@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FabHotel Rama – Hotel in Rohini, New Delhi | Book Rooms Online</title>
+<meta name="description" content="FabHotel Rama is a premium hotel in Rohini, New Delhi. Book comfortable AC rooms with free WiFi, parking & room service. Best rates guaranteed.">
+<meta name="keywords" content="hotel in Rohini, New Delhi hotel, FabHotel Rama, budget hotel Rohini, hotel booking New Delhi">
+<meta property="og:title" content="FabHotel Rama – Hotel in Rohini, New Delhi">
+<meta property="og:description" content="Comfortable Stay in Rohini, New Delhi. Book now for the best rates.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Hotel",
+  "name": "FabHotel Rama",
+  "description": "A premium hotel in Rohini, New Delhi offering comfortable rooms with modern amenities.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Sector 11, Rohini",
+    "addressLocality": "New Delhi",
+    "postalCode": "110085",
+    "addressCountry": "IN"
+  },
+  "telephone": "+91-98765-43210",
+  "priceRange": "₹999 - ₹2499",
+  "starRating": { "@type": "Rating", "ratingValue": "3" }
+}
+</script>
+<style>
+  :root {
+    --orange: #FF7A00;
+    --orange-light: #FF9A35;
+    --orange-pale: #FFF3E6;
+    --green: #1E3A34;
+    --green-light: #2A5048;
+    --white: #FFFFFF;
+    --beige: #FAF7F4;
+    --beige2: #F2EDE8;
+    --text: #1A1A1A;
+    --text-muted: #6B6B6B;
+    --shadow: 0 4px 24px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .nav-logo-icon {
+    width: 38px; height: 38px; background: var(--orange);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .nav-logo-text { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--green); }
+  .nav-logo-sub { font-size: 10px; color: var(--text-muted); letter-spacing: 0.5px; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--text); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-cta {
+    background: var(--orange); color: white; border: none;
+    padding: 10px 22px; border-radius: 50px; font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block;
+  }
+  .nav-cta:hover { background: var(--orange-light); transform: translateY(-1px); }
+  .nav-mobile-toggle { display: none; background: none; border: none; cursor: pointer; font-size: 22px; color: var(--green); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--green) 0%, #0F1E1B 100%);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center;
+    padding-top: 68px;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80') center/cover;
+    opacity: 0.22;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(30,58,52,0.7) 0%, rgba(15,30,27,0.85) 100%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 1200px; margin: 0 auto; padding: 60px 24px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,122,0,0.15); border: 1px solid rgba(255,122,0,0.3);
+    border-radius: 50px; padding: 8px 16px; margin-bottom: 20px;
+    color: var(--orange); font-size: 13px; font-weight: 500;
+  }
+  .hero-title {
+    font-size: clamp(36px, 5vw, 56px); color: white; line-height: 1.15; margin-bottom: 16px;
+  }
+  .hero-title span { color: var(--orange); }
+  .hero-tagline {
+    font-size: 17px; color: rgba(255,255,255,0.75); margin-bottom: 28px; line-height: 1.6;
+  }
+  .hero-meta { display: flex; gap: 24px; flex-wrap: wrap; }
+  .hero-meta-item { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.8); font-size: 14px; }
+  .hero-meta-icon { font-size: 18px; }
+
+  /* BOOKING FORM */
+  .booking-card {
+    background: white; border-radius: 24px; padding: 32px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .booking-card h3 { font-size: 20px; color: var(--green); margin-bottom: 24px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group.full { grid-column: 1/-1; }
+  .form-group label { font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  .form-group input, .form-group select {
+    border: 1.5px solid #E5E0DA; border-radius: 10px;
+    padding: 12px 14px; font-size: 14px; font-family: 'Inter', sans-serif;
+    color: var(--text); background: var(--beige);
+    transition: border-color 0.2s, box-shadow 0.2s; outline: none;
+    -webkit-appearance: none; appearance: none;
+  }
+  .form-group input:focus, .form-group select:focus {
+    border-color: var(--orange); box-shadow: 0 0 0 3px rgba(255,122,0,0.12);
+  }
+  .btn-book {
+    width: 100%; background: var(--orange); color: white; border: none;
+    padding: 15px; border-radius: 12px; font-size: 16px; font-weight: 700;
+    cursor: pointer; transition: all 0.25s; margin-top: 6px;
+    letter-spacing: 0.3px; font-family: 'Inter', sans-serif;
+  }
+  .btn-book:hover { background: var(--orange-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,122,0,0.4); }
+
+  /* SECTIONS */
+  section { padding: 80px 24px; }
+  .section-wrap { max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    display: inline-block; font-size: 12px; font-weight: 700; color: var(--orange);
+    text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;
+  }
+  .section-title { font-size: clamp(28px, 4vw, 40px); color: var(--green); margin-bottom: 12px; }
+  .section-subtitle { font-size: 16px; color: var(--text-muted); max-width: 540px; line-height: 1.6; }
+  .section-header { margin-bottom: 48px; }
+
+  /* ROOMS */
+  #rooms { background: var(--beige); }
+  .rooms-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 28px; }
+  .room-card {
+    background: white; border-radius: var(--radius); overflow: hidden;
+    box-shadow: var(--shadow); transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid rgba(0,0,0,0.04);
+  }
+  .room-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+  .room-img {
+    width: 100%; height: 220px; object-fit: cover; display: block;
+    background: var(--beige2);
+  }
+  .room-img-placeholder {
+    width: 100%; height: 220px; display: flex; align-items: center; justify-content: center;
+    font-size: 48px; background: linear-gradient(135deg, #E8F4F0, #D4EDE6);
+  }
+  .room-body { padding: 22px; }
+  .room-badge {
+    display: inline-block; background: var(--orange-pale); color: var(--orange);
+    font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 50px;
+    text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px;
+  }
+  .room-title { font-size: 20px; color: var(--green); margin-bottom: 8px; }
+  .room-capacity { font-size: 13px; color: var(--text-muted); margin-bottom: 14px; }
+  .room-amenities { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+  .amenity-tag {
+    display: flex; align-items: center; gap: 5px;
+    background: var(--beige); border-radius: 6px;
+    padding: 5px 10px; font-size: 12px; color: var(--text-muted); font-weight: 500;
+  }
+  .room-footer { display: flex; align-items: center; justify-content: space-between; }
+  .room-price { display: flex; flex-direction: column; }
+  .room-price-amount { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--green); font-weight: 700; }
+  .room-price-note { font-size: 12px; color: var(--text-muted); }
+  .btn-room {
+    background: var(--green); color: white; border: none; padding: 11px 22px;
+    border-radius: 50px; font-size: 14px; font-weight: 600; cursor: pointer;
+    transition: all 0.2s; font-family: 'Inter', sans-serif;
+  }
+  .btn-room:hover { background: var(--orange); transform: scale(1.04); }
+
+  /* AMENITIES */
+  #amenities { background: var(--green); }
+  #amenities .section-title { color: white; }
+  #amenities .section-label { color: rgba(255,154,53,1); }
+  #amenities .section-subtitle { color: rgba(255,255,255,0.65); }
+  .amenities-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 20px; }
+  .amenity-card {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius); padding: 28px 20px; text-align: center;
+    transition: all 0.3s;
+  }
+  .amenity-card:hover { background: rgba(255,122,0,0.15); border-color: rgba(255,122,0,0.4); transform: translateY(-4px); }
+  .amenity-icon { font-size: 36px; margin-bottom: 12px; }
+  .amenity-name { color: white; font-size: 14px; font-weight: 600; }
+
+  /* GALLERY */
+  #gallery { background: var(--beige); overflow: hidden; }
+  .gallery-track-wrap { overflow-x: auto; scrollbar-width: none; padding-bottom: 10px; }
+  .gallery-track-wrap::-webkit-scrollbar { display: none; }
+  .gallery-track { display: flex; gap: 16px; }
+  .gallery-item {
+    flex: 0 0 300px; height: 220px; border-radius: var(--radius-sm); overflow: hidden;
+    cursor: pointer; position: relative;
+  }
+  .gallery-item img, .gallery-item-placeholder {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 0.4s;
+  }
+  .gallery-item-placeholder {
+    display: flex; align-items: center; justify-content: center;
+    font-size: 40px;
+    background: linear-gradient(135deg, #D4EDE6, #B8DDD5);
+  }
+  .gallery-item:hover img, .gallery-item:hover .gallery-item-placeholder { transform: scale(1.08); }
+  .gallery-item-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.6));
+    color: white; font-size: 13px; font-weight: 600; padding: 20px 14px 12px;
+  }
+  .gallery-nav { display: flex; gap: 10px; margin-top: 20px; }
+  .gallery-btn {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--green); color: white; border: none;
+    font-size: 18px; cursor: pointer; transition: background 0.2s;
+  }
+  .gallery-btn:hover { background: var(--orange); }
+
+  /* ABOUT */
+  #about { background: white; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about-img-wrap { position: relative; }
+  .about-img {
+    width: 100%; height: 420px; object-fit: cover;
+    border-radius: var(--radius); box-shadow: var(--shadow-lg);
+  }
+  .about-img-placeholder {
+    width: 100%; height: 420px; border-radius: var(--radius);
+    background: linear-gradient(135deg, #D4EDE6, #B8DDD5);
+    display: flex; align-items: center; justify-content: center; font-size: 64px;
+  }
+  .about-badge-float {
+    position: absolute; bottom: 24px; left: 24px;
+    background: var(--orange); color: white; border-radius: var(--radius-sm);
+    padding: 16px 20px; box-shadow: 0 8px 24px rgba(255,122,0,0.4);
+  }
+  .about-badge-float .num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; }
+  .about-badge-float .label { font-size: 12px; opacity: 0.9; }
+  .about-text p { font-size: 15px; color: var(--text-muted); line-height: 1.8; margin-bottom: 20px; }
+  .about-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+  .about-fact { background: var(--beige); border-radius: var(--radius-sm); padding: 16px; }
+  .about-fact .fact-icon { font-size: 22px; margin-bottom: 8px; }
+  .about-fact .fact-label { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+  .about-fact .fact-value { font-size: 14px; color: var(--green); font-weight: 700; margin-top: 2px; }
+
+  /* REVIEWS */
+  #reviews { background: var(--beige); }
+  .reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+  .review-card {
+    background: white; border-radius: var(--radius); padding: 28px;
+    box-shadow: var(--shadow); border: 1px solid rgba(0,0,0,0.04);
+    transition: transform 0.3s;
+  }
+  .review-card:hover { transform: translateY(-4px); }
+  .stars { color: #FFB800; font-size: 16px; margin-bottom: 12px; letter-spacing: 2px; }
+  .review-text { font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+  .review-author { display: flex; align-items: center; gap: 12px; }
+  .author-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--green); color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 700; flex-shrink: 0;
+  }
+  .author-name { font-size: 15px; font-weight: 700; color: var(--green); }
+  .author-meta { font-size: 12px; color: var(--text-muted); }
+  .review-rating-wrap { text-align: center; margin-bottom: 48px; }
+  .big-rating { font-family: 'Playfair Display', serif; font-size: 72px; color: var(--orange); font-weight: 700; line-height: 1; }
+  .big-rating-sub { font-size: 15px; color: var(--text-muted); margin-top: 8px; }
+
+  /* MAP */
+  #location { background: white; }
+  .map-wrap {
+    border-radius: var(--radius); overflow: hidden;
+    box-shadow: var(--shadow); margin-top: 40px; height: 380px;
+  }
+  .map-wrap iframe { width: 100%; height: 100%; border: none; }
+  .location-info { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 28px; }
+  .location-card {
+    background: var(--beige); border-radius: var(--radius-sm); padding: 22px;
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .location-card .icon { font-size: 28px; flex-shrink: 0; }
+  .location-card .info-label { font-size: 12px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  .location-card .info-value { font-size: 15px; color: var(--green); font-weight: 600; margin-top: 4px; }
+
+  /* CONTACT */
+  #contact { background: var(--green); }
+  #contact .section-title { color: white; }
+  #contact .section-label { color: var(--orange); }
+  #contact .section-subtitle { color: rgba(255,255,255,0.65); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .contact-methods { display: flex; flex-direction: column; gap: 16px; }
+  .contact-method {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-sm); padding: 20px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    transition: background 0.2s;
+  }
+  .contact-method:hover { background: rgba(255,255,255,0.1); }
+  .contact-method-left { display: flex; align-items: center; gap: 14px; }
+  .contact-icon-wrap {
+    width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; font-size: 20px;
+  }
+  .contact-method-label { font-size: 12px; color: rgba(255,255,255,0.5); font-weight: 500; }
+  .contact-method-value { font-size: 16px; color: white; font-weight: 600; margin-top: 2px; }
+  .contact-btn {
+    padding: 10px 20px; border-radius: 50px; font-size: 13px; font-weight: 700;
+    cursor: pointer; border: none; font-family: 'Inter', sans-serif; text-decoration: none;
+    white-space: nowrap; display: inline-block; text-align: center;
+  }
+  .contact-btn.orange { background: var(--orange); color: white; }
+  .contact-btn.green { background: #25D366; color: white; }
+  .contact-btn:hover { opacity: 0.9; transform: scale(1.04); }
+  .contact-form-card {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius); padding: 32px;
+  }
+  .contact-form-card h3 { color: white; font-size: 22px; margin-bottom: 24px; }
+  .contact-form-card .form-group label { color: rgba(255,255,255,0.6); }
+  .contact-form-card input, .contact-form-card textarea {
+    border: 1.5px solid rgba(255,255,255,0.15); border-radius: 10px;
+    padding: 12px 14px; font-size: 14px; font-family: 'Inter', sans-serif;
+    color: white; background: rgba(255,255,255,0.08);
+    transition: border-color 0.2s; outline: none; width: 100%;
+  }
+  .contact-form-card input::placeholder, .contact-form-card textarea::placeholder { color: rgba(255,255,255,0.35); }
+  .contact-form-card input:focus, .contact-form-card textarea:focus { border-color: var(--orange); }
+  .contact-form-card textarea { resize: vertical; min-height: 100px; }
+
+  /* FOOTER */
+  footer {
+    background: #0F1E1B; color: rgba(255,255,255,0.6);
+    padding: 48px 24px 100px;
+    text-align: center; font-size: 13px;
+  }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 22px; color: white; margin-bottom: 8px; }
+  .footer-links { display: flex; justify-content: center; gap: 20px; margin: 16px 0; flex-wrap: wrap; }
+  .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 13px; }
+  .footer-links a:hover { color: var(--orange); }
+
+  /* FLOATING WHATSAPP */
+  .float-whatsapp {
+    position: fixed; bottom: 100px; right: 20px; z-index: 998;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: #25D366; color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+    text-decoration: none; transition: transform 0.2s;
+  }
+  .float-whatsapp:hover { transform: scale(1.1); }
+  .float-whatsapp-tooltip {
+    position: absolute; right: 66px; background: #0F1E1B; color: white;
+    padding: 7px 12px; border-radius: 8px; font-size: 13px; white-space: nowrap;
+    pointer-events: none; opacity: 0; transition: opacity 0.2s;
+  }
+  .float-whatsapp:hover .float-whatsapp-tooltip { opacity: 1; }
+
+  /* STICKY BOTTOM BAR (mobile) */
+  .sticky-bar {
+    display: none;
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 997;
+    background: white; box-shadow: 0 -4px 24px rgba(0,0,0,0.12);
+    padding: 12px 20px;
+    align-items: center; justify-content: space-between; gap: 10px;
+  }
+  .sticky-price { display: flex; flex-direction: column; }
+  .sticky-price-from { font-size: 11px; color: var(--text-muted); }
+  .sticky-price-val { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--green); font-weight: 700; }
+  .sticky-btns { display: flex; gap: 8px; }
+  .sticky-btn {
+    padding: 12px 18px; border-radius: 10px; font-size: 14px; font-weight: 700;
+    cursor: pointer; border: none; font-family: 'Inter', sans-serif;
+  }
+  .sticky-btn.whatsapp { background: #25D366; color: white; }
+  .sticky-btn.book { background: var(--orange); color: white; }
+
+  /* MODAL */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 9999;
+    display: none; align-items: center; justify-content: center; padding: 20px;
+    backdrop-filter: blur(4px);
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: white; border-radius: 24px; padding: 36px;
+    max-width: 520px; width: 100%; position: relative;
+    animation: slideUp 0.3s ease;
+    max-height: 90vh; overflow-y: auto;
+  }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .modal-close {
+    position: absolute; top: 16px; right: 16px;
+    width: 36px; height: 36px; border-radius: 50%; background: var(--beige);
+    border: none; cursor: pointer; font-size: 18px; color: var(--text); transition: background 0.2s;
+  }
+  .modal-close:hover { background: var(--beige2); }
+  .modal-header { margin-bottom: 28px; }
+  .modal-header h2 { font-size: 26px; color: var(--green); }
+  .modal-header p { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
+  .modal-room-selected {
+    background: var(--orange-pale); border: 1px solid rgba(255,122,0,0.2);
+    border-radius: 10px; padding: 14px 16px; margin-bottom: 24px;
+  }
+  .modal-room-selected .room-name { font-weight: 700; color: var(--green); }
+  .modal-room-selected .room-price { color: var(--orange); font-size: 18px; font-weight: 700; }
+  .modal-availability {
+    background: #E8F5E9; border-radius: 10px; padding: 12px 16px;
+    display: flex; align-items: center; gap: 10px; margin: 20px 0;
+    font-size: 14px; color: #2E7D32; font-weight: 600;
+  }
+  .modal-total { font-size: 14px; color: var(--text-muted); margin-bottom: 16px; }
+  .modal-total span { font-size: 18px; font-weight: 700; color: var(--green); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-content { grid-template-columns: 1fr; gap: 40px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .location-info { grid-template-columns: 1fr; }
+    .about-facts { grid-template-columns: 1fr 1fr; }
+    nav .nav-links { display: none; }
+    .nav-mobile-toggle { display: block; }
+    .sticky-bar { display: flex; }
+    footer { padding-bottom: 100px; }
+  }
+  @media (max-width: 600px) {
+    section { padding: 60px 16px; }
+    .form-grid { grid-template-columns: 1fr; }
+    .amenities-grid { grid-template-columns: repeat(3, 1fr); }
+    .about-facts { grid-template-columns: 1fr; }
+    .gallery-item { flex: 0 0 240px; }
+    .contact-method { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <div class="nav-logo-icon">🏨</div>
+    <div>
+      <div class="nav-logo-text">FabHotel Rama</div>
+      <div class="nav-logo-sub">ROHINI, NEW DELHI</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#rooms">Rooms</a></li>
+    <li><a href="#amenities">Amenities</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#rooms" class="nav-cta">Book Now</a>
+  <button class="nav-mobile-toggle" onclick="document.querySelector('.nav-links').style.display = document.querySelector('.nav-links').style.display === 'flex' ? 'none' : 'flex'">☰</button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-badge">⭐ Trusted by 5,000+ guests</div>
+      <h1 class="hero-title">FabHotel<br><span>Rama</span></h1>
+      <p class="hero-tagline">Comfortable Stay in Rohini, New Delhi<br>Modern rooms, warm hospitality, unbeatable value.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><span class="hero-meta-icon">📍</span> Sector 11, Rohini</div>
+        <div class="hero-meta-item"><span class="hero-meta-icon">🚇</span> 5 min to Rohini Metro</div>
+        <div class="hero-meta-item"><span class="hero-meta-icon">✅</span> Free Cancellation</div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="booking-card">
+        <h3>🗓️ Check Availability</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Check-In</label>
+            <input type="date" id="checkin" min="">
+          </div>
+          <div class="form-group">
+            <label>Check-Out</label>
+            <input type="date" id="checkout" min="">
+          </div>
+          <div class="form-group">
+            <label>Guests</label>
+            <select id="guests">
+              <option>1 Guest</option>
+              <option selected>2 Guests</option>
+              <option>3 Guests</option>
+              <option>4 Guests</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Room Type</label>
+            <select id="room-type">
+              <option value="standard">Standard Room – ₹999</option>
+              <option value="deluxe">Deluxe Room – ₹1,499</option>
+              <option value="suite">Premium Suite – ₹2,499</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <button class="btn-book" onclick="openBookingModal()">Check Availability & Book Now →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROOMS -->
+<section id="rooms">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="section-label">Our Accommodation</span>
+      <h2 class="section-title">Choose Your Perfect Room</h2>
+      <p class="section-subtitle">Thoughtfully designed spaces for business travelers, couples, and families alike.</p>
+    </div>
+    <div class="rooms-grid">
+      <!-- Room 1 -->
+      <div class="room-card">
+        <div class="room-img-placeholder">🛏️</div>
+        <div class="room-body">
+          <span class="room-badge">Most Popular</span>
+          <h3 class="room-title">Standard Room</h3>
+          <p class="room-capacity">👤 Up to 2 Guests &nbsp;•&nbsp; 180 sq ft</p>
+          <div class="room-amenities">
+            <span class="amenity-tag">❄️ AC</span>
+            <span class="amenity-tag">📶 WiFi</span>
+            <span class="amenity-tag">📺 TV</span>
+            <span class="amenity-tag">🚿 Bathroom</span>
+            <span class="amenity-tag">🅿️ Parking</span>
+          </div>
+          <div class="room-footer">
+            <div class="room-price">
+              <span class="room-price-amount">₹999</span>
+              <span class="room-price-note">per night + taxes</span>
+            </div>
+            <button class="btn-room" onclick="openModalForRoom('Standard Room', 999)">Book Room</button>
+          </div>
+        </div>
+      </div>
+      <!-- Room 2 -->
+      <div class="room-card">
+        <div class="room-img-placeholder">🛏️✨</div>
+        <div class="room-body">
+          <span class="room-badge">Best Value</span>
+          <h3 class="room-title">Deluxe Room</h3>
+          <p class="room-capacity">👥 Up to 3 Guests &nbsp;•&nbsp; 250 sq ft</p>
+          <div class="room-amenities">
+            <span class="amenity-tag">❄️ AC</span>
+            <span class="amenity-tag">📶 WiFi</span>
+            <span class="amenity-tag">📺 Smart TV</span>
+            <span class="amenity-tag">🚿 Bathroom</span>
+            <span class="amenity-tag">🅿️ Parking</span>
+          </div>
+          <div class="room-footer">
+            <div class="room-price">
+              <span class="room-price-amount">₹1,499</span>
+              <span class="room-price-note">per night + taxes</span>
+            </div>
+            <button class="btn-room" onclick="openModalForRoom('Deluxe Room', 1499)">Book Room</button>
+          </div>
+        </div>
+      </div>
+      <!-- Room 3 -->
+      <div class="room-card">
+        <div class="room-img-placeholder">👑</div>
+        <div class="room-body">
+          <span class="room-badge" style="background:#FFF8E1;color:#F59E0B;">Premium</span>
+          <h3 class="room-title">Premium Suite</h3>
+          <p class="room-capacity">👨‍👩‍👧 Up to 4 Guests &nbsp;•&nbsp; 380 sq ft</p>
+          <div class="room-amenities">
+            <span class="amenity-tag">❄️ AC</span>
+            <span class="amenity-tag">📶 WiFi</span>
+            <span class="amenity-tag">📺 Smart TV</span>
+            <span class="amenity-tag">🛁 Bathtub</span>
+            <span class="amenity-tag">🅿️ Parking</span>
+          </div>
+          <div class="room-footer">
+            <div class="room-price">
+              <span class="room-price-amount">₹2,499</span>
+              <span class="room-price-note">per night + taxes</span>
+            </div>
+            <button class="btn-room" onclick="openModalForRoom('Premium Suite', 2499)">Book Room</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section id="amenities">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="section-label">Why Choose Us</span>
+      <h2 class="section-title">Hotel Amenities</h2>
+      <p class="section-subtitle">Everything you need for a comfortable and hassle-free stay.</p>
+    </div>
+    <div class="amenities-grid">
+      <div class="amenity-card"><div class="amenity-icon">📶</div><div class="amenity-name">Free WiFi</div></div>
+      <div class="amenity-card"><div class="amenity-icon">❄️</div><div class="amenity-name">Air Conditioning</div></div>
+      <div class="amenity-card"><div class="amenity-icon">🅿️</div><div class="amenity-name">Free Parking</div></div>
+      <div class="amenity-card"><div class="amenity-icon">🍽️</div><div class="amenity-name">Room Service</div></div>
+      <div class="amenity-card"><div class="amenity-icon">📹</div><div class="amenity-name">CCTV Security</div></div>
+      <div class="amenity-card"><div class="amenity-icon">🕐</div><div class="amenity-name">24×7 Reception</div></div>
+      <div class="amenity-card"><div class="amenity-icon">🚿</div><div class="amenity-name">Hot Water</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="section-label">Photo Gallery</span>
+      <h2 class="section-title">See Our Hotel</h2>
+      <p class="section-subtitle">A visual tour of FabHotel Rama's spaces and rooms.</p>
+    </div>
+    <div class="gallery-track-wrap" id="galleryWrap">
+      <div class="gallery-track" id="galleryTrack">
+        <div class="gallery-item">
+          <div class="gallery-item-placeholder" style="background:linear-gradient(135deg,#1E3A34,#2A5048)">🏨</div>
+          <div class="gallery-item-label">Hotel Exterior</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-placeholder" style="background:linear-gradient(135deg,#3D7A6A,#1E3A34)">🛏️</div>
+          <div class="gallery-item-label">Standard Room</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-placeholder" style="background:linear-gradient(135deg,#FF7A00,#FF9A35)">✨</div>
+          <div class="gallery-item-label">Deluxe Room</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-placeholder" style="background:linear-gradient(135deg,#5C4033,#8D6E63)">🛁</div>
+          <div class="gallery-item-label">Premium Suite</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-placeholder" style="background:linear-gradient(135deg,#1565C0,#42A5F5)">🚿</div>
+          <div class="gallery-item-label">Bathroom</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-placeholder" style="background:linear-gradient(135deg,#37474F,#78909C)">🏢</div>
+          <div class="gallery-item-label">Reception</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-placeholder" style="background:linear-gradient(135deg,#33691E,#7CB342)">🌿</div>
+          <div class="gallery-item-label">Common Area</div>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-nav">
+      <button class="gallery-btn" onclick="scrollGallery(-1)">←</button>
+      <button class="gallery-btn" onclick="scrollGallery(1)">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-wrap">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <div class="about-img-placeholder">🏨</div>
+        <div class="about-badge-float">
+          <div class="num">10+</div>
+          <div class="label">Years of Hospitality</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <span class="section-label">About FabHotel Rama</span>
+        <h2 class="section-title">Your Home Away From Home in Delhi</h2>
+        <p>FabHotel Rama is a well-established hotel nestled in the heart of Rohini, one of New Delhi's most well-connected residential and commercial areas. We combine modern comforts with warm Indian hospitality to create an experience that keeps our guests coming back.</p>
+        <p>Whether you're visiting for business, family, or leisure, our thoughtfully designed rooms and attentive staff ensure every stay is memorable. Enjoy the convenience of metro connectivity, safe surroundings, and a team dedicated to your comfort 24×7.</p>
+        <div class="about-facts">
+          <div class="about-fact">
+            <div class="fact-icon">📍</div>
+            <div class="fact-label">Address</div>
+            <div class="fact-value">Sector 11, Rohini, New Delhi – 110085</div>
+          </div>
+          <div class="about-fact">
+            <div class="fact-icon">🚇</div>
+            <div class="fact-label">Nearest Metro</div>
+            <div class="fact-value">Rohini West Metro (~5 min walk)</div>
+          </div>
+          <div class="about-fact">
+            <div class="fact-icon">🏥</div>
+            <div class="fact-label">Nearby</div>
+            <div class="fact-value">Fortis Hospital, Deep Mall, Crown Plaza Cinema</div>
+          </div>
+          <div class="about-fact">
+            <div class="fact-icon">✈️</div>
+            <div class="fact-label">Airport</div>
+            <div class="fact-value">IGI Airport ~30 min away</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="section-wrap">
+    <div class="section-header" style="text-align:center;max-width:100%">
+      <span class="section-label">Guest Reviews</span>
+      <h2 class="section-title">What Our Guests Say</h2>
+      <div class="review-rating-wrap">
+        <div class="big-rating">4.3</div>
+        <div class="stars">★★★★☆</div>
+        <div class="big-rating-sub">Based on 340+ verified reviews</div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Clean rooms, fast WiFi, and incredibly friendly staff. Located perfectly near the metro. Will definitely be my go-to hotel every time I visit Delhi for business."</p>
+        <div class="review-author">
+          <div class="author-avatar">R</div>
+          <div>
+            <div class="author-name">Rahul Sharma</div>
+            <div class="author-meta">📍 Mumbai &nbsp;•&nbsp; Business Trip</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Perfect for a family stay. The room was spacious, AC worked great, and hot water was available all night. Parking was super convenient. Highly recommend!"</p>
+        <div class="review-author">
+          <div class="author-avatar">P</div>
+          <div>
+            <div class="author-name">Priya Gupta</div>
+            <div class="author-meta">📍 Jaipur &nbsp;•&nbsp; Family Vacation</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★☆</div>
+        <p class="review-text">"Great value for money. The location is unbeatable — everything is nearby. Rooms are tidy and the reception staff is available round the clock. Satisfied!"</p>
+        <div class="review-author">
+          <div class="author-avatar">A</div>
+          <div>
+            <div class="author-name">Amit Verma</div>
+            <div class="author-meta">📍 Lucknow &nbsp;•&nbsp; Solo Travel</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="section-label">Find Us</span>
+      <h2 class="section-title">Our Location</h2>
+      <p class="section-subtitle">Conveniently located in Rohini, New Delhi — well-connected and easy to find.</p>
+    </div>
+    <div class="location-info">
+      <div class="location-card">
+        <div class="icon">📍</div>
+        <div>
+          <div class="info-label">Full Address</div>
+          <div class="info-value">Sector 11, Rohini, New Delhi – 110085</div>
+        </div>
+      </div>
+      <div class="location-card">
+        <div class="icon">🚇</div>
+        <div>
+          <div class="info-label">Metro Access</div>
+          <div class="info-value">Rohini West Metro Station (Yellow Line) – 5 min walk</div>
+        </div>
+      </div>
+      <div class="location-card">
+        <div class="icon">🚕</div>
+        <div>
+          <div class="info-label">From Airport</div>
+          <div class="info-value">~30 km from IGI Airport via NH-44 (approx. 45 min)</div>
+        </div>
+      </div>
+    </div>
+    <div class="map-wrap">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3498.882285!2d77.113052!3d28.752451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d01f3d8c6c5b5%3A0x1a1a2a2b2c2d2e2f!2sRohini+Sector+11%2C+Delhi!5e0!3m2!1sen!2sin!4v1700000000"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="section-label">Get In Touch</span>
+      <h2 class="section-title">Book or Enquire Now</h2>
+      <p class="section-subtitle">Reach us by call, WhatsApp, or email — we respond within minutes.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-methods">
+        <div class="contact-method">
+          <div class="contact-method-left">
+            <div class="contact-icon-wrap" style="background:rgba(255,122,0,0.15)">📞</div>
+            <div>
+              <div class="contact-method-label">Call Us Directly</div>
+              <div class="contact-method-value">+91 98765 43210</div>
+            </div>
+          </div>
+          <a href="tel:+919876543210" class="contact-btn orange">Call Now</a>
+        </div>
+        <div class="contact-method">
+          <div class="contact-method-left">
+            <div class="contact-icon-wrap" style="background:rgba(37,211,102,0.15)">💬</div>
+            <div>
+              <div class="contact-method-label">WhatsApp Booking</div>
+              <div class="contact-method-value">+91 98765 43210</div>
+            </div>
+          </div>
+          <a href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20book%20a%20room%20at%20FabHotel%20Rama%2C%20Rohini." target="_blank" class="contact-btn green">Chat Now</a>
+        </div>
+        <div class="contact-method">
+          <div class="contact-method-left">
+            <div class="contact-icon-wrap" style="background:rgba(255,122,0,0.15)">✉️</div>
+            <div>
+              <div class="contact-method-label">Email Us</div>
+              <div class="contact-method-value">bookings@fabhotelrama.in</div>
+            </div>
+          </div>
+          <a href="mailto:bookings@fabhotelrama.in" class="contact-btn orange">Send Mail</a>
+        </div>
+        <div class="contact-method" style="background:rgba(255,122,0,0.08);border-color:rgba(255,122,0,0.2)">
+          <div class="contact-method-left">
+            <div class="contact-icon-wrap" style="background:rgba(255,122,0,0.15)">⏰</div>
+            <div>
+              <div class="contact-method-label">Check-in / Check-out</div>
+              <div class="contact-method-value">Check-in: 12:00 PM &nbsp;|&nbsp; Check-out: 11:00 AM</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-card">
+        <h3>📩 Send an Enquiry</h3>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Rahul Sharma">
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+91 9XXXXXXXXX">
+          </div>
+          <div class="form-group">
+            <label>Preferred Check-in Date</label>
+            <input type="date">
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Tell us about your requirements..."></textarea>
+          </div>
+          <button class="btn-book" onclick="alert('Thank you! We will contact you within 30 minutes. 🙏')">Send Enquiry</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">FabHotel Rama</div>
+  <p>Sector 11, Rohini, New Delhi – 110085</p>
+  <div class="footer-links">
+    <a href="#rooms">Rooms</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#about">About</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <p style="margin-top:16px">© 2025 FabHotel Rama. All rights reserved. &nbsp;|&nbsp; 📞 +91 98765 43210</p>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20book%20a%20room%20at%20FabHotel%20Rama%2C%20Rohini." target="_blank" class="float-whatsapp">
+  <span class="float-whatsapp-tooltip">Book on WhatsApp</span>
+  💬
+</a>
+
+<!-- STICKY BAR -->
+<div class="sticky-bar" id="stickyBar">
+  <div class="sticky-price">
+    <span class="sticky-price-from">Rooms from</span>
+    <span class="sticky-price-val">₹999<span style="font-size:14px;color:#6B6B6B">/night</span></span>
+  </div>
+  <div class="sticky-btns">
+    <a href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20book%20a%20room." target="_blank" class="sticky-btn whatsapp">💬 WhatsApp</a>
+    <button class="sticky-btn book" onclick="openBookingModal()">Book Now</button>
+  </div>
+</div>
+
+<!-- BOOKING MODAL -->
+<div class="modal-overlay" id="bookingModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-header">
+      <h2>Confirm Your Booking</h2>
+      <p>FabHotel Rama, Rohini, New Delhi</p>
+    </div>
+    <div class="modal-room-selected" id="modalRoomInfo">
+      <div class="room-name" id="modalRoomName">Standard Room</div>
+      <div class="room-price" id="modalRoomPrice">₹999 / night</div>
+    </div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Check-In Date</label>
+        <input type="date" id="modalCheckin">
+      </div>
+      <div class="form-group">
+        <label>Check-Out Date</label>
+        <input type="date" id="modalCheckout">
+      </div>
+      <div class="form-group">
+        <label>Guests</label>
+        <select id="modalGuests">
+          <option>1 Guest</option>
+          <option selected>2 Guests</option>
+          <option>3 Guests</option>
+          <option>4 Guests</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" id="modalName" placeholder="Full Name">
+      </div>
+      <div class="form-group full">
+        <label>Phone Number</label>
+        <input type="tel" id="modalPhone" placeholder="+91 9XXXXXXXXX">
+      </div>
+    </div>
+    <div class="modal-availability" id="modalAvailability" style="display:none">
+      ✅ Rooms Available for Your Dates!
+    </div>
+    <div class="modal-total" id="modalTotal"></div>
+    <button class="btn-book" style="margin-top:0" onclick="checkAndBook()">Check Availability</button>
+    <div style="text-align:center;margin-top:16px">
+      <a href="https://wa.me/919876543210?text=Hi%2C%20I%20want%20to%20book%20a%20room%20at%20FabHotel%20Rama%2C%20Rohini." target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:white;padding:12px 24px;border-radius:10px;text-decoration:none;font-weight:700;font-size:14px">
+        💬 Or Book via WhatsApp
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Set min dates
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('checkin').min = today;
+  document.getElementById('checkout').min = today;
+  document.getElementById('checkin').value = today;
+  const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
+  document.getElementById('checkout').value = tomorrow;
+
+  let currentRoomPrice = 999;
+  let currentRoomName = 'Standard Room';
+
+  function openBookingModal() {
+    const checkin = document.getElementById('checkin').value;
+    const checkout = document.getElementById('checkout').value;
+    const guests = document.getElementById('guests').value;
+    const roomType = document.getElementById('room-type');
+    const selectedOption = roomType.options[roomType.selectedIndex];
+
+    document.getElementById('modalCheckin').value = checkin || today;
+    document.getElementById('modalCheckout').value = checkout || tomorrow;
+    document.getElementById('modalGuests').value = guests;
+    document.getElementById('modalRoomName').textContent = currentRoomName;
+    document.getElementById('modalRoomPrice').textContent = '₹' + currentRoomPrice.toLocaleString() + ' / night';
+    document.getElementById('bookingModal').classList.add('open');
+    document.getElementById('modalAvailability').style.display = 'none';
+    document.getElementById('modalTotal').textContent = '';
+    updateModalTotal();
+  }
+
+  function openModalForRoom(name, price) {
+    currentRoomName = name;
+    currentRoomPrice = price;
+    openBookingModal();
+  }
+
+  function closeModal() {
+    document.getElementById('bookingModal').classList.remove('open');
+  }
+
+  function updateModalTotal() {
+    const cin = document.getElementById('modalCheckin').value;
+    const cout = document.getElementById('modalCheckout').value;
+    if (cin && cout && cin < cout) {
+      const nights = Math.ceil((new Date(cout) - new Date(cin)) / 86400000);
+      const total = nights * currentRoomPrice;
+      document.getElementById('modalTotal').innerHTML =
+        nights + ' night' + (nights > 1 ? 's' : '') + ' × ₹' + currentRoomPrice.toLocaleString() + ' = <span>₹' + total.toLocaleString() + '</span>';
+    }
+  }
+
+  document.getElementById('modalCheckin').addEventListener('change', updateModalTotal);
+  document.getElementById('modalCheckout').addEventListener('change', updateModalTotal);
+
+  function checkAndBook() {
+    const name = document.getElementById('modalName').value.trim();
+    const phone = document.getElementById('modalPhone').value.trim();
+    const cin = document.getElementById('modalCheckin').value;
+    const cout = document.getElementById('modalCheckout').value;
+
+    if (!cin || !cout || cin >= cout) {
+      alert('Please select valid check-in and check-out dates.');
+      return;
+    }
+    if (!name) { alert('Please enter your name.'); return; }
+    if (!phone) { alert('Please enter your phone number.'); return; }
+
+    const nights = Math.ceil((new Date(cout) - new Date(cin)) / 86400000);
+    const total = nights * currentRoomPrice;
+
+    document.getElementById('modalAvailability').style.display = 'flex';
+    const btn = document.querySelector('.modal .btn-book');
+    btn.textContent = '✅ Rooms Available! Confirm via WhatsApp';
+    btn.onclick = function() {
+      const msg = encodeURIComponent(
+        `Hi, I want to book a room at FabHotel Rama, Rohini.\n\n` +
+        `Room: ${currentRoomName}\nCheck-in: ${cin}\nCheck-out: ${cout}\n` +
+        `Guests: ${document.getElementById('modalGuests').value}\n` +
+        `Name: ${name}\nPhone: ${phone}\nTotal: ₹${total.toLocaleString()} (${nights} nights)`
+      );
+      window.open(`https://wa.me/919876543210?text=${msg}`, '_blank');
+    };
+  }
+
+  // Close modal on overlay click
+  document.getElementById('bookingModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  // Gallery scroll
+  function scrollGallery(dir) {
+    const wrap = document.getElementById('galleryWrap');
+    wrap.scrollBy({ left: dir * 320, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>

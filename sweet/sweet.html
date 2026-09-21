@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Aggarwal Sweets & Snacks — Rohini SEctor25</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#C8960C;
+  --gold-dark:#9A6F00;
+  --gold-light:#E8B84B;
+  --gold-pale:#FDF6E3;
+  --gold-shine:#FFF8DC;
+  --cream:#FEFCF5;
+  --cream-2:#F9F3E0;
+  --red:#B22222;
+  --red-light:#8B0000;
+  --ink:#1A1000;
+  --ink-2:#3D2B00;
+  --ink-3:#7A6030;
+  --white:#FFFFFF;
+  --nav-h:72px;
+  --r:14px;
+  --ease:.3s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--cream-2)}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+
+/* ══════════════════════════════════════════════
+   NAVBAR
+══════════════════════════════════════════════ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:var(--nav-h);
+  background:var(--red-light);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;
+  box-shadow:0 2px 20px rgba(0,0,0,.25);
+}
+.nav-logo{
+  display:flex;align-items:center;gap:12px;
+}
+.nav-logo-icon{
+  width:48px;height:48px;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;flex-shrink:0;
+  border:2px solid rgba(255,255,255,.25);
+}
+.nav-logo-text{
+  display:flex;flex-direction:column;line-height:1.1;
+}
+.nav-logo-text span:first-child{
+  font-family:'Playfair Display',serif;
+  font-size:1.15rem;font-weight:700;
+  color:var(--gold-light);letter-spacing:.01em;
+}
+.nav-logo-text span:last-child{
+  font-size:.65rem;font-weight:500;
+  color:rgba(255,255,255,.7);letter-spacing:.12em;text-transform:uppercase;
+}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{
+  font-size:.82rem;font-weight:500;color:rgba(255,255,255,.88);
+  letter-spacing:.05em;text-transform:uppercase;
+  transition:color var(--ease);position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;right:0;
+  height:1.5px;background:var(--gold-light);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform var(--ease);
+}
+.nav-links a:hover{color:var(--gold-light)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-burger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:var(--ease)}
+@media(max-width:768px){
+  .nav-links{display:none;position:fixed;top:var(--nav-h);left:0;right:0;
+    background:var(--red-light);flex-direction:column;gap:0;
+    padding:16px 0;box-shadow:0 8px 24px rgba(0,0,0,.2)}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:14px 32px;width:100%;border-bottom:1px solid rgba(255,255,255,.08)}
+  .nav-links a::after{display:none}
+  .nav-burger{display:flex}
+}
+
+/* ══════════════════════════════════════════════
+   HERO
+══════════════════════════════════════════════ */
+.hero{
+  margin-top:var(--nav-h);
+  min-height:calc(100vh - var(--nav-h));
+  background:var(--red-light);
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:80px 5%;
+  gap:60px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 70% 50%,rgba(200,150,12,.12) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero-pattern{
+  position:absolute;top:0;left:0;right:0;bottom:0;
+  background-image:repeating-linear-gradient(45deg,rgba(200,150,12,.04) 0,rgba(200,150,12,.04) 1px,transparent 0,transparent 50%);
+  background-size:20px 20px;
+  pointer-events:none;
+}
+.hero-text{position:relative;z-index:1}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(200,150,12,.15);border:1px solid rgba(200,150,12,.3);
+  border-radius:50px;padding:6px 16px;
+  font-size:.7rem;font-weight:600;
+  color:var(--gold-light);letter-spacing:.15em;text-transform:uppercase;
+  margin-bottom:24px;
+}
+.hero-eyebrow::before{content:'✦';font-size:.65rem}
+.hero-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.4rem,5vw,4rem);
+  font-weight:800;line-height:1.1;
+  color:var(--white);
+  margin-bottom:20px;
+}
+.hero-title .gold{color:var(--gold-light)}
+.hero-title em{font-style:italic;color:var(--gold)}
+.hero-sub{
+  font-size:1rem;font-weight:300;
+  color:rgba(255,255,255,.75);
+  line-height:1.7;margin-bottom:36px;max-width:460px;
+}
+.hero-badges{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:40px}
+.hero-badge{
+  display:flex;align-items:center;gap:7px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:50px;padding:7px 16px;
+  font-size:.78rem;color:rgba(255,255,255,.85);font-weight:400;
+}
+.hero-badge .dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--gold-light);flex-shrink:0;
+}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  color:var(--ink);
+  padding:14px 30px;border-radius:50px;
+  font-weight:600;font-size:.88rem;letter-spacing:.04em;
+  transition:transform var(--ease),box-shadow var(--ease);
+  border:none;cursor:pointer;
+}
+.hero-cta:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(200,150,12,.4)}
+.hero-cta .arrow{font-size:1.1rem;transition:transform var(--ease)}
+.hero-cta:hover .arrow{transform:translateX(4px)}
+.hero-visual{
+  position:relative;z-index:1;
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-img-frame{
+  position:relative;width:100%;max-width:500px;
+}
+.hero-img-frame::before{
+  content:'';position:absolute;
+  inset:-12px;border-radius:28px;
+  border:1.5px solid rgba(200,150,12,.3);
+  pointer-events:none;z-index:2;
+}
+.hero-img-frame img{
+  width:100%;border-radius:20px;
+  aspect-ratio:4/3;object-fit:cover;
+}
+.hero-float-card{
+  position:absolute;bottom:-20px;left:-20px;
+  background:var(--white);border-radius:14px;
+  padding:14px 18px;
+  box-shadow:0 8px 32px rgba(0,0,0,.18);
+  min-width:160px;
+}
+.hero-float-card .label{font-size:.65rem;color:var(--ink-3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;font-weight:500}
+.hero-float-card .value{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--gold-dark)}
+.hero-float-card .unit{font-size:.72rem;color:var(--ink-3);margin-top:2px}
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;text-align:center;padding:60px 5%}
+  .hero-sub,.hero-badges{max-width:100%;justify-content:center}
+  .hero-visual{max-width:480px;margin:0 auto}
+  .hero-float-card{left:0;bottom:-10px}
+}
+@media(max-width:480px){.hero-title{font-size:2rem}}
+
+/* ══════════════════════════════════════════════
+   SECTION SHARED
+══════════════════════════════════════════════ */
+section{padding:90px 5%}
+.section-eyebrow{
+  display:flex;align-items:center;gap:12px;justify-content:center;
+  margin-bottom:12px;
+}
+.section-eyebrow span{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.eline{height:1px;width:44px;background:var(--gold);opacity:.5}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,3.5vw,2.8rem);
+  font-weight:700;text-align:center;
+  color:var(--ink);line-height:1.15;
+  margin-bottom:10px;
+}
+.section-title em{font-style:italic;color:var(--gold-dark)}
+.section-sub{
+  text-align:center;color:var(--ink-3);
+  font-size:.92rem;font-weight:300;line-height:1.6;
+  margin-bottom:56px;max-width:560px;margin-left:auto;margin-right:auto;
+}
+.divider-motif{
+  text-align:center;margin-bottom:52px;
+  display:flex;align-items:center;gap:16px;justify-content:center;
+}
+.divider-motif hr{flex:1;max-width:140px;border:none;height:1px;background:var(--gold);opacity:.25}
+.motif-char{color:var(--gold);font-size:1.1rem;opacity:.7}
+
+/* ══════════════════════════════════════════════
+   ABOUT SECTION
+══════════════════════════════════════════════ */
+.about{background:var(--white)}
+.about-inner{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:70px;align-items:center;
+  max-width:1280px;margin:0 auto;
+}
+.about-img-col{position:relative}
+.about-img-main{
+  width:100%;border-radius:20px;
+  aspect-ratio:3/4;object-fit:cover;
+}
+.about-img-accent{
+  position:absolute;
+  bottom:-24px;right:-24px;
+  width:48%;border-radius:14px;
+  aspect-ratio:1;object-fit:cover;
+  border:4px solid var(--white);
+  box-shadow:0 12px 36px rgba(0,0,0,.14);
+}
+.about-gold-tag{
+  position:absolute;top:24px;left:-20px;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  color:var(--ink);
+  border-radius:12px;padding:14px 18px;
+  text-align:center;
+  box-shadow:0 6px 24px rgba(200,150,12,.35);
+  min-width:120px;
+}
+.about-gold-tag .big{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:800;line-height:1}
+.about-gold-tag .small{font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-top:4px;opacity:.8}
+.about-text{padding-bottom:24px}
+.about-story{
+  font-size:.95rem;line-height:1.8;
+  color:var(--ink-2);font-weight:300;
+  margin-bottom:20px;
+}
+.about-story strong{font-weight:600;color:var(--ink)}
+.about-values{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:16px;margin-top:32px;
+}
+.about-val{
+  background:var(--gold-pale);border-radius:12px;
+  padding:18px;border-left:3px solid var(--gold);
+}
+.about-val .val-title{
+  font-weight:600;font-size:.82rem;
+  color:var(--gold-dark);margin-bottom:5px;
+  letter-spacing:.03em;text-transform:uppercase;font-size:.7rem;
+}
+.about-val p{font-size:.82rem;color:var(--ink-2);line-height:1.55;font-weight:300}
+.about-signatures{
+  display:flex;flex-wrap:wrap;gap:24px;margin-top:36px;
+  padding-top:28px;border-top:1px solid var(--cream-2);
+}
+.sig-item{text-align:center}
+.sig-num{
+  font-family:'Playfair Display',serif;
+  font-size:2rem;font-weight:700;
+  color:var(--gold-dark);line-height:1;
+}
+.sig-label{font-size:.7rem;color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase;margin-top:4px;font-weight:500}
+@media(max-width:900px){
+  .about-inner{grid-template-columns:1fr;gap:50px}
+  .about-img-col{max-width:420px;margin:0 auto;width:100%}
+  .about-img-accent{display:none}
+  .about-gold-tag{left:16px}
+  .about-values{grid-template-columns:1fr}
+}
+
+/* ══════════════════════════════════════════════
+   SWEETS SECTION
+══════════════════════════════════════════════ */
+.sweets-section{background:var(--cream);max-width:100%}
+.controls-row{
+  display:flex;flex-wrap:wrap;gap:14px;
+  align-items:center;justify-content:space-between;
+  max-width:1320px;margin:0 auto 20px;
+}
+.search-wrap{position:relative;flex:1 1 220px;max-width:300px}
+.search-wrap svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--ink-3);pointer-events:none}
+.search-input{
+  width:100%;padding:10px 14px 10px 40px;
+  border:1.5px solid var(--cream-2);border-radius:50px;
+  background:var(--white);
+  font-family:'Inter',sans-serif;font-size:.84rem;color:var(--ink);
+  outline:none;transition:border-color var(--ease),box-shadow var(--ease);
+}
+.search-input::placeholder{color:#bba96a}
+.search-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,150,12,.1)}
+.filter-pills{display:flex;flex-wrap:wrap;gap:8px;flex:2 1 auto;justify-content:flex-end}
+.pill{
+  padding:7px 18px;border-radius:50px;
+  border:1.5px solid var(--cream-2);background:var(--white);
+  font-size:.76rem;font-weight:500;color:var(--ink-2);
+  cursor:pointer;transition:all var(--ease);white-space:nowrap;user-select:none;
+}
+.pill:hover{border-color:var(--gold);color:var(--gold-dark)}
+.pill.active{background:var(--gold);border-color:var(--gold);color:var(--white);box-shadow:0 2px 10px rgba(200,150,12,.3)}
+.result-count{
+  font-size:.76rem;color:var(--ink-3);
+  max-width:1320px;margin:0 auto 24px;text-align:right;
+}
+.result-count strong{color:var(--gold-dark)}
+.sweets-grid{
+  max-width:1320px;margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:24px;
+}
+@media(max-width:1100px){.sweets-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:720px){.sweets-grid{grid-template-columns:repeat(2,1fr);gap:14px}}
+@media(max-width:400px){.sweets-grid{grid-template-columns:repeat(1,1fr)}}
+
+/* ── CARD ── */
+.sweet-card{
+  background:var(--white);border-radius:var(--r);
+  overflow:hidden;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
+  border:1px solid rgba(200,150,12,.1);
+  display:flex;flex-direction:column;
+  transition:transform var(--ease),box-shadow var(--ease);
+}
+.sweet-card:hover{transform:translateY(-6px);box-shadow:0 12px 36px rgba(0,0,0,.12)}
+.card-img-wrap{overflow:hidden;aspect-ratio:4/3;background:var(--cream-2);position:relative}
+.card-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.25,.46,.45,.94)}
+.sweet-card:hover .card-img-wrap img{transform:scale(1.08)}
+.badge-fresh{
+  position:absolute;top:10px;left:10px;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  color:var(--ink);font-size:.58rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:3px 9px;border-radius:50px;
+  box-shadow:0 2px 8px rgba(200,150,12,.4);
+}
+.badge-cat{
+  position:absolute;top:10px;right:10px;
+  background:rgba(139,0,0,.85);
+  color:rgba(255,255,255,.95);
+  font-size:.58rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+  padding:3px 9px;border-radius:50px;
+}
+.card-body{padding:16px 16px 18px;flex:1;display:flex;flex-direction:column;gap:5px}
+.card-name{font-family:'Playfair Display',serif;font-size:.98rem;font-weight:700;color:var(--ink);line-height:1.25}
+.card-desc{font-size:.76rem;color:var(--ink-3);line-height:1.5;font-weight:300;flex:1}
+.card-price{font-size:.88rem;font-weight:600;color:var(--gold-dark);margin-top:6px}
+.card-price span{font-size:.68rem;font-weight:400;color:var(--ink-3);margin-left:3px}
+
+/* ── NO RESULTS ── */
+.no-results{grid-column:1/-1;text-align:center;padding:60px 0;display:none}
+.no-results.visible{display:block}
+.no-results p{font-family:'Playfair Display',serif;font-size:1rem;color:var(--ink-3);margin-top:12px}
+
+/* ══════════════════════════════════════════════
+   SPECIALTIES STRIP
+══════════════════════════════════════════════ */
+.specialties{background:var(--red-light);padding:70px 5%}
+.spec-grid{
+  max-width:1200px;margin:40px auto 0;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:28px;
+}
+@media(max-width:900px){.spec-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.spec-grid{grid-template-columns:1fr}}
+.spec-card{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(200,150,12,.25);
+  border-radius:14px;padding:28px 22px;text-align:center;
+  transition:background var(--ease),transform var(--ease);
+}
+.spec-card:hover{background:rgba(200,150,12,.12);transform:translateY(-4px)}
+.spec-icon{font-size:2.2rem;margin-bottom:14px}
+.spec-title{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;font-weight:600;
+  color:var(--gold-light);margin-bottom:8px;
+}
+.spec-desc{font-size:.78rem;color:rgba(255,255,255,.65);line-height:1.6;font-weight:300}
+
+/* ══════════════════════════════════════════════
+   TESTIMONIALS
+══════════════════════════════════════════════ */
+.testimonials{background:var(--white)}
+.testi-grid{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+}
+@media(max-width:860px){.testi-grid{grid-template-columns:1fr}}
+.testi-card{
+  background:var(--gold-pale);border-radius:14px;
+  border:1px solid rgba(200,150,12,.15);
+  padding:28px 24px;
+}
+.testi-stars{color:var(--gold);font-size:1rem;letter-spacing:2px;margin-bottom:14px}
+.testi-quote{
+  font-family:'Playfair Display',serif;
+  font-style:italic;font-size:.92rem;
+  line-height:1.7;color:var(--ink-2);
+  margin-bottom:20px;
+}
+.testi-author{
+  display:flex;align-items:center;gap:10px;
+  padding-top:16px;border-top:1px solid rgba(200,150,12,.2);
+}
+.testi-avatar{
+  width:38px;height:38px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  display:flex;align-items:center;justify-content:center;
+  font-size:.78rem;font-weight:700;color:var(--ink);flex-shrink:0;
+}
+.testi-name{font-weight:600;font-size:.82rem;color:var(--ink)}
+.testi-loc{font-size:.72rem;color:var(--ink-3);margin-top:2px}
+
+/* ══════════════════════════════════════════════
+   VISIT US / FOOTER
+══════════════════════════════════════════════ */
+.visit{
+  background:var(--red-light);
+  padding:80px 5%;text-align:center;
+}
+.visit .section-title,.visit .section-sub,.visit .section-eyebrow span{color:var(--white)}
+.visit .section-title em{color:var(--gold-light)}
+.visit .eline{background:rgba(255,255,255,.3)}
+.visit-info{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:48px;
+  max-width:800px;margin:0 auto;
+}
+.info-block{text-align:center}
+.info-block .icon{font-size:1.8rem;margin-bottom:10px}
+.info-block h4{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;font-weight:600;color:var(--gold-light);
+  margin-bottom:6px;
+}
+.info-block p{font-size:.82rem;color:rgba(255,255,255,.75);line-height:1.6;font-weight:300}
+
+.footer{
+  background:#1A0000;
+  padding:32px 5%;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:16px;
+}
+.footer-brand{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;font-weight:700;color:var(--gold-light);
+}
+.footer-brand span{display:block;font-family:'Inter',sans-serif;font-size:.68rem;font-weight:400;color:rgba(255,255,255,.4);letter-spacing:.1em;margin-top:3px}
+.footer-note{font-size:.72rem;color:rgba(255,255,255,.35)}
+
+/* ══════════════════════════════════════════════
+   SCROLL ANIMATION
+══════════════════════════════════════════════ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .reveal,.sweet-card,.card-img-wrap img,.spec-card,.hero-cta{transition:none}
+  .sweet-card:hover,.spec-card:hover{transform:none}
+  .sweet-card:hover .card-img-wrap img{transform:none}
+  .hero-cta:hover{transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAVBAR ══════════ -->
+<nav class="nav" aria-label="Main navigation">
+  <a class="nav-logo" href="#home" aria-label="Aggarwal Sweets home">
+    <div class="nav-logo-icon" aria-hidden="true">🪔</div>
+    <div class="nav-logo-text">
+      <span>Aggarwal Sweets</span>
+      <span>& Snacks · Rohini Sector 25</span>
+    </div>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#home">Home</a>
+    <a href="#about">About Us</a>
+    <a href="#sweets">Our Sweets</a>
+    <a href="#visit">Visit Us</a>
+  </div>
+  <button class="nav-burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero" id="home" aria-label="Welcome">
+  <div class="hero-pattern" aria-hidden="true"></div>
+  <div class="hero-text">
+    <div class="hero-eyebrow">Pure Desi Ghee · Since Decades</div>
+    <h1 class="hero-title">
+      The Sweetest<br/>
+      <em>Tradition</em> in<br/>
+      <span class="gold">Rohini</span>
+    </h1>
+    <p class="hero-sub">Handcrafted Indian sweets and savories made with the finest ingredients — every bite a celebration of our heritage.</p>
+    <div class="hero-badges">
+      <span class="hero-badge"><span class="dot"></span>Pure Desi Ghee</span>
+      <span class="hero-badge"><span class="dot"></span>Made Fresh Daily</span>
+      <span class="hero-badge"><span class="dot"></span>100% Vegetarian</span>
+    </div>
+    <a class="hero-cta" href="#sweets">
+      Explore Our Sweets <span class="arrow">→</span>
+    </a>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-img-frame">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWJ8vUgUUTKtjCCTMraqaXFFIzwYq5BBqXII-tCx45NhAPWSXiLb37Moxj&s=10"
+        alt="Assorted Indian sweets on display"
+        loading="eager"
+        width="800" height="600"
+      />
+      <div class="hero-float-card">
+        <div class="label">Est. in</div>
+        <div class="value">Rohini</div>
+        <div class="unit">Sector 25 , Delhi-110085</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ABOUT ══════════ -->
+<section class="about" id="about" aria-label="About Aggarwal Sweets">
+  <div class="section-eyebrow"><div class="eline"></div><span>Our Story</span><div class="eline"></div></div>
+  <h2 class="section-title">Who We <em>Are</em></h2>
+
+  <div class="about-inner">
+    <div class="about-img-col reveal">
+      <div class="about-gold-tag">
+        <div class="big">❤️</div>
+        <div class="small">Made with love</div>
+      </div>
+      <img
+        class="about-img-main"
+        src="https://www.cookwithkushi.com/wp-content/uploads/2018/10/Best_Indian_Diwali_Sweets_Desserts_food.jpg"
+        alt="Freshly made Indian sweets at Aggarwal Sweets"
+        loading="lazy"
+        width="700" height="933"
+      />
+      <img
+        class="about-img-accent"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIbgCA282DUJLBMBfIxxBKHlbE7iL163w5jwyA9xHWX5aoblpy2pmK5J0j&s=10"
+        alt="Kaju katli silver barfi"
+        loading="lazy"
+        width="400" height="400"
+      />
+    </div>
+
+    <div class="about-text reveal">
+      <div class="section-eyebrow" style="justify-content:flex-start;margin-bottom:12px">
+        <div class="eline"></div><span>Rohini Own</span>
+      </div>
+      <h3 class="section-title" style="text-align:left;font-size:clamp(1.5rem,2.5vw,2.1rem);margin-bottom:20px">
+        A Legacy of <em>Pure</em> Taste
+      </h3>
+
+      <p class="about-story">
+        <strong>Aggarwal Sweets & Snacks</strong> is a well-recognized name in the hospitality industry in Rohini, Delhi. Located Near  Iskcon Temple, Rohini Sector –25, Delhi, we have been serving our community with quality, pure, and authentic Indian sweets for decades.
+      </p>
+      <p class="about-story">
+        We believe food should nurture the heart. Every sweet that leaves our kitchen is prepared with <strong>pure desi ghee</strong>, carefully selected ingredients, and a recipe perfected across generations. Our signature creations — <strong>Kaju Katli, Dhoda, and Kalakand</strong> — are made using a special benchmarked recipe passed down through time.
+      </p>
+      <p class="about-story">
+        Over the years, Aggarwal Sweets has grown to be synonymous with <strong>premium quality Indian sweets</strong>. Using technique, skill, and the finest raw materials sourced from across India, our mithai artisans craft each batch with noticeable freshness you can feel, taste, and enjoy.
+      </p>
+
+      <div class="about-values">
+        <div class="about-val">
+          <div class="val-title">Pure Ingredients</div>
+          <p>Only the finest, freshest raw materials from trusted suppliers across India.</p>
+        </div>
+        <div class="about-val">
+          <div class="val-title">Generational Recipes</div>
+          <p>Benchmark recipes refined and passed down with care over decades.</p>
+        </div>
+        <div class="about-val">
+          <div class="val-title">Daily Freshness</div>
+          <p>Every sweet is made fresh each morning — no preservatives, ever.</p>
+        </div>
+        <div class="about-val">
+          <div class="val-title">Community First</div>
+          <p>Rooted in Rohini, serving families for every celebration since day one.</p>
+        </div>
+      </div>
+
+      <div class="about-signatures">
+        <div class="sig-item">
+          <div class="sig-num">30+</div>
+          <div class="sig-label">Years of Trust</div>
+        </div>
+        <div class="sig-item">
+          <div class="sig-num">50+</div>
+          <div class="sig-label">Sweet Varieties</div>
+        </div>
+        <div class="sig-item">
+          <div class="sig-num">100%</div>
+          <div class="sig-label">Pure Desi Ghee</div>
+        </div>
+        <div class="sig-item">
+          <div class="sig-num">∞</div>
+          <div class="sig-label">Happy Families</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SPECIALTIES STRIP ══════════ -->
+<div class="specialties" aria-label="Our specialties">
+  <div class="section-eyebrow"><div class="eline" style="background:rgba(255,255,255,.3)"></div><span style="color:rgba(255,255,255,.7)">Why Choose Us</span><div class="eline" style="background:rgba(255,255,255,.3)"></div></div>
+  <h2 class="section-title" style="color:var(--white);margin-bottom:0">What Makes Us <em style="color:var(--gold-light)">Special</em></h2>
+  <div class="spec-grid">
+    <div class="spec-card reveal">
+      <div class="spec-icon">🥛</div>
+      <div class="spec-title">Pure Desi Ghee</div>
+      <p class="spec-desc">Every sweet and savory is prepared in pure cow ghee — no shortcuts, no compromise, ever.</p>
+    </div>
+    <div class="spec-card reveal">
+      <div class="spec-icon">🌿</div>
+      <div class="spec-title">100% Vegetarian</div>
+      <p class="spec-desc">A proudly pure-veg kitchen, honoring tradition and the values of the families we serve.</p>
+    </div>
+    <div class="spec-card reveal">
+      <div class="spec-icon">📜</div>
+      <div class="spec-title">Generational Recipes</div>
+      <p class="spec-desc">Kaju Katli, Dhoda, Kalakand — crafted from secret recipes perfected over generations.</p>
+    </div>
+    <div class="spec-card reveal">
+      <div class="spec-icon">🎁</div>
+      <div class="spec-title">Festive Gift Boxes</div>
+      <p class="spec-desc">Beautifully packed assorted mithai boxes perfect for Diwali, weddings, and every celebration.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SWEETS SECTION ══════════ -->
+<section class="sweets-section" id="sweets" aria-label="Our sweets">
+  <div class="section-eyebrow"><div class="eline"></div><span>Handcrafted Daily</span><div class="eline"></div></div>
+  <h2 class="section-title">Our <em>Sweets</em></h2>
+  <p class="section-sub">Made from pure desi ghee and the finest ingredients — just as tradition intended.</p>
+
+  <div class="controls-row">
+    <div class="search-wrap">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input class="search-input" type="search" id="searchInput" placeholder="Search sweets…" aria-label="Search sweets" autocomplete="off"/>
+    </div>
+    <div class="filter-pills" role="group" aria-label="Filter by category" id="filterPills"></div>
+  </div>
+
+  <p class="result-count" id="resultCount" aria-live="polite"></p>
+
+  <div class="sweets-grid" id="sweetsGrid" aria-live="polite">
+    <div class="no-results" id="noResults" aria-hidden="true">
+      <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#bba96a" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <p>No sweets found — try another search.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TESTIMONIALS ══════════ -->
+<section class="testimonials" aria-label="Customer reviews">
+  <div class="section-eyebrow"><div class="eline"></div><span>What People Say</span><div class="eline"></div></div>
+  <h2 class="section-title">Loved by <em>Families</em></h2>
+  <p class="section-sub">Generations of happy customers — and every sweet we make is a promise to keep it that way.</p>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"I have been eating from Aggarwal Sweets for over 35 years and they have maintained the quality throughout. That is a great feat — truly exceptional mithai."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">RK</div>
+        <div>
+          <div class="testi-name">Rakesh Kumar</div>
+          <div class="testi-loc">Dundahera, Rohini</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Their Kaju Katli and Kalakand are simply unmatched in the city. The taste is pure, the ghee is real, and you can feel the difference in every bite. Our go-to for every festival."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">PM</div>
+        <div>
+          <div class="testi-name">Priya Malhotra</div>
+          <div class="testi-loc">Udyog Vihar, Rohini</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-quote">"Aggarwal Sweets has become synonymous with celebration in our family. Their sweets are not just desserts — they are a part of every joyous moment we share together."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">AS</div>
+        <div>
+          <div class="testi-name">Anita Sharma</div>
+          <div class="testi-loc">Old Delhi Road, Gurugram</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ VISIT US ══════════ -->
+<section class="visit" id="visit" aria-label="Visit us">
+  <div class="section-eyebrow"><div class="eline"></div><span>Come See Us</span><div class="eline"></div></div>
+  <h2 class="section-title" style="color:var(--white)">Visit Our <em>Shop</em></h2>
+  <p class="section-sub" style="color:rgba(255,255,255,.65)">Step in to experience the aroma of freshly made mithai. We are open all week and welcome you and your family.</p>
+  <div class="visit-info">
+    <div class="info-block reveal">
+      <div class="icon">📍</div>
+      <h4>Address</h4>
+      <p>Rohini Sector 25,  Delhi–110085 
+      <!--  <br/>Dundahera Village, Gurugram, Haryana 122016</p> -->
+    </div>
+    <div class="info-block reveal">
+      <div class="icon">🕘</div>
+      <h4>Hours</h4>
+      <p>Monday – Sunday<br/>9:00 AM – 10:00 PM</p>
+    </div>
+    <div class="info-block reveal">
+      <div class="icon">📞</div>
+      <h4>Phone</h4>
+      <p>+91 9205002319</p>
+    </div>
+    <div class="info-block reveal">
+      <div class="icon">🌐</div>
+      <h4>Website</h4>
+      <p>aggrwalsweets.com</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+  <div class="footer-brand">
+    Aggarwal Sweets & Snacks
+    <span>Rohini Sector 25, Delhi — Pure Desi Ghee Mithai</span>
+  </div>
+  <p class="footer-note">© 2024 Aggarwal Sweets & Snacks. All rights reserved.</p>
+</footer>
+
+<script>
+/* ─────────── CONFIG ─────────── */
+const SHOW_PRICE = true;
+
+/* ─────────── DATA ─────────── */
+const sweets = [
+  {name:"Kaju Katli",category:"Barfi",image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIbgCA282DUJLBMBfIxxBKHlbE7iL163w5jwyA9xHWX5aoblpy2pmK5J0j&s=10",price:"",description:"Silky cashew diamond barfi draped in pure silver vark — our signature creation."},
+  {name:"Kalakand",category:"Milk Sweets",image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvHFH7460YxTnAFbTGrEHpqBok5-cpTtcyk33NfSrk58MMCGbcqt53padU&s=10",price:"",description:"Grainy milk cake with subtle cardamom and saffron — a generational recipe."},
+  {name:"Dhoda Barfi",category:"Milk Sweets",image:"https://sangamsweets.in/cdn/shop/files/DhodaBurfiNew.webp?v=1745229316&width=1946",price:"",description:"Rich khoya barfi with wheat and dry fruits — a Gurugram favourite since decades."},
+  {name:"Motichoor Laddu",category:"Laddu",image:"https://static.toiimg.com/thumb/55048059.cms?imgsize=196306&width=800&height=800",price:"",description:"Fine saffron boondi laddus, pressed soft and melt-in-mouth with cardamom."},
+  {name:"Boondi Laddu",category:"Laddu",image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6hHwe-caZ8Buxb2ZaYbDSqwLtQgdUqKy4T3gR-fGRJPWZnYaOQ_rugTZi&s=10",price:"",description:"Golden boondi bound in sugar syrup, raisins and cashews — festive favourite."},
+  {name:"Besan Laddu",category:"Laddu",image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoE5wPtaRRgOTCAJMZcuaEL2XNIgxyGTqZ3gCeg9S2DTPqc2MUzhBPG8ZU&s=10",price:"",description:"Roasted gram flour laddus slow-cooked in desi ghee with green cardamom."},
+  {name:"Rasgulla",category:"Rasgulla",image:"https://static.toiimg.com/photo/52743612.cms",price:"",description:"Spongy chhena balls soaked in a light, fragrant sugar syrup — pure comfort."},
+  {name:"Rasmalai",category:"Bengali",image:"https://palatesdesire.com/wp-content/uploads/2022/09/Rasmalai-recipe@palates-desire.jpg",price:"",description:"Soft paneer discs drenched in saffron-scented, chilled rabri cream."},
+  {name:"Sandesh",category:"Bengali",image:"https://cdn1.foodviva.com/static-content/food-images/bengali-recipes/sandesh-sondesh/sandesh-sondesh.jpg",price:"",description:"Delicate Bengal chhena sweet, mildly sweetened with cardamom and rose."},
+  {name:"Cham Cham",category:"Bengali",image:"https://cdn1.foodviva.com/static-content/food-images/bengali-recipes/cham-cham/cham-cham.jpg",price:"",description:"Oblong chhena sweet rolled in desiccated coconut and saffron cream."},
+  {name:"Gulab Jamun",category:"Milk Sweets",image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfoU7b-BqgMW_rh6z7_-EXjx9fu19QgUp0AH9dR8nD166vwkWuxctUBUqY&s=10",price:"",description:"Deep-fried khoya dumplings in rose-cardamom sugar syrup — served hot."},
+  {name:"Peda",category:"Milk Sweets",image:"https://www.secondrecipe.com/wp-content/uploads/2017/08/mathura-peda-1.jpg",price:"",description:"Khoya rounds flavoured with cardamom, crowned with a pistachio sliver."},
+  {name:"Milk Barfi",category:"Barfi",image:"https://myheartbeets.com/wp-content/uploads/2020/11/pressure-cooker-milk-burfi-500x500.jpg",price:"",description:"Classic khoya barfi with cardamom, adorned with pistachio and silver leaf."},
+  {name:"Anjeer Barfi",category:"Dry Fruit",image:"https://www.indianhealthyrecipes.com/wp-content/uploads/2022/08/anjeer-barfi-dry-fig-burfi.jpg",price:"",description:"Dried fig and nut barfi — naturally sweet with no refined sugar added."},
+  {name:"Dry Fruit Roll",category:"Dry Fruit",image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8xV0j82LTYSeQSictWsxEVyKcZDawpCRzqSRlCV77x_XLRH7cZ4JRaLA&s=10",price:"",description:"Whole cashews, almonds and pistachios wrapped in sweet khoya casing."},
+  {name:"Rabri",category:"Rabri",image:"https://instamart-media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_960,w_960//InstamartAssets/Receipes/bread_rabri.webp",price:"",description:"Slow-cooked thickened milk layered with cream and aromatic saffron strands."},
+  {name:"Rabri Ghevar",category:"Rabri",image:"https://lmbsweets.com/wp-content/uploads/2021/09/LMB-1-9.jpg",price:"",description:"Crisp ghee disc crowned with chilled rabri — Haryana's festive classic."},
+  {name:"Moong Dal Halwa",category:"Milk Sweets",image:"https://foodtrails25.com/wp-content/uploads/2019/10/How-to-make-Moong-Dal.jpg",price:"",description:"Slow-roasted moong dal in desi ghee with saffron, almonds and cardamom."},
+  {name:"Kheer Kadam",category:"Bengali",image:"https://static.toiimg.com/thumb/60291237.cms?width=1200&height=900",price:"",description:"Mini rasgulla encased in a generous shell of soft saffron khoya."},
+  {name:"Mal Pua",category:"Milk Sweets",image:"https://www.indianhealthyrecipes.com/wp-content/uploads/2021/12/malpua-recipe.jpg",price:"",description:"Fried wheat-flour pancakes dipped in sugar syrup, served with khoa rabri."},
+];
+
+/* ─────────── CATEGORIES ─────────── */
+const CATS = ["All","Bengali","Dry Fruit","Milk Sweets","Rabri","Rasgulla","Laddu","Barfi"];
+let activeCat = "All", searchQ = "";
+
+/* ─────────── BUILD PILLS ─────────── */
+const pillsCon = document.getElementById("filterPills");
+CATS.forEach(cat => {
+  const b = document.createElement("button");
+  b.className = "pill" + (cat === "All" ? " active" : "");
+  b.textContent = cat;
+  b.setAttribute("aria-pressed", cat === "All" ? "true" : "false");
+  b.addEventListener("click", () => {
+    activeCat = cat;
+    pillsCon.querySelectorAll(".pill").forEach(p => { p.classList.remove("active"); p.setAttribute("aria-pressed","false"); });
+    b.classList.add("active"); b.setAttribute("aria-pressed","true");
+    render();
+  });
+  pillsCon.appendChild(b);
+});
+
+/* ─────────── SEARCH ─────────── */
+document.getElementById("searchInput").addEventListener("input", e => {
+  searchQ = e.target.value.trim().toLowerCase(); render();
+});
+
+/* ─────────── BUILD CARD ─────────── */
+function buildCard(s) {
+  const c = document.createElement("article");
+  c.className = "sweet-card";
+  const priceHTML = (SHOW_PRICE && s.price)
+    ? `<p class="card-price">₹${s.price}<span>/ 250g</span></p>` : "";
+  c.innerHTML = `
+    <div class="card-img-wrap">
+      <img src="${s.image}" alt="${s.name}" loading="lazy" width="400" height="300"
+        onerror="this.src='https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=600&q=80'"/>
+      <span class="badge-fresh" aria-label="Fresh Daily">✦ Fresh Daily</span>
+      <span class="badge-cat">${s.category}</span>
+    </div>
+    <div class="card-body">
+      <h3 class="card-name">${s.name}</h3>
+      <p class="card-desc">${s.description}</p>
+      ${priceHTML}
+    </div>`;
+  return c;
+}
+
+/* ─────────── RENDER ─────────── */
+function render() {
+  const grid = document.getElementById("sweetsGrid");
+  const noR = document.getElementById("noResults");
+  const cnt = document.getElementById("resultCount");
+  grid.querySelectorAll(".sweet-card").forEach(c => c.remove());
+  const filtered = sweets.filter(s => {
+    const mc = activeCat === "All" || s.category === activeCat;
+    const ms = !searchQ || s.name.toLowerCase().includes(searchQ);
+    return mc && ms;
+  });
+  if (filtered.length === 0) {
+    noR.classList.add("visible"); noR.setAttribute("aria-hidden","false");
+    cnt.innerHTML = "";
+  } else {
+    noR.classList.remove("visible"); noR.setAttribute("aria-hidden","true");
+    filtered.forEach(s => grid.insertBefore(buildCard(s), noR));
+    cnt.innerHTML = `Showing <strong>${filtered.length}</strong> of <strong>${sweets.length}</strong> sweets`;
+  }
+}
+render();
+
+/* ─────────── MOBILE NAV ─────────── */
+const burger = document.getElementById("navBurger");
+const navLinks = document.getElementById("navLinks");
+burger.addEventListener("click", () => {
+  const open = navLinks.classList.toggle("open");
+  burger.setAttribute("aria-expanded", open ? "true" : "false");
+});
+navLinks.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+  navLinks.classList.remove("open"); burger.setAttribute("aria-expanded","false");
+}));
+
+/* ─────────── SCROLL REVEAL ─────────── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visible"); obs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Gentleman's Chair — Book Appointment</title>
+<meta name="description" content="Book your barber appointment in seconds." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:        #FAF8F4;
+    --panel:     #F1ECE3;
+    --ink:       #1C1A17;
+    --ink-soft:  #5C574E;
+    --brass:     #8B7355;
+    --brass-deep:#6E5A41;
+    --line:      #D9D3C5;
+    --white:     #FFFFFF;
+
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 15% 8%, rgba(139,115,85,0.05), transparent 45%),
+      radial-gradient(circle at 85% 92%, rgba(139,115,85,0.06), transparent 45%);
+    color: var(--ink);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 32px 20px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x:hidden;
+  }
+
+  .page{
+    width:100%;
+    max-width: 480px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  /* ---------- Header ---------- */
+
+  .brand{
+    text-align:center;
+    opacity:0;
+    transform: translateY(14px);
+    animation: rise 0.9s var(--ease) forwards;
+    animation-delay: 0.05s;
+  }
+
+  .brand-eyebrow{
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--brass-deep);
+    margin-bottom: 14px;
+    display:block;
+  }
+
+  .brand-name{
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(2.4rem, 9vw, 3.4rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .brand-tagline{
+    margin-top: 12px;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    letter-spacing: 0.01em;
+  }
+
+  /* ---------- Signature razor-line divider ---------- */
+
+  .razor-wrap{
+    width: 100%;
+    max-width: 280px;
+    margin: 34px 0 36px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .razor-line{
+    width:100%;
+    height: 13px;
+    overflow: visible;
+  }
+
+  .razor-line path{
+    fill:none;
+    stroke: var(--brass);
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-dasharray: 320;
+    stroke-dashoffset: 320;
+    animation: draw 1.3s var(--ease) forwards;
+    animation-delay: 0.5s;
+  }
+
+  .razor-line circle{
+    fill: var(--brass-deep);
+    opacity: 0;
+    animation: dotIn 0.5s var(--ease) forwards;
+    animation-delay: 1.7s;
+  }
+
+  @keyframes draw{ to{ stroke-dashoffset: 0; } }
+  @keyframes dotIn{ to{ opacity:1; } }
+
+  /* ---------- Booking card ---------- */
+
+  .card{
+    width:100%;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 38px 30px 32px;
+    box-shadow:
+      0 1px 2px rgba(28,26,23,0.04),
+      0 24px 48px -24px rgba(28,26,23,0.12),
+      0 8px 24px -12px rgba(28,26,23,0.06);
+    opacity:0;
+    transform: translateY(20px);
+    animation: rise 0.9s var(--ease) forwards;
+    animation-delay: 0.2s;
+  }
+
+  .card-heading{
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+  }
+
+  .card-sub{
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin-bottom: 28px;
+  }
+
+  .field{
+    margin-bottom: 18px;
+    position: relative;
+  }
+
+  .field label{
+    display:block;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brass-deep);
+    margin-bottom: 8px;
+  }
+
+  .field input{
+    width:100%;
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--ink);
+    background: var(--panel);
+    border: 1.5px solid transparent;
+    border-radius: 12px;
+    padding: 14px 16px;
+    outline: none;
+    transition: border-color 0.25s var(--ease), background 0.25s var(--ease), transform 0.2s var(--ease);
+    -webkit-appearance: none;
+  }
+
+  .field input::placeholder{ color: #9C968A; }
+
+  .field input:hover{ background: #ECE6DA; }
+
+  .field input:focus{
+    background: var(--white);
+    border-color: var(--brass);
+    box-shadow: 0 0 0 4px rgba(139,115,85,0.12);
+  }
+
+  .field input:focus-visible{
+    outline: 2px solid var(--brass-deep);
+    outline-offset: 1px;
+  }
+
+  /* native date/time icon tint */
+  .field input[type="date"], .field input[type="time"]{
+    color-scheme: light;
+  }
+
+  .row-two{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .field.error input{
+    border-color: #B3493D;
+    background: #FBF1EF;
+  }
+
+  .error-msg{
+    font-size: 12px;
+    color: #B3493D;
+    margin-top: 6px;
+    display:none;
+  }
+
+  .field.error .error-msg{ display:block; }
+
+  /* ---------- CTA Button ---------- */
+
+  .btn{
+    width:100%;
+    margin-top: 8px;
+    background: linear-gradient(180deg, #28241F, var(--ink));
+    color: var(--bg);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.01em;
+    border: none;
+    border-radius: 14px;
+    padding: 17px 20px;
+    cursor: pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+    box-shadow: 0 1px 1px rgba(28,26,23,0.1), 0 12px 24px -10px rgba(28,26,23,0.45);
+  }
+
+  .btn::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.14) 45%, transparent 60%);
+    transform: translateX(-100%);
+    transition: transform 0.6s var(--ease);
+  }
+
+  .btn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 1px 1px rgba(28,26,23,0.1), 0 16px 30px -10px rgba(28,26,23,0.5);
+  }
+
+  .btn:hover::before{ transform: translateX(100%); }
+
+  .btn:active{ transform: translateY(0px) scale(0.99); }
+
+  .btn svg{ width:18px; height:18px; flex-shrink:0; }
+
+  .btn-note{
+    text-align:center;
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-top: 14px;
+  }
+
+  /* ---------- Footer ---------- */
+
+  .foot{
+    margin-top: 30px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #A39D8F;
+    opacity:0;
+    animation: rise 0.9s var(--ease) forwards;
+    animation-delay: 0.35s;
+  }
+
+  @keyframes rise{
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  /* ---------- Responsive ---------- */
+
+  @media (max-width: 380px){
+    .card{ padding: 30px 22px 26px; }
+    .row-two{ grid-template-columns: 1fr; gap:18px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.01ms !important; animation-delay: 0s !important; transition-duration: 0.01ms !important; }
+    .razor-line path{ stroke-dashoffset: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <header class="brand">
+    <span class="brand-eyebrow">Est. Appointment Only</span>
+    <h1 class="brand-name">The Gentleman's&nbsp;Chair</h1>
+    <p class="brand-tagline">Precision cuts. Old-world craft.</p>
+  </header>
+
+  <div class="razor-wrap">
+    <svg class="razor-line" viewBox="0 0 280 13" preserveAspectRatio="none">
+      <path d="M2,6.5 L268,6.5" />
+      <circle cx="272" cy="6.5" r="3.2" />
+    </svg>
+  </div>
+
+  <main class="card" aria-labelledby="card-heading">
+    <h2 id="card-heading" class="card-heading">Book your appointment</h2>
+    <p class="card-sub">Fill in your details — we'll confirm on WhatsApp.</p>
+
+    <form id="bookingForm" novalidate>
+
+      <div class="field" id="field-name">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="e.g. Arjun Mehta" autocomplete="name" required />
+        <span class="error-msg">Please enter your name.</span>
+      </div>
+
+      <div class="field" id="field-mobile">
+        <label for="mobile">Mobile Number</label>
+        <input type="tel" id="mobile" name="mobile" placeholder="e.g. 9876543210" inputmode="numeric" autocomplete="tel" required />
+        <span class="error-msg">Please enter a valid mobile number.</span>
+      </div>
+
+      <div class="row-two">
+        <div class="field" id="field-date">
+          <label for="date">Preferred Date</label>
+          <input type="date" id="date" name="date" required />
+          <span class="error-msg">Pick a date.</span>
+        </div>
+
+        <div class="field" id="field-time">
+          <label for="time">Preferred Time</label>
+          <input type="time" id="time" name="time" required />
+          <span class="error-msg">Pick a time.</span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.099-.473-.148-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-1.747-.84-2.892-1.498-4.04-3.394-.305-.527.305-.489.873-1.626.099-.198.05-.371-.05-.52-.099-.149-.672-1.619-.922-2.218-.247-.594-.498-.514-.673-.514-.175 0-.371-.025-.572-.025-.198 0-.521.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.04 3.12 4.943 4.25 2.404.93 2.95.876 3.516.794.563-.083 1.766-.722 2.016-1.42.247-.694.247-1.292.171-1.42-.074-.124-.27-.198-.572-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.552 4.116 1.522 5.846L0 24l6.336-1.5A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.94 9.94 0 0 1-5.072-1.394l-.364-.218-3.756.89.85-3.673-.237-.378A9.94 9.94 0 0 1 2 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/>
+        </svg>
+        Book Appointment
+      </button>
+
+      <p class="btn-note">Tap to send your details on WhatsApp</p>
+    </form>
+  </main>
+
+  <footer class="foot">By Appointment &middot; Walk-ins Welcome</footer>
+
+</div>
+
+<script>
+  // ---- CONFIGURE THIS: barber shop WhatsApp number, country code + number, no + or spaces ----
+  const WHATSAPP_NUMBER = "91XXXXXXXXXX";
+
+  const form = document.getElementById('bookingForm');
+
+  function setError(fieldId, show){
+    const el = document.getElementById(fieldId);
+    el.classList.toggle('error', show);
+  }
+
+  function formatDate(value){
+    if(!value) return '';
+    const [y, m, d] = value.split('-');
+    const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    return `${parseInt(d,10)} ${months[parseInt(m,10)-1]} ${y}`;
+  }
+
+  function formatTime(value){
+    if(!value) return '';
+    let [h, m] = value.split(':').map(Number);
+    const period = h >= 12 ? 'PM' : 'AM';
+    h = h % 12 || 12;
+    return `${h}:${m.toString().padStart(2,'0')} ${period}`;
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    const name = document.getElementById('fullName').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+
+    const mobileDigits = mobile.replace(/\D/g, '');
+
+    let valid = true;
+
+    if(name.length < 2){ setError('field-name', true); valid = false; } else { setError('field-name', false); }
+    if(mobileDigits.length < 7){ setError('field-mobile', true); valid = false; } else { setError('field-mobile', false); }
+    if(!date){ setError('field-date', true); valid = false; } else { setError('field-date', false); }
+    if(!time){ setError('field-time', true); valid = false; } else { setError('field-time', false); }
+
+    if(!valid) return;
+
+    const message =
+`Hello,
+
+I want to book a barber appointment.
+
+Name: ${name}
+Mobile: ${mobile}
+Date: ${formatDate(date)}
+Time: ${formatTime(time)}`;
+
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+  });
+
+  // Clear individual field errors as user corrects them
+  ['fullName','mobile','date','time'].forEach(id => {
+    document.getElementById(id).addEventListener('input', function(){
+      this.closest('.field').classList.remove('error');
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>H&K Kitchen | Premium Café Menu</title>
+<style>
+  :root{
+    --bg:#FFFFFF;
+    --primary:#FF7A00;
+    --primary-dark:#E56A00;
+    --secondary:#2E7D32;
+    --ink:#1C1C1E;
+    --muted:#6B6B70;
+    --line:rgba(0,0,0,0.06);
+    --card:#ffffff;
+    --shadow-sm:0 6px 18px rgba(20,20,20,0.06);
+    --shadow-md:0 10px 30px rgba(0,0,0,0.08);
+    --shadow-lg:0 20px 50px rgba(0,0,0,0.14);
+    --radius:18px;
+    --radius-lg:24px;
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;}
+  button{font-family:inherit;}
+
+  /* ===================== HEADER ===================== */
+  header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,0.72);
+    backdrop-filter:blur(18px) saturate(180%);
+    -webkit-backdrop-filter:blur(18px) saturate(180%);
+    box-shadow:var(--shadow-sm);
+    border-bottom:1px solid var(--line);
+  }
+  .header-top{
+    max-width:1280px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    padding:14px 28px;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:800;
+    font-size:22px;
+    letter-spacing:-0.5px;
+    color:var(--ink);
+    white-space:nowrap;
+  }
+  .logo .mark{
+    width:38px;height:38px;border-radius:12px;
+    background:linear-gradient(135deg,var(--primary),#FFA94D);
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-size:18px;font-weight:900;
+    box-shadow:0 6px 16px rgba(255,122,0,0.35);
+  }
+  .logo span.sub{
+    display:block;font-size:11px;font-weight:600;color:var(--muted);
+    letter-spacing:1.5px;text-transform:uppercase;
+  }
+
+  .search-wrap{
+    flex:1;
+    max-width:480px;
+    position:relative;
+  }
+  .search-wrap input{
+    width:100%;
+    padding:13px 20px 13px 44px;
+    border-radius:30px;
+    border:1px solid var(--line);
+    background:rgba(245,245,247,0.9);
+    font-size:15px;
+    outline:none;
+    transition:0.25s ease;
+  }
+  .search-wrap input:focus{
+    background:#fff;
+    border-color:var(--primary);
+    box-shadow:0 0 0 4px rgba(255,122,0,0.12);
+  }
+  .search-wrap .icon{
+    position:absolute;
+    left:16px;top:50%;
+    transform:translateY(-50%);
+    color:var(--muted);
+    font-size:16px;
+    pointer-events:none;
+  }
+
+  .cart-pill{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:var(--ink);
+    color:#fff;
+    padding:11px 18px;
+    border-radius:30px;
+    font-weight:600;
+    font-size:14px;
+    cursor:pointer;
+    transition:0.25s ease;
+    white-space:nowrap;
+    box-shadow:var(--shadow-sm);
+  }
+  .cart-pill:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);}
+  .cart-pill .count{
+    background:var(--primary);
+    border-radius:50%;
+    min-width:22px;height:22px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:12px;font-weight:800;
+    padding:0 4px;
+  }
+
+  /* Category nav */
+  .cat-nav-wrap{
+    border-top:1px solid var(--line);
+  }
+  .cat-nav{
+    max-width:1280px;
+    margin:0 auto;
+    display:flex;
+    gap:10px;
+    padding:12px 28px;
+    overflow-x:auto;
+    scrollbar-width:none;
+  }
+  .cat-nav::-webkit-scrollbar{display:none;}
+  .cat-btn{
+    flex:0 0 auto;
+    border:1px solid var(--line);
+    background:#fff;
+    padding:10px 20px;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:600;
+    color:var(--ink);
+    cursor:pointer;
+    transition:all 0.25s ease;
+    white-space:nowrap;
+  }
+  .cat-btn:hover{
+    border-color:var(--primary);
+    color:var(--primary);
+    transform:translateY(-2px);
+  }
+  .cat-btn.active{
+    background:var(--primary);
+    color:#fff;
+    border-color:var(--primary);
+    box-shadow:0 8px 20px rgba(255,122,0,0.3);
+  }
+
+  /* ===================== HERO ===================== */
+  .hero{
+    position:relative;
+    height:450px;
+    margin:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    overflow:hidden;
+    background:
+      linear-gradient(180deg, rgba(20,15,10,0.55), rgba(20,15,10,0.78)),
+      radial-gradient(circle at 30% 20%, rgba(255,122,0,0.45), transparent 55%),
+      radial-gradient(circle at 80% 80%, rgba(46,125,50,0.4), transparent 55%),
+      linear-gradient(120deg,#231a12,#1c1c1e 60%);
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 30px);
+    opacity:0.6;
+  }
+  .hero-content{
+    position:relative;
+    z-index:2;
+    color:#fff;
+    max-width:680px;
+    padding:0 24px;
+    animation:fadeUp 0.9s ease both;
+  }
+  .hero-content .eyebrow{
+    display:inline-block;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:#FFC98A;
+    margin-bottom:18px;
+  }
+  .hero-content h1{
+    font-size:clamp(36px,5vw,58px);
+    font-weight:800;
+    letter-spacing:-1.5px;
+    margin:0 0 14px;
+    line-height:1.05;
+  }
+  .hero-content p{
+    font-size:17px;
+    color:rgba(255,255,255,0.85);
+    margin:0 0 32px;
+    font-weight:400;
+    letter-spacing:0.3px;
+  }
+  .hero-content p .dot{color:var(--primary);margin:0 8px;}
+  .order-btn{
+    background:var(--primary);
+    color:#fff;
+    border:none;
+    padding:16px 38px;
+    border-radius:14px;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:all 0.3s cubic-bezier(.2,.8,.2,1);
+    box-shadow:0 14px 34px rgba(255,122,0,0.4);
+  }
+  .order-btn:hover{
+    transform:translateY(-4px) scale(1.03);
+    box-shadow:0 20px 44px rgba(255,122,0,0.5);
+    background:var(--primary-dark);
+  }
+
+  @keyframes fadeUp{
+    from{opacity:0;transform:translateY(24px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  @keyframes fadeIn{
+    from{opacity:0;transform:translateY(14px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  @keyframes qtyPop{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.18);}
+    100%{transform:scale(1);}
+  }
+
+  /* ===================== MAIN ===================== */
+  main{
+    max-width:1280px;
+    margin:0 auto;
+    padding:0 28px 80px;
+  }
+
+  .section-title{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    margin:56px 0 24px;
+    scroll-margin-top:170px;
+  }
+  .section-title h2{
+    font-size:28px;
+    font-weight:800;
+    letter-spacing:-0.5px;
+    margin:0;
+  }
+  .section-title .line{
+    flex:1;
+    height:1px;
+    background:linear-gradient(90deg,var(--line),transparent);
+  }
+  .section-title .count{
+    font-size:13px;
+    color:var(--muted);
+    font-weight:600;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:26px;
+  }
+  @media (max-width:1100px){.grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:620px){.grid{grid-template-columns:1fr;}}
+
+  .card{
+    background:var(--card);
+    border-radius:20px;
+    box-shadow:var(--shadow-md);
+    overflow:hidden;
+    transition:transform 0.35s cubic-bezier(.2,.8,.2,1), box-shadow 0.35s ease;
+    display:flex;
+    flex-direction:column;
+    animation:fadeIn 0.5s ease both;
+  }
+  .card:hover{
+    transform:translateY(-8px);
+    box-shadow:var(--shadow-lg);
+  }
+  .card-img-wrap{
+    position:relative;
+    width:100%;
+    height:230px;
+    overflow:hidden;
+    background:#f2f2f4;
+  }
+  .card-img-wrap img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform 0.5s ease;
+  }
+  .card:hover .card-img-wrap img{transform:scale(1.07);}
+  .badges{
+    position:absolute;
+    top:12px;left:12px;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+  .badge{
+    font-size:11px;
+    font-weight:700;
+    padding:5px 12px;
+    border-radius:20px;
+    letter-spacing:0.4px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
+  }
+  .badge.veg{background:var(--secondary);color:#fff;}
+  .badge.chef{
+    background:linear-gradient(45deg,#FFD700,#FFA500);
+    color:#1c1c1e;
+  }
+
+  .card-body{
+    padding:18px 18px 20px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    flex:1;
+  }
+  .card-body h3{
+    margin:0;
+    font-size:17px;
+    font-weight:700;
+    letter-spacing:-0.2px;
+  }
+  .card-body .desc{
+    margin:0;
+    font-size:13.5px;
+    color:var(--muted);
+    line-height:1.45;
+    min-height:38px;
+  }
+
+  /* ---- PCS label ---- */
+  .pcs-label{
+    font-size:12px;
+    font-weight:600;
+    color:#9A9AA0;
+    letter-spacing:0.4px;
+    display:flex;
+    align-items:center;
+    gap:5px;
+    margin-top:-2px;
+  }
+  .pcs-label::before{
+    content:"";
+    display:inline-block;
+    width:4px;height:4px;
+    border-radius:50%;
+    background:#D0D0D5;
+    flex-shrink:0;
+  }
+
+  .price-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:auto;
+    gap:10px;
+    padding-top:4px;
+  }
+  .price{
+    font-size:21px;
+    font-weight:800;
+    color:var(--primary);
+    white-space:nowrap;
+  }
+  .price small{
+    font-size:12px;
+    color:var(--muted);
+    font-weight:600;
+    display:block;
+    margin-top:-2px;
+  }
+
+  /* ---- Unified quantity+cart control ---- */
+  .cart-control{
+    display:flex;
+    align-items:center;
+    gap:0;
+    border-radius:12px;
+    overflow:hidden;
+    border:1.5px solid var(--line);
+    transition:border-color 0.2s ease, box-shadow 0.2s ease;
+    height:40px;
+    min-width:110px;
+  }
+  .cart-control.in-cart{
+    border-color:var(--primary);
+    box-shadow:0 0 0 3px rgba(255,122,0,0.10);
+  }
+  .cart-control .ctrl-btn{
+    width:36px;
+    height:100%;
+    border:none;
+    background:transparent;
+    color:var(--ink);
+    font-size:18px;
+    font-weight:700;
+    cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    transition:background 0.18s ease, color 0.18s ease, transform 0.15s ease;
+    flex-shrink:0;
+    line-height:1;
+  }
+  .cart-control .ctrl-btn:hover{
+    background:var(--primary);
+    color:#fff;
+  }
+  .cart-control .ctrl-btn:active{
+    transform:scale(0.88);
+  }
+  .cart-control .ctrl-btn.minus-btn:hover{
+    background:#f44336;
+    color:#fff;
+  }
+  .cart-control .ctrl-val{
+    flex:1;
+    text-align:center;
+    font-size:14px;
+    font-weight:700;
+    color:var(--ink);
+    transition:all 0.2s ease;
+    user-select:none;
+    min-width:28px;
+  }
+  .cart-control.in-cart .ctrl-val{
+    color:var(--primary);
+  }
+  .ctrl-val.pop{
+    animation:qtyPop 0.25s ease;
+  }
+
+  /* Add to cart button (shown when qty=0 / not in cart) */
+  .add-btn{
+    background:var(--primary);
+    color:#fff;
+    border:none;
+    padding:10px 18px;
+    border-radius:12px;
+    font-size:13.5px;
+    font-weight:700;
+    cursor:pointer;
+    transition:all 0.25s ease;
+    white-space:nowrap;
+    height:40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .add-btn:hover{
+    transform:scale(1.05);
+    background:var(--primary-dark);
+    box-shadow:0 8px 18px rgba(255,122,0,0.35);
+  }
+  .add-btn:active{transform:scale(0.96);}
+
+  .empty-state{
+    text-align:center;
+    padding:80px 20px;
+    color:var(--muted);
+    grid-column:1/-1;
+  }
+  .empty-state h3{font-size:20px;color:var(--ink);margin-bottom:8px;}
+
+  /* Toast */
+  #toast{
+    position:fixed;
+    bottom:28px;
+    left:50%;
+    transform:translateX(-50%) translateY(20px);
+    background:var(--ink);
+    color:#fff;
+    padding:14px 26px;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:600;
+    box-shadow:0 14px 36px rgba(0,0,0,0.3);
+    opacity:0;
+    pointer-events:none;
+    transition:all 0.35s cubic-bezier(.2,.8,.2,1);
+    z-index:2000;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  #toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+  }
+  #toast .dot{width:8px;height:8px;border-radius:50%;background:var(--primary);}
+
+  /* ===================== CHECKOUT MODAL ===================== */
+  .modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(20,15,10,0.55);
+    backdrop-filter:blur(4px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:3000;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.3s ease;
+    padding:20px;
+  }
+  .modal-overlay.show{opacity:1;pointer-events:auto;}
+  .modal-box{
+    background:var(--card);
+    border-radius:var(--radius-lg);
+    width:100%;
+    max-width:440px;
+    max-height:88vh;
+    overflow-y:auto;
+    box-shadow:var(--shadow-lg);
+    transform:translateY(20px) scale(0.97);
+    transition:transform 0.3s cubic-bezier(.2,.8,.2,1);
+  }
+  .modal-overlay.show .modal-box{transform:translateY(0) scale(1);}
+  .modal-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:22px 24px 0;
+  }
+  .modal-head h3{margin:0;font-size:20px;font-weight:800;letter-spacing:-0.3px;}
+  .modal-close{
+    border:none;background:rgba(0,0,0,0.05);
+    width:32px;height:32px;border-radius:50%;
+    font-size:16px;cursor:pointer;color:var(--muted);
+    display:flex;align-items:center;justify-content:center;
+    transition:0.2s ease;
+  }
+  .modal-close:hover{background:rgba(0,0,0,0.1);color:var(--ink);}
+  .modal-body{padding:18px 24px 24px;}
+  .modal-section-label{
+    font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+    color:var(--muted);margin:18px 0 8px;
+  }
+  .modal-section-label:first-child{margin-top:0;}
+  .field-row{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+  .field-row label{font-size:13px;font-weight:600;color:var(--ink);}
+  .field-row input{
+    padding:12px 16px;
+    border-radius:12px;
+    border:1px solid var(--line);
+    background:rgba(245,245,247,0.9);
+    font-size:15px;outline:none;
+    transition:0.2s ease;
+  }
+  .field-row input:focus{
+    background:#fff;border-color:var(--primary);
+    box-shadow:0 0 0 4px rgba(255,122,0,0.12);
+  }
+  .field-row .err{font-size:12px;color:#D32F2F;display:none;}
+  .field-row.invalid input{border-color:#D32F2F;}
+  .field-row.invalid .err{display:block;}
+
+  .order-list{
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+  }
+  .order-list .order-row{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:10px;padding:12px 14px;
+    border-bottom:1px solid var(--line);
+    font-size:14px;
+  }
+  .order-list .order-row:last-child{border-bottom:none;}
+  .order-row .oname{font-weight:600;flex:1;}
+  .order-row .oqty{color:var(--muted);white-space:nowrap;}
+  .order-row .oprice{font-weight:700;white-space:nowrap;}
+  .order-empty{padding:24px;text-align:center;color:var(--muted);font-size:14px;}
+
+  .order-total-row{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 2px 4px;font-size:16px;font-weight:800;
+  }
+
+  .wa-btn{
+    width:100%;
+    margin-top:18px;
+    background:#25D366;
+    color:#fff;
+    border:none;
+    padding:15px 18px;
+    border-radius:14px;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    transition:0.2s ease;
+    box-shadow:0 10px 26px rgba(37,211,102,0.35);
+  }
+  .wa-btn:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(37,211,102,0.45);}
+  .wa-btn:disabled{opacity:0.55;cursor:not-allowed;transform:none;box-shadow:none;}
+
+  footer{
+    text-align:center;
+    padding:36px 20px 50px;
+    color:var(--muted);
+    font-size:13px;
+    border-top:1px solid var(--line);
+    margin-top:40px;
+  }
+  footer strong{color:var(--ink);}
+
+  @media (max-width:760px){
+    .header-top{padding:12px 18px;gap:14px;}
+    .logo span.sub{display:none;}
+    .cart-pill span.label{display:none;}
+    .hero{height:420px;}
+    .hero-content h1{font-size:34px;}
+    main{padding:0 16px 60px;}
+    .cat-nav{padding:10px 16px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <div class="logo">
+      <div class="mark">HK</div>
+      <div>
+        H&amp;K Kitchen
+        <span class="sub">Premium Café</span>
+      </div>
+    </div>
+    <div class="search-wrap">
+      <span class="icon">⌕</span>
+      <input id="searchInput" type="text" placeholder="Search pizza, burger, momos, pasta..." />
+    </div>
+    <div class="cart-pill" id="cartPill">
+      <span>🛒</span>
+      <span class="label" id="cartTotal">₹0</span>
+      <span class="count" id="cartCount">0</span>
+    </div>
+  </div>
+  <div class="cat-nav-wrap">
+    <nav class="cat-nav" id="catNav"></nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <span class="eyebrow">H&amp;K Kitchen · Est. Flavour</span>
+    <h1>Taste Premium Food</h1>
+    <p>Fresh Ingredients <span class="dot">•</span> Fast Service <span class="dot">•</span> Best Quality</p>
+    <button class="order-btn" id="orderNowBtn">Order Now</button>
+  </div>
+</section>
+
+<main id="mainContent"></main>
+
+<footer>
+  <strong>H&amp;K Kitchen</strong> — Crafted fresh, served with love. © 2026 All rights reserved.
+</footer>
+
+<div id="toast"><span class="dot"></span><span id="toastText">Added to cart</span></div>
+
+<div class="modal-overlay" id="checkoutOverlay">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>Confirm Your Order</h3>
+      <button type="button" class="modal-close" id="modalCloseBtn">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section-label">Your Details</div>
+      <div class="field-row" id="nameField">
+        <label for="custName">Your Name</label>
+        <input type="text" id="custName" placeholder="e.g. Rahul Sharma" />
+        <span class="err">Please enter your name</span>
+      </div>
+      <div class="field-row" id="tableField">
+        <label for="tableNo">Table No.</label>
+        <input type="text" id="tableNo" placeholder="e.g. 5" />
+        <span class="err">Please enter your table number</span>
+      </div>
+
+      <div class="modal-section-label">Order Summary</div>
+      <div class="order-list" id="orderList"></div>
+      <div class="order-total-row">
+        <span>Total</span>
+        <span id="orderTotalVal">₹0</span>
+      </div>
+
+      <button type="button" class="wa-btn" id="sendWaBtn">
+        <span>📲</span><span>Send Order on WhatsApp</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ============== MENU DATA ============== */
+  const menu = [
+    // Garlic Bread
+    {category:"Garlic Bread", name:"Cheesy Garlic Bread", price:99, image:"https://stordfkenticomedia.blob.core.windows.net/df-us/rms/media/recipemediafiles/recipe%20images%20and%20files/retail/desktop%20(600x600)/2024.nov/2024_df_ultra-cheesy-garlic-bread_600x600.jpg?ext=.jpg", description:"Toasted bread loaded with melted cheese.", veg:true, pcs:"2 PCS"},
+    {category:"Garlic Bread", name:"Cheese Corn Garlic Bread", price:129, image:"https://stordfkenticomedia.blob.core.windows.net/df-us/rms/media/recipemediafiles/recipe%20images%20and%20files/retail/desktop%20(600x600)/2025/april/2025_retail_korean-corn-cheese-garlic-bread_600x600.webp?ext=.webp", description:"Cheesy garlic bread topped with sweet corn.", veg:true, pcs:"2 PCS"},
+    {category:"Garlic Bread", name:"Veggie Cheese Garlic Bread", price:159, image:"https://vegecravings.com/wp-content/uploads/2017/03/cheese-garlic-bread-recipe-step-by-step-instructions.jpg", description:"Loaded with veggies, herbs and gooey cheese.", veg:true, pcs:"2 PCS"},
+
+    // Pizza
+{
+  category:"Pizza",
+  name:"Margherita",
+  price:179,
+  image:"https://images.deliveryhero.io/image/talabat/MenuItems/margherita638946601361903716.jpg",
+  description:"Classic cheesy pizza with tangy tomato base.",
+  veg:true,
+  pcs:"4 Slices"
+},
+
+{
+  category:"Pizza",
+  name:"Cheese Corn",
+  price:219,
+  image:"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy%2Cf_auto%2Cq_auto%2Cw_300%2Ch_300%2Ce_grayscale%2Cc_fit/FOOD_CATALOG/IMAGES/CMS/2026/1/25/e51a15d1-e747-48a0-bc0e-f4faf94dac2c_d98ab872-1d3b-4736-9759-d3f4c0f7a4a3.jpg",
+  description:"Double cheese pizza topped with sweet corn.",
+  veg:true,
+  pcs:"4 Slices"
+},
+
+{
+  category:"Pizza",
+  name:"OTC Pizza",
+  price:239,
+  image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmgO1o6OBdQGEE7iCdKr9_2vWsC_LIUmeIbIOz5eV55aMQvwuLZ0dsLms&s=10",
+  description:"Onion, tomato & capsicum on a cheesy base.",
+  veg:true,
+  pcs:"4 Slices"
+},
+
+{
+  category:"Pizza",
+  name:"Farm House",
+  price:279,
+  image:"https://b.zmtcdn.com/data/pictures/chains/8/20785298/2432b8097b99098faa0a164b8f7492a5.jpg",
+  description:"Garden-fresh veggies on a loaded cheese base.",
+  veg:true,
+  pcs:"4 Slices"
+},
+
+{
+  category:"Pizza",
+  name:"Paneer Tikka Pizza",
+  price:309,
+  image:"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy%2Cf_auto%2Cq_auto%2Cw_400/RX_THUMBNAIL/IMAGES/VENDOR/2026/2/11/0eb630e4-0e8a-472d-8a90-d257c26d0e6d_855176.jpg",
+  description:"Smoky tandoori paneer tikka on cheesy crust.",
+  veg:true,
+  pcs:"4 Slices"
+},
+
+{
+  category:"Pizza",
+  name:"Red Paprika Paneer Pizza",
+  price:329,
+  image:"https://cdn.uengage.io/uploads/5/image-159619-1780030416.jpeg",
+  description:"Paneer chunks with roasted red paprika.",
+  veg:true,
+  pcs:"4 Slices"
+},
+
+{
+  category:"Pizza",
+  name:"H&K Special Pizza",
+  price:379,
+  image:"https://tb-static.uber.com/prod/image-proc/processed_images/f0de20d93aa1f907fbd7d8b3349871e9/c67fc65e9b4e16a553eb7574fba090f1.jpeg",
+  description:"Our signature loaded specialty pizza.",
+  veg:true,
+  chefSpecial:true,
+  pcs:"4 Slices"
+},
+    // Burgers
+    {category:"Burgers", name:"Aloo Tikki Burger", price:49, image:"images/burger.jpg", description:"Crispy potato patty in a soft toasted bun.", veg:true, pcs:"1 PCS"},
+    {category:"Burgers", name:"Cheese Aloo Tikki Burger", price:59, image:"images/burger.jpg", description:"Aloo tikki burger with a melted cheese slice.", veg:true, pcs:"1 PCS"},
+    {category:"Burgers", name:"Veggie Burger", price:69, image:"images/burger.jpg", description:"Loaded veggie patty with crunchy slaw.", veg:true, pcs:"1 PCS"},
+    {category:"Burgers", name:"Cheese Veggie Tikki Burger", price:79, image:"images/burger.jpg", description:"Veggie tikki burger topped with cheese.", veg:true, pcs:"1 PCS"},
+    {category:"Burgers", name:"Paneer Burger", price:89, image:"images/burger.jpg", description:"Grilled paneer patty with fresh veggies.", veg:true, pcs:"1 PCS"},
+    {category:"Burgers", name:"Cheese Paneer Burger", price:99, image:"images/burger.jpg", description:"Paneer burger loaded with extra cheese.", veg:true, pcs:"1 PCS"},
+    {category:"Burgers", name:"Jumbo Burger", price:119, image:"images/burger.jpg", description:"Our biggest, most loaded burger yet.", veg:true, chefSpecial:true, pcs:"1 PCS"},
+
+    // Patties
+    {category:"Patties", name:"Masala Patties", price:49, image:"images/combo.jpg", description:"Spiced potato patties, shallow fried.", veg:true, pcs:"2 PCS"},
+    {category:"Patties", name:"Masala Paneer Patties", price:69, image:"images/combo.jpg", description:"Paneer-stuffed masala patties.", veg:true, pcs:"2 PCS"},
+    {category:"Patties", name:"Masala Cheese Patties", price:69, image:"images/combo.jpg", description:"Cheese-stuffed spiced potato patties.", veg:true, pcs:"2 PCS"},
+    {category:"Patties", name:"Special Stuff Patties", price:89, image:"images/combo.jpg", description:"Our signature stuffed patties recipe.", veg:true, chefSpecial:true, pcs:"2 PCS"},
+
+    // Pasta
+    {category:"Pasta", name:"White Sauce Pasta", price:169, image:"images/pasta.jpg", description:"Creamy white sauce pasta with herbs.", veg:true, pcs:"1 Plate"},
+    {category:"Pasta", name:"Red Sauce Pasta", price:179, image:"images/pasta.jpg", description:"Tangy tomato-based pasta with veggies.", veg:true, pcs:"1 Plate"},
+    {category:"Pasta", name:"Creamy Mushroom Pasta", price:179, image:"images/pasta.jpg", description:"Pasta tossed in a creamy mushroom sauce.", veg:true, pcs:"1 Plate"},
+    {category:"Pasta", name:"Mix Sauce Pasta", price:189, image:"images/pasta.jpg", description:"The best of red & white sauce, combined.", veg:true, chefSpecial:true, pcs:"1 Plate"},
+
+    // Momos
+    {category:"Momos", name:"Veg Steam Momos", priceHalf:59, priceFull:89, image:"images/momos.jpg", description:"Soft steamed dumplings with veggie filling.", veg:true, pcs:"6 PCS"},
+    {category:"Momos", name:"Veg Fried Momos", priceHalf:69, priceFull:99, image:"images/momos.jpg", description:"Crispy fried veggie momos.", veg:true, pcs:"6 PCS"},
+    {category:"Momos", name:"Veg Kurkure Momos", priceHalf:79, priceFull:109, image:"images/momos.jpg", description:"Crunchy kurkure-coated veggie momos.", veg:true, pcs:"6 PCS"},
+    {category:"Momos", name:"Piri-Piri Veg Kurkure Momos", priceHalf:89, priceFull:119, image:"images/momos.jpg", description:"Kurkure momos tossed in piri-piri spice.", veg:true, chefSpecial:true, pcs:"6 PCS"},
+    {category:"Momos", name:"Tandoori Veg Momos", priceHalf:99, priceFull:129, image:"images/momos.jpg", description:"Smoky tandoori grilled veggie momos.", veg:true, pcs:"6 PCS"},
+    {category:"Momos", name:"Veg Afghani Momos", priceHalf:99, priceFull:129, image:"images/momos.jpg", description:"Rich afghani style creamy veggie momos.", veg:true, pcs:"6 PCS"},
+    {category:"Momos", name:"Paneer Steam Momos", priceHalf:89, priceFull:109, image:"images/momos.jpg", description:"Steamed momos with a paneer filling.", veg:true, pcs:"6 PCS"},
+    {category:"Momos", name:"Paneer Fried Momos", priceHalf:99, priceFull:119, image:"images/momos.jpg", description:"Crispy fried paneer momos.", veg:true, pcs:"6 PCS"},
+    {category:"Momos", name:"Paneer Kurkure Momos", priceHalf:99, priceFull:129, image:"images/momos.jpg", description:"Crunchy kurkure-coated paneer momos.", veg:true, pcs:"6 PCS"},
+    {category:"Momos", name:"Piri-Piri Paneer Kurkure Momos", priceHalf:109, priceFull:139, image:"images/momos.jpg", description:"Paneer kurkure momos in piri-piri spice.", veg:true, pcs:"6 PCS"},
+    {category:"Momos", name:"Tandoori Paneer Momos", priceHalf:119, priceFull:149, image:"images/momos.jpg", description:"Smoky tandoori grilled paneer momos.", veg:true, pcs:"6 PCS"},
+    {category:"Momos", name:"Paneer Afghani Momos", priceHalf:119, priceFull:149, image:"images/momos.jpg", description:"Rich afghani style creamy paneer momos.", veg:true, chefSpecial:true, pcs:"6 PCS"},
+
+    // Nachos & Kabab
+    {category:"Nachos & Kabab", name:"Nachos Chaat", price:69, image:"images/nachos.jpg", description:"Crispy nachos tossed in tangy chaat masala.", veg:true, pcs:"1 Plate"},
+    {category:"Nachos & Kabab", name:"Salsa Nachos", price:79, image:"images/nachos.jpg", description:"Nachos served with fresh tomato salsa.", veg:true, pcs:"1 Plate"},
+    {category:"Nachos & Kabab", name:"Cheese Corn Nachos Chaat", price:89, image:"images/nachos.jpg", description:"Nachos chaat loaded with cheese & corn.", veg:true, pcs:"1 Plate"},
+    {category:"Nachos & Kabab", name:"Hara Bhara Kabab", price:99, image:"images/nachos.jpg", description:"Spinach & green pea kababs, shallow fried.", veg:true, pcs:"4 PCS"},
+    {category:"Nachos & Kabab", name:"Dahi Kabab", price:99, image:"images/nachos.jpg", description:"Crispy hung-curd kababs with subtle spice.", veg:true, pcs:"4 PCS"},
+    {category:"Nachos & Kabab", name:"Spring Roll", price:99, image:"images/nachos.jpg", description:"Crispy rolls stuffed with veggies.", veg:true, pcs:"4 PCS"},
+    {category:"Nachos & Kabab", name:"Dahi ke Sholey", price:149, image:"images/nachos.jpg", description:"Stuffed hung-curd rolls, deep fried golden.", veg:true, chefSpecial:true, pcs:"4 PCS"},
+
+    // Fries & Twisters
+    {category:"Fries & Twisters", name:"Classic Salted Fries", price:69, image:"images/fries.jpg", description:"Crispy golden fries, lightly salted.", veg:true, pcs:"1 Plate"},
+    {category:"Fries & Twisters", name:"Piri-Piri Fries", price:89, image:"images/fries.jpg", description:"Fries tossed in spicy piri-piri seasoning.", veg:true, pcs:"1 Plate"},
+    {category:"Fries & Twisters", name:"Cheesy Fries", price:109, image:"images/fries.jpg", description:"Fries loaded with melted cheese sauce.", veg:true, chefSpecial:true, pcs:"1 Plate"},
+    {category:"Fries & Twisters", name:"Masala Potato Twister", price:59, image:"images/fries.jpg", description:"Spiral cut potato twister, masala coated.", veg:true, pcs:"1 PCS"},
+    {category:"Fries & Twisters", name:"Piri-Piri Potato Twister", price:69, image:"images/fries.jpg", description:"Potato twister tossed in piri-piri spice.", veg:true, pcs:"1 PCS"},
+    {category:"Fries & Twisters", name:"Cheesy Potato Twister", price:79, image:"images/fries.jpg", description:"Potato twister loaded with melted cheese.", veg:true, chefSpecial:true, pcs:"1 PCS"},
+
+    // Desserts
+    {category:"Desserts", name:"Hot Chocolate Ice Cream Fudge", price:99, image:"images/dessert.jpg", description:"Warm chocolate fudge with vanilla ice cream.", veg:true, pcs:"1 Serving"},
+    {category:"Desserts", name:"Hazelnut Brownie Fudge", price:149, image:"images/dessert.jpg", description:"Rich brownie fudge with hazelnut crunch.", veg:true, pcs:"1 Serving"},
+
+    // Salad
+    {category:"Salad", name:"Veggie Salad", price:179, image:"images/salad.jpg", description:"Fresh seasonal vegetables, lightly dressed.", veg:true, pcs:"1 Bowl"},
+    {category:"Salad", name:"Veggie Paneer Salad", price:199, image:"images/salad.jpg", description:"Garden veggies with grilled paneer cubes.", veg:true, pcs:"1 Bowl"},
+    {category:"Salad", name:"Mushroom Salad", price:199, image:"images/salad.jpg", description:"Sauteed mushrooms over fresh greens.", veg:true, pcs:"1 Bowl"},
+    {category:"Salad", name:"Tofu Salad", price:209, image:"images/salad.jpg", description:"Protein-rich tofu with crisp vegetables.", veg:true, pcs:"1 Bowl"},
+    {category:"Salad", name:"Paneer & Mushroom Salad", price:219, image:"images/salad.jpg", description:"Paneer and mushroom over fresh greens.", veg:true, pcs:"1 Bowl"},
+    {category:"Salad", name:"Creamy Pasta Salad", price:209, image:"images/salad.jpg", description:"Chilled pasta salad in a creamy dressing.", veg:true, pcs:"1 Bowl"},
+    {category:"Salad", name:"Quinoa Meal", price:179, image:"images/salad.jpg", description:"Wholesome quinoa bowl with fresh veggies.", veg:true, chefSpecial:true, pcs:"1 Bowl"},
+
+    // Combos
+    {category:"Combos", name:"Aloo Tikki Burger + Mocktail", price:99, image:"images/combo.jpg", description:"Classic aloo tikki burger with a chilled mocktail.", veg:true, pcs:"2 Items"},
+    {category:"Combos", name:"Cheese Aloo Tikki Burger + Hot Coffee", price:119, image:"images/combo.jpg", description:"Cheesy burger paired with hot coffee.", veg:true, pcs:"2 Items"},
+    {category:"Combos", name:"Aloo Tikki Burger + Fries + Cold Drink", price:129, image:"images/combo.jpg", description:"Burger, salted fries & a chilled drink.", veg:true, pcs:"3 Items"},
+    {category:"Combos", name:"Cappuccino + Sandwich + Fries", price:169, image:"images/combo.jpg", description:"Hot cappuccino, veg grill sandwich & fries.", veg:true, pcs:"3 Items"},
+    {category:"Combos", name:"Basic Shake + Veg Sandwich", price:169, image:"images/combo.jpg", description:"A thick shake with a veg grill sandwich.", veg:true, pcs:"2 Items"},
+    {category:"Combos", name:"2 Shakes + Sandwich + Fries", price:299, image:"images/combo.jpg", description:"Any two shakes with sandwich & fries.", veg:true, pcs:"4 Items"},
+    {category:"Combos", name:"Mix Sauce Pasta + Cold Coffee", price:269, image:"images/combo.jpg", description:"Mix sauce pasta with chilled cold coffee.", veg:true, pcs:"2 Items"},
+    {category:"Combos", name:"OTC Pizza + Garlic Bread + Mojito", price:299, image:"images/combo.jpg", description:"OTC pizza, 2pc garlic bread & a fresh mojito.", veg:true, chefSpecial:true, pcs:"3 Items"},
+  ];
+
+  const categories = ["Garlic Bread","Pizza","Burgers","Patties","Pasta","Momos","Nachos & Kabab","Fries & Twisters","Desserts","Salad","Combos"];
+  const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"");
+
+  /* ============== STATE ============== */
+  // cart: { [id]: quantity }  — single source of truth
+  const cart = {};
+  menu.forEach((item, i) => { item._id = i; });
+
+  /* ============== PLACEHOLDER IMAGE ============== */
+  function placeholderFor(name){
+    const colors = ["#FF7A00","#2E7D32","#FFA94D","#1c1c1e"];
+    const c = colors[name.length % colors.length];
+    const svg = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="500" height="320">
+        <defs>
+          <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="${c}" stop-opacity="0.85"/>
+            <stop offset="100%" stop-color="#1c1c1e" stop-opacity="0.85"/>
+          </linearGradient>
+        </defs>
+        <rect width="500" height="320" fill="url(#g)"/>
+        <text x="250" y="165" font-family="Helvetica, Arial, sans-serif" font-size="26" font-weight="700"
+          fill="#ffffff" text-anchor="middle" opacity="0.92">${name}</text>
+      </svg>`;
+    return "data:image/svg+xml;base64," + btoa(svg);
+  }
+
+  /* ============== RENDER NAV ============== */
+  const catNav = document.getElementById("catNav");
+  categories.forEach((cat,i)=>{
+    const btn = document.createElement("button");
+    btn.className = "cat-btn" + (i===0 ? " active" : "");
+    btn.textContent = cat;
+    btn.dataset.target = slug(cat);
+    btn.addEventListener("click", ()=>{
+      document.querySelectorAll(".cat-btn").forEach(b=>b.classList.remove("active"));
+      btn.classList.add("active");
+      const el = document.getElementById(slug(cat));
+      if(el) el.scrollIntoView({behavior:"smooth", block:"start"});
+    });
+    catNav.appendChild(btn);
+  });
+
+  /* ============== RENDER MENU ============== */
+  const mainEl = document.getElementById("mainContent");
+
+  function priceBlock(item){
+    if(item.priceHalf && item.priceFull){
+      return `<div class="price"><small>Half ₹${item.priceHalf} / Full</small>₹${item.priceFull}</div>`;
+    }
+    return `<div class="price">₹${item.price}</div>`;
+  }
+
+  function cardHTML(item){
+    const i = item._id;
+    const q = cart[i] || 0;
+    const inCart = q > 0;
+    return `
+    <div class="card" data-name="${item.name.toLowerCase()}" data-cat="${item.category}" data-id="${i}">
+      <div class="card-img-wrap">
+        <img src="${item.image}" alt="${item.name}" loading="lazy"
+             onerror="this.onerror=null;this.src='${placeholderFor(item.name)}'" />
+        <div class="badges">
+          ${item.veg ? '<span class="badge veg">VEG</span>' : ''}
+          ${item.chefSpecial ? '<span class="badge chef">CHEF SPECIAL</span>' : ''}
+        </div>
+      </div>
+      <div class="card-body">
+        <h3>${item.name}</h3>
+        <p class="desc">${item.description}</p>
+        ${item.pcs ? `<span class="pcs-label">${item.pcs}</span>` : ''}
+        <div class="price-row">
+          ${priceBlock(item)}
+          ${inCart
+            ? `<div class="cart-control in-cart" id="ctrl-${i}">
+                 <button type="button" class="ctrl-btn minus-btn" data-act="dec" data-id="${i}">−</button>
+                 <span class="ctrl-val" id="ctrlval-${i}">${q}</span>
+                 <button type="button" class="ctrl-btn plus-btn" data-act="inc" data-id="${i}">+</button>
+               </div>`
+            : `<button class="add-btn" data-id="${i}" data-act="add">Add Cart</button>`
+          }
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function renderAll(){
+    mainEl.innerHTML = "";
+    categories.forEach(cat=>{
+      const items = menu.filter(m=>m.category===cat);
+      if(!items.length) return;
+      const section = document.createElement("section");
+      section.id = slug(cat);
+      section.innerHTML = `
+        <div class="section-title">
+          <h2>${cat}</h2>
+          <div class="line"></div>
+          <span class="count">${items.length} items</span>
+        </div>
+        <div class="grid">${items.map(cardHTML).join("")}</div>
+      `;
+      mainEl.appendChild(section);
+    });
+    bindCardEvents();
+  }
+
+  function bindCardEvents(){
+    mainEl.querySelectorAll("[data-act]").forEach(btn=>{
+      btn.addEventListener("click", handleAction);
+    });
+  }
+
+  /* ============== UNIFIED CART ACTION ============== */
+  function handleAction(e){
+    const id = +e.currentTarget.dataset.id;
+    const act = e.currentTarget.dataset.act;
+    const item = menu[id];
+
+    if(act === "add"){
+      // First time add — set qty to 1
+      cart[id] = 1;
+      updateCartUI();
+      refreshCardControl(id);
+      showToast(`Added ${item.name}`);
+    } else if(act === "inc"){
+      cart[id] = (cart[id] || 0) + 1;
+      updateCartUI();
+      refreshCardControl(id);
+      animateVal(id);
+      showToast(`${item.name} ×${cart[id]}`);
+    } else if(act === "dec"){
+      if(!cart[id]) return;
+      cart[id]--;
+      if(cart[id] <= 0){
+        delete cart[id];
+        updateCartUI();
+        refreshCardControl(id); // switches back to Add Cart button
+        showToast(`Removed ${item.name}`);
+      } else {
+        updateCartUI();
+        refreshCardControl(id);
+        animateVal(id);
+        showToast(`${item.name} ×${cart[id]}`);
+      }
+    }
+  }
+
+  /* Animate the qty number for tactile feedback */
+  function animateVal(id){
+    const el = document.getElementById("ctrlval-"+id);
+    if(!el) return;
+    el.classList.remove("pop");
+    void el.offsetWidth; // reflow
+    el.classList.add("pop");
+  }
+
+  /* Swap between Add Cart button and ± control without re-rendering whole card */
+  function refreshCardControl(id){
+    const card = mainEl.querySelector(`.card[data-id="${id}"]`);
+    if(!card) return;
+    const priceRow = card.querySelector(".price-row");
+    // Remove existing control
+    const oldCtrl = priceRow.querySelector(".cart-control, .add-btn");
+    if(oldCtrl) oldCtrl.remove();
+
+    const q = cart[id] || 0;
+    let newEl;
+    if(q > 0){
+      newEl = document.createElement("div");
+      newEl.className = "cart-control in-cart";
+      newEl.id = "ctrl-"+id;
+      newEl.innerHTML = `
+        <button type="button" class="ctrl-btn minus-btn" data-act="dec" data-id="${id}">−</button>
+        <span class="ctrl-val" id="ctrlval-${id}">${q}</span>
+        <button type="button" class="ctrl-btn plus-btn" data-act="inc" data-id="${id}">+</button>`;
+    } else {
+      newEl = document.createElement("button");
+      newEl.className = "add-btn";
+      newEl.dataset.id = id;
+      newEl.dataset.act = "add";
+      newEl.textContent = "Add Cart";
+    }
+    priceRow.appendChild(newEl);
+
+    // Re-bind events on new elements
+    newEl.querySelectorAll
+      ? newEl.querySelectorAll("[data-act]").forEach(b=>b.addEventListener("click", handleAction))
+      : newEl.addEventListener("click", handleAction);
+  }
+
+  /* ============== CART SUMMARY ============== */
+  function updateCartUI(){
+    let count = 0, total = 0;
+    Object.entries(cart).forEach(([id, q])=>{
+      const item = menu[+id];
+      count += q;
+      total += q * (item.priceFull || item.price);
+    });
+    document.getElementById("cartCount").textContent = count;
+    document.getElementById("cartTotal").textContent = "₹" + total;
+  }
+
+  /* ============== TOAST ============== */
+  let toastTimer;
+  function showToast(msg){
+    const toast = document.getElementById("toast");
+    document.getElementById("toastText").textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=>toast.classList.remove("show"), 2200);
+  }
+
+  /* ============== SEARCH ============== */
+  document.getElementById("searchInput").addEventListener("input", function(e){
+    const term = e.target.value.trim().toLowerCase();
+    mainEl.querySelectorAll(".card").forEach(card=>{
+      const match = card.dataset.name.includes(term) || card.dataset.cat.toLowerCase().includes(term);
+      card.style.display = match ? "" : "none";
+      card.style.animation = match ? "fadeIn 0.4s ease both" : "none";
+    });
+    mainEl.querySelectorAll("section").forEach(sec=>{
+      const visible = sec.querySelectorAll(".card:not([style*='display: none'])").length;
+      sec.style.display = visible ? "" : "none";
+    });
+  });
+
+  /* ============== ORDER NOW ============== */
+  document.getElementById("orderNowBtn").addEventListener("click", ()=>{
+    document.getElementById(slug(categories[0])).scrollIntoView({behavior:"smooth"});
+  });
+
+  /* ============== CHECKOUT MODAL ============== */
+  const WHATSAPP_NUMBER = "919205002319";
+  const overlay = document.getElementById("checkoutOverlay");
+  const orderListEl = document.getElementById("orderList");
+  const orderTotalVal = document.getElementById("orderTotalVal");
+  const custNameInput = document.getElementById("custName");
+  const tableNoInput = document.getElementById("tableNo");
+  const nameField = document.getElementById("nameField");
+  const tableField = document.getElementById("tableField");
+  const sendWaBtn = document.getElementById("sendWaBtn");
+
+  function renderOrderSummary(){
+    const entries = Object.entries(cart)
+      .filter(([,q])=>q>0)
+      .map(([id,q])=>({item:menu[+id], qty:q}));
+    let total = 0;
+    if(!entries.length){
+      orderListEl.innerHTML = `<div class="order-empty">Your cart is empty. Add some items first!</div>`;
+    } else {
+      orderListEl.innerHTML = entries.map(c=>{
+        const price = c.item.priceFull || c.item.price;
+        const lineTotal = price * c.qty;
+        total += lineTotal;
+        return `<div class="order-row">
+          <span class="oname">${c.item.name}</span>
+          <span class="oqty">x${c.qty}</span>
+          <span class="oprice">₹${lineTotal}</span>
+        </div>`;
+      }).join("");
+    }
+    orderTotalVal.textContent = "₹" + total;
+    sendWaBtn.disabled = entries.length === 0;
+    return {entries, total};
+  }
+
+  function openCheckout(){
+    renderOrderSummary();
+    overlay.classList.add("show");
+  }
+  function closeCheckout(){
+    overlay.classList.remove("show");
+  }
+
+  document.getElementById("cartPill").addEventListener("click", openCheckout);
+  document.getElementById("modalCloseBtn").addEventListener("click", closeCheckout);
+  overlay.addEventListener("click", (e)=>{ if(e.target === overlay) closeCheckout(); });
+
+  function buildWhatsAppMessage(name, table, entries, total){
+    let msg = `🍽️ *New Order – H&K Kitchen*\n\n`;
+    msg += `*Name:* ${name}\n`;
+    msg += `*Table No.:* ${table}\n\n`;
+    msg += `*Order Details:*\n`;
+    entries.forEach(c=>{
+      const price = c.item.priceFull || c.item.price;
+      msg += `• ${c.item.name} x${c.qty} – ₹${price * c.qty}\n`;
+    });
+    msg += `\n*Total: ₹${total}*`;
+    return msg;
+  }
+
+  sendWaBtn.addEventListener("click", ()=>{
+    const name = custNameInput.value.trim();
+    const table = tableNoInput.value.trim();
+    const {entries, total} = renderOrderSummary();
+
+    let valid = true;
+    if(!name){ nameField.classList.add("invalid"); valid = false; } else { nameField.classList.remove("invalid"); }
+    if(!table){ tableField.classList.add("invalid"); valid = false; } else { tableField.classList.remove("invalid"); }
+    if(!entries.length){ valid = false; }
+    if(!valid) return;
+
+    const message = buildWhatsAppMessage(name, table, entries, total);
+    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.open(waUrl, "_blank");
+    closeCheckout();
+  });
+
+  custNameInput.addEventListener("input", ()=>nameField.classList.remove("invalid"));
+  tableNoInput.addEventListener("input", ()=>tableField.classList.remove("invalid"));
+
+  /* ============== INIT ============== */
+  renderAll();
+  updateCartUI();
+})();
+</script>
+</body>
+</html>

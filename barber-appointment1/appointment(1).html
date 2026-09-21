@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Appointment – Menn & Co Salon Rohini</title>
+  <meta name="description" content="Book your premium grooming appointment at Menn & Co Salon Rohini. Haircut, beard styling, spa, facial & more." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:        #c9a84c;
+      --gold-light:  #e8c97a;
+      --gold-dim:    rgba(201,168,76,0.18);
+      --gold-glow:   rgba(201,168,76,0.35);
+      --white:       #f5f0e8;
+      --white-dim:   rgba(245,240,232,0.07);
+      --white-mid:   rgba(245,240,232,0.14);
+      --black:       #080808;
+      --surface:     rgba(15,15,15,0.72);
+      --border:      rgba(201,168,76,0.22);
+      --radius:      18px;
+      --radius-sm:   10px;
+      --transition:  0.28s cubic-bezier(.4,0,.2,1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      min-height: 100dvh;
+      overflow-x: hidden;
+    }
+
+    /* ── Background ── */
+    .bg-canvas {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(201,168,76,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 10% 80%, rgba(201,168,76,0.06) 0%, transparent 55%),
+        linear-gradient(160deg, #0d0d0d 0%, #060606 100%);
+    }
+    .grain {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* ── Layout ── */
+    .page {
+      position: relative; z-index: 1;
+      min-height: 100dvh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: flex-start;
+      padding: 48px 16px 80px;
+    }
+
+    /* ── Header ── */
+    .header { text-align: center; margin-bottom: 44px; animation: fadeDown .8s ease both; }
+
+    .logo-mark {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 64px; height: 64px; border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      background: var(--gold-dim);
+      margin-bottom: 18px;
+      box-shadow: 0 0 28px var(--gold-glow);
+    }
+    .logo-mark svg { color: var(--gold); }
+
+    .salon-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 7vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      line-height: 1.1;
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 55%, #a07930 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .divider {
+      display: flex; align-items: center; gap: 12px;
+      margin: 12px auto 10px; width: fit-content;
+    }
+    .divider-line { height: 1px; width: 48px; background: linear-gradient(90deg, transparent, var(--gold)); }
+    .divider-line.right { background: linear-gradient(90deg, var(--gold), transparent); }
+    .divider-diamond {
+      width: 6px; height: 6px; transform: rotate(45deg);
+      background: var(--gold); flex-shrink: 0;
+    }
+
+    .tagline {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300; font-size: clamp(0.8rem, 3.2vw, 0.95rem);
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(245,240,232,0.48);
+      margin-top: 4px;
+    }
+
+    /* ── Card ── */
+    .card {
+      width: 100%; max-width: 520px;
+      background: var(--surface);
+      backdrop-filter: blur(24px) saturate(1.3);
+      -webkit-backdrop-filter: blur(24px) saturate(1.3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: clamp(28px, 6vw, 48px) clamp(22px, 6vw, 44px);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.03) inset,
+        0 32px 80px rgba(0,0,0,0.7),
+        0 0 60px rgba(201,168,76,0.07);
+      animation: fadeUp .9s .15s ease both;
+    }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.25rem, 4vw, 1.55rem);
+      font-weight: 600; letter-spacing: 0.04em;
+      color: var(--white); margin-bottom: 28px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .card-title svg { color: var(--gold); flex-shrink: 0; }
+
+    /* ── Form ── */
+    .form { display: flex; flex-direction: column; gap: 18px; }
+
+    .field { display: flex; flex-direction: column; gap: 7px; }
+
+    label {
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(245,240,232,0.5);
+      display: flex; align-items: center; gap: 6px;
+    }
+    label svg { color: var(--gold); }
+
+    .input-wrap { position: relative; }
+    .input-wrap svg.field-icon {
+      position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+      color: rgba(201,168,76,0.5); pointer-events: none; z-index: 1;
+    }
+
+    input, select, textarea {
+      width: 100%; padding: 13px 14px 13px 42px;
+      background: var(--white-dim);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--white); font-family: 'Inter', sans-serif;
+      font-size: 0.92rem; font-weight: 400;
+      outline: none; transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+      -webkit-appearance: none; appearance: none;
+    }
+    select { cursor: pointer; }
+    select option { background: #111; color: var(--white); }
+    textarea { padding-left: 14px; resize: vertical; min-height: 90px; }
+    .textarea-wrap svg.field-icon { top: 15px; transform: none; }
+
+    input::placeholder, textarea::placeholder { color: rgba(245,240,232,0.22); }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--gold);
+      background: rgba(201,168,76,0.06);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.14), 0 0 20px rgba(201,168,76,0.08);
+    }
+
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    input[type="date"]::-webkit-calendar-picker-indicator,
+    input[type="time"]::-webkit-calendar-picker-indicator {
+      filter: invert(0.7) sepia(1) saturate(2) hue-rotate(5deg);
+      cursor: pointer; opacity: 0.6;
+    }
+
+    /* error state */
+    .field.error input, .field.error select {
+      border-color: #e05252; box-shadow: 0 0 0 3px rgba(224,82,82,0.12);
+    }
+    .error-msg {
+      font-size: 0.72rem; color: #e05252; letter-spacing: 0.04em;
+      display: none; align-items: center; gap: 4px;
+    }
+    .field.error .error-msg { display: flex; }
+
+    /* ── Submit Button ── */
+    .btn {
+      position: relative; overflow: hidden;
+      width: 100%; padding: 16px 24px;
+      border: none; border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, #a07930 100%);
+      color: #080808;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      cursor: pointer; margin-top: 8px;
+      transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+      box-shadow: 0 4px 24px rgba(201,168,76,0.32), 0 1px 0 rgba(255,255,255,0.15) inset;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .btn::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.22) 0%, transparent 60%);
+      opacity: 0; transition: opacity var(--transition);
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(201,168,76,0.45); }
+    .btn:hover::before { opacity: 1; }
+    .btn:active { transform: translateY(0); }
+    .btn:disabled { opacity: 0.65; cursor: not-allowed; transform: none; }
+
+    /* spinner */
+    .spinner {
+      width: 18px; height: 18px; border-radius: 50%;
+      border: 2.5px solid rgba(8,8,8,0.25);
+      border-top-color: #080808;
+      animation: spin .7s linear infinite;
+      display: none;
+    }
+    .btn.loading .btn-text, .btn.loading svg { display: none; }
+    .btn.loading .spinner { display: block; }
+
+    /* ── Success Toast ── */
+    .toast {
+      position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px);
+      background: rgba(18,18,18,0.95);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--gold);
+      border-radius: 50px; padding: 14px 28px;
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.85rem; font-weight: 500; color: var(--white);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.7), 0 0 20px rgba(201,168,76,0.2);
+      z-index: 100; opacity: 0;
+      transition: opacity .35s ease, transform .35s ease;
+      pointer-events: none; white-space: nowrap;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .toast svg { color: var(--gold); flex-shrink: 0; }
+
+    /* ── Manual fallback link (shown if popup blocked) ── */
+    .fallback-link {
+      display: none;
+      margin-top: 14px;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+    .fallback-link.show { display: block; animation: fadeUp .4s ease both; }
+    .fallback-link a {
+      color: var(--gold-light);
+      text-decoration: underline;
+      text-decoration-color: rgba(201,168,76,0.4);
+      font-weight: 500;
+    }
+
+    /* ── Floating WhatsApp ── */
+    .wa-float {
+      position: fixed; right: 20px; bottom: 28px; z-index: 50;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, #25d366 0%, #128c4e 100%);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 24px rgba(37,211,102,0.4), 0 1px 0 rgba(255,255,255,0.2) inset;
+      cursor: pointer; text-decoration: none;
+      transition: transform var(--transition), box-shadow var(--transition);
+      animation: pulse-wa 3s 2s ease-in-out infinite;
+    }
+    .wa-float:hover { transform: scale(1.12); box-shadow: 0 8px 36px rgba(37,211,102,0.55); animation: none; }
+    .wa-float svg { color: #fff; }
+
+    /* ── Animations ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes pulse-wa {
+      0%, 100% { box-shadow: 0 4px 24px rgba(37,211,102,0.4); }
+      50% { box-shadow: 0 4px 36px rgba(37,211,102,0.7); transform: scale(1.05); }
+    }
+
+    /* ── Footer note ── */
+    .footer-note {
+      margin-top: 28px; text-align: center;
+      font-size: 0.72rem; color: rgba(245,240,232,0.22);
+      letter-spacing: 0.06em; line-height: 1.7;
+      animation: fadeUp 1s .3s ease both;
+    }
+    .footer-note span { color: var(--gold); opacity: 0.7; }
+
+    /* Responsive */
+    @media (max-width: 400px) {
+      .field-row { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-canvas"></div>
+<div class="grain"></div>
+
+<main class="page">
+
+  <!-- Header -->
+  <header class="header" role="banner">
+    <div class="logo-mark" aria-hidden="true">
+      <i data-lucide="scissors" width="26" height="26"></i>
+    </div>
+    <h1 class="salon-name">MENN &amp; CO<br>SALON ROHINI</h1>
+    <div class="divider" aria-hidden="true">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line right"></div>
+    </div>
+    <p class="tagline">Book Your Appointment in Seconds</p>
+  </header>
+
+  <!-- Booking Card -->
+  <section class="card" aria-labelledby="form-title">
+    <h2 class="card-title" id="form-title">
+      <i data-lucide="calendar-check" width="22" height="22"></i>
+      Appointment Details
+    </h2>
+
+    <form class="form" id="bookingForm" novalidate>
+
+      <!-- Full Name -->
+      <div class="field" id="field-fullName">
+        <label for="fullName">
+          <i data-lucide="user" width="12" height="12"></i>
+          Full Name <span style="color:var(--gold)">*</span>
+        </label>
+        <div class="input-wrap">
+          <i data-lucide="user" width="16" height="16" class="field-icon" aria-hidden="true"></i>
+          <input type="text" id="fullName" name="fullName" placeholder="Your full name" autocomplete="name" required />
+        </div>
+        <span class="error-msg" role="alert">
+          <i data-lucide="alert-circle" width="12" height="12"></i> Please enter your name
+        </span>
+      </div>
+
+      <!-- Mobile -->
+      <div class="field" id="field-mobile">
+        <label for="mobile">
+          <i data-lucide="phone" width="12" height="12"></i>
+          Mobile Number <span style="color:var(--gold)">*</span>
+        </label>
+        <div class="input-wrap">
+          <i data-lucide="phone" width="16" height="16" class="field-icon" aria-hidden="true"></i>
+          <input type="tel" id="mobile" name="mobile" placeholder="+91 00000 00000" autocomplete="tel" required maxlength="13" />
+        </div>
+        <span class="error-msg" role="alert">
+          <i data-lucide="alert-circle" width="12" height="12"></i> Enter a valid mobile number
+        </span>
+      </div>
+
+      <!-- Service -->
+      <div class="field" id="field-service">
+        <label for="service">
+          <i data-lucide="sparkles" width="12" height="12"></i>
+          Select Service <span style="color:var(--gold)">*</span>
+        </label>
+        <div class="input-wrap">
+          <i data-lucide="sparkles" width="16" height="16" class="field-icon" aria-hidden="true"></i>
+          <select id="service" name="service" required style="padding-right:36px">
+            <option value="" disabled selected>Choose a service…</option>
+            <option value="Hair Cut">✂️ Hair Cut</option>
+            <option value="Beard Styling">🧔 Beard Styling</option>
+            <option value="Hair Spa">💆 Hair Spa</option>
+            <option value="Facial">✨ Facial</option>
+            <option value="Hair Coloring">🎨 Hair Coloring</option>
+            <option value="Shaving">🪒 Shaving</option>
+          </select>
+        </div>
+        <span class="error-msg" role="alert">
+          <i data-lucide="alert-circle" width="12" height="12"></i> Please select a service
+        </span>
+      </div>
+
+      <!-- Date + Time -->
+      <div class="field-row">
+        <div class="field" id="field-date">
+          <label for="date">
+            <i data-lucide="calendar" width="12" height="12"></i>
+            Date <span style="color:var(--gold)">*</span>
+          </label>
+          <div class="input-wrap">
+            <i data-lucide="calendar" width="16" height="16" class="field-icon" aria-hidden="true"></i>
+            <input type="date" id="date" name="date" required style="padding-left:42px" />
+          </div>
+          <span class="error-msg" role="alert">
+            <i data-lucide="alert-circle" width="12" height="12"></i> Pick a date
+          </span>
+        </div>
+
+        <div class="field" id="field-time">
+          <label for="time">
+            <i data-lucide="clock" width="12" height="12"></i>
+            Time <span style="color:var(--gold)">*</span>
+          </label>
+          <div class="input-wrap">
+            <i data-lucide="clock" width="16" height="16" class="field-icon" aria-hidden="true"></i>
+            <input type="time" id="time" name="time" required style="padding-left:42px" />
+          </div>
+          <span class="error-msg" role="alert">
+            <i data-lucide="alert-circle" width="12" height="12"></i> Pick a time
+          </span>
+        </div>
+      </div>
+
+      <!-- Message -->
+      <div class="field">
+        <label for="message">
+          <i data-lucide="message-square" width="12" height="12"></i>
+          Message <span style="color:rgba(245,240,232,0.3); font-size:0.65rem">optional</span>
+        </label>
+        <div class="input-wrap textarea-wrap">
+          <i data-lucide="message-square" width="16" height="16" class="field-icon" aria-hidden="true"></i>
+          <textarea id="message" name="message" placeholder="Any special requests or notes…" style="padding-left:14px"></textarea>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="btn" id="submitBtn" aria-label="Book appointment via WhatsApp">
+        <i data-lucide="send" width="16" height="16"></i>
+        <span class="btn-text">Book Appointment</span>
+        <div class="spinner" aria-hidden="true"></div>
+      </button>
+
+      <!-- Fallback link shown only if the auto-open gets blocked -->
+      <div class="fallback-link" id="fallbackLink">
+        WhatsApp apne aap nahi khula? <a id="fallbackAnchor" href="#" target="_blank" rel="noopener noreferrer">Yahan tap karein</a>
+      </div>
+
+    </form>
+  </section>
+
+  <p class="footer-note">
+    You will be redirected to <span>WhatsApp</span> to confirm your booking.<br>
+    © 2025 Menn &amp; Co Salon Rohini — All rights reserved.
+  </p>
+
+</main>
+
+<!-- Floating WhatsApp -->
+<a class="wa-float" href="https://wa.me/919205002319" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- Success Toast -->
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <i data-lucide="check-circle-2" width="18" height="18"></i>
+  <span>Opening WhatsApp…</span>
+</div>
+
+<script>
+  // Init Lucide icons
+  try {
+    lucide.createIcons();
+  } catch (e) {
+    console.warn('Lucide icons failed to load, continuing without them:', e);
+  }
+
+  // Set min date to today
+  const dateInput = document.getElementById('date');
+  const today = new Date().toISOString().split('T')[0];
+  dateInput.setAttribute('min', today);
+
+  const form = document.getElementById('bookingForm');
+  const btn  = document.getElementById('submitBtn');
+  const toast = document.getElementById('toast');
+  const fallbackBox = document.getElementById('fallbackLink');
+  const fallbackAnchor = document.getElementById('fallbackAnchor');
+
+  function showToast() {
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3200);
+  }
+
+  function validateField(id, testFn) {
+    const wrap = document.getElementById('field-' + id);
+    const el   = document.getElementById(id);
+    if (!wrap || !el) return true;
+    const ok = testFn(el.value.trim());
+    wrap.classList.toggle('error', !ok);
+    return ok;
+  }
+
+  function clearError(fieldId) {
+    const wrap = document.getElementById('field-' + fieldId);
+    if (wrap) wrap.classList.remove('error');
+  }
+
+  // Live clear on input
+  ['fullName','mobile','service','date','time'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', () => clearError(id));
+  });
+
+  function formatDate(d) {
+    if (!d) return '—';
+    const [y,m,day] = d.split('-');
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return `${day} ${months[parseInt(m)-1]} ${y}`;
+  }
+
+  function formatTime(t) {
+    if (!t) return '—';
+    const [h, m] = t.split(':').map(Number);
+    const suffix = h >= 12 ? 'PM' : 'AM';
+    const hour   = h % 12 || 12;
+    return `${hour}:${String(m).padStart(2,'0')} ${suffix}`;
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    fallbackBox.classList.remove('show');
+
+    const name    = document.getElementById('fullName').value.trim();
+    const mobile  = document.getElementById('mobile').value.trim();
+    const service = document.getElementById('service').value;
+    const date    = document.getElementById('date').value;
+    const time    = document.getElementById('time').value;
+    const message = document.getElementById('message').value.trim();
+
+    const phoneRe = /^[+]?[0-9\s\-]{7,14}$/;
+
+    let valid = true;
+    if (!validateField('fullName', v => v.length >= 2))  valid = false;
+    if (!validateField('mobile',   v => phoneRe.test(v))) valid = false;
+    if (!validateField('service',  v => v !== ''))         valid = false;
+    if (!validateField('date',     v => v !== ''))         valid = false;
+    if (!validateField('time',     v => v !== ''))         valid = false;
+
+    if (!valid) {
+      // Scroll to first error
+      const firstErr = form.querySelector('.field.error input, .field.error select');
+      if (firstErr) firstErr.focus();
+      return;
+    }
+
+    // Build the WhatsApp message
+    const msgLines = [
+      `Hello Menn & Co Salon,`,
+      ``,
+      `I would like to book an appointment.`,
+      ``,
+      `👤 *Name:* ${name}`,
+      `📱 *Phone:* ${mobile}`,
+      `✂️ *Service:* ${service}`,
+      `📅 *Date:* ${formatDate(date)}`,
+      `⏰ *Time:* ${formatTime(time)}`,
+      message ? `💬 *Message:* ${message}` : ``,
+    ].filter(l => l !== undefined).join('\n').trim();
+
+    // ⚠️ This MUST go to YOUR business WhatsApp number (owner), not the customer's.
+    const OWNER_WHATSAPP_NUMBER = '919205002319';
+    const waUrl = `https://wa.me/${OWNER_WHATSAPP_NUMBER}?text=${encodeURIComponent(msgLines)}`;
+
+    // window.open() runs SYNCHRONOUSLY inside the submit handler so the
+    // browser treats it as a user-initiated action and doesn't block it.
+    const newTab = window.open(waUrl, '_blank', 'noopener,noreferrer');
+
+    // Always set the fallback link's href too, in case the popup got blocked
+    fallbackAnchor.setAttribute('href', waUrl);
+
+    // Detect if the popup was blocked (newTab is null/undefined, or closed immediately)
+    const wasBlocked = !newTab || newTab.closed || typeof newTab.closed === 'undefined';
+
+    if (wasBlocked) {
+      fallbackBox.classList.add('show');
+    } else {
+      showToast();
+    }
+
+    // Brief visual loading feedback (purely cosmetic, doesn't delay window.open)
+    btn.classList.add('loading');
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.classList.remove('loading');
+      btn.disabled = false;
+    }, 500);
+  });
+</script>
+</body>
+</html>

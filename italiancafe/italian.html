@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amore Italian Cafe | Authentic Italian Dining in Sector 24</title>
+  <meta name="description" content="Amore Italian Cafe in Sector 24 — handcrafted pizza, pasta, and coffee in a warm, modern Italian setting. Reserve your table today.">
+  <meta name="keywords" content="Italian cafe, Sector 24 restaurant, pizza, pasta, coffee, fine dining">
+  <meta property="og:title" content="Amore Italian Cafe">
+  <meta property="og:description" content="Experience Authentic Italy in Every Bite — Sector 24's premium Italian cafe.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon (inline SVG, no external request) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E☕%3C/text%3E%3C/svg%3E">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="/italiancafe/style.css">
+</head>
+<body>
+
+  <!-- ============================= -->
+  <!-- LOADING SCREEN -->
+  <!-- ============================= -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__mark">
+      <span class="loader__cup">
+        <i class="fa-solid fa-mug-saucer"></i>
+      </span>
+    </div>
+    <p class="loader__text">Amore</p>
+  </div>
+
+  <!-- ============================= -->
+  <!-- SCROLL PROGRESS BAR -->
+  <!-- ============================= -->
+  <div class="scroll-progress" id="scrollProgress" role="progressbar" aria-hidden="true"></div>
+
+  <!-- ============================= -->
+  <!-- NAVBAR -->
+  <!-- ============================= -->
+  <header class="navbar" id="navbar">
+    <nav class="navbar__inner" aria-label="Primary navigation">
+      <a href="#home" class="navbar__logo">
+        <span class="navbar__logo-mark">A</span>
+        <span class="navbar__logo-text">Amore<small>Italian Cafe</small></span>
+      </a>
+
+      <ul class="navbar__links" id="navLinks">
+        <li><a href="#home" class="nav-link active" data-link>Home</a></li>
+        <li><a href="#about" class="nav-link" data-link>About</a></li>
+        <li><a href="#menu" class="nav-link" data-link>Menu</a></li>
+        <li><a href="#gallery" class="nav-link" data-link>Gallery</a></li>
+        <li><a href="#reviews" class="nav-link" data-link>Reviews</a></li>
+        <li><a href="#contact" class="nav-link" data-link>Contact</a></li>
+      </ul>
+
+      <a href="#reserve" class="btn btn--gold navbar__cta">Reserve Table</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <ul class="mobile-menu__links">
+        <li><a href="#home" class="mobile-link" data-link>Home</a></li>
+        <li><a href="#about" class="mobile-link" data-link>About</a></li>
+        <li><a href="#menu" class="mobile-link" data-link>Menu</a></li>
+        <li><a href="#gallery" class="mobile-link" data-link>Gallery</a></li>
+        <li><a href="#reviews" class="mobile-link" data-link>Reviews</a></li>
+        <li><a href="#contact" class="mobile-link" data-link>Contact</a></li>
+      </ul>
+      <a href="#reserve" class="btn btn--gold mobile-menu__cta" data-link>Reserve Table</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============================= -->
+    <!-- HERO -->
+    <!-- ============================= -->
+    <section class="hero" id="home">
+      <div class="hero__bg" id="heroBg" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1920&auto=format&fit=crop');"></div>
+      <div class="hero__overlay"></div>
+
+      <div class="hero__steam" aria-hidden="true">
+        <svg viewBox="0 0 60 220" xmlns="http://www.w3.org/2000/svg">
+          <path class="steam-path" d="M30 220 C 10 190, 50 170, 30 140 C 10 110, 50 90, 30 60 C 10 30, 50 10, 30 0" />
+        </svg>
+      </div>
+
+      <div class="hero__content">
+        <p class="eyebrow eyebrow--light">Sector 24 &middot; Est. 2014</p>
+        <h1 class="hero__title" id="heroTitle"><span class="typed-text"></span><span class="cursor" aria-hidden="true">|</span></h1>
+        <p class="hero__subtitle">Handmade pasta, wood-fired pizza, and coffee poured the way our nonna taught us — a corner of Italy, right here in Sector 24.</p>
+        <div class="hero__actions">
+          <a href="#menu" class="btn btn--terracotta">Explore Menu</a>
+          <a href="#reserve" class="btn btn--outline-light">Reserve Table</a>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-indicator" aria-label="Scroll to next section">
+        <span class="scroll-indicator__mouse"></span>
+        <span class="scroll-indicator__label">Scroll</span>
+      </a>
+    </section>
+
+    <!-- ============================= -->
+    <!-- ABOUT -->
+    <!-- ============================= -->
+    <section class="about" id="about">
+      <div class="container about__grid">
+        <div class="about__media reveal" data-reveal="left">
+          <div class="about__image-frame">
+            <img src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?q=80&w=1200&auto=format&fit=crop" alt="Chef preparing fresh pasta by hand in the Amore kitchen" loading="lazy" class="about__image">
+          </div>
+          <div class="about__badge">
+            <i class="fa-solid fa-seedling"></i>
+            <span>Fresh, daily-made dough &amp; sauces</span>
+          </div>
+        </div>
+
+        <div class="about__text reveal" data-reveal="right">
+          <p class="eyebrow">Our Story</p>
+          <h2 class="section-title">A Family Recipe, <em>Carried Across Borders</em></h2>
+          <p class="about__paragraph">
+            Amore began in a small kitchen in Bologna, where Nonna Lucia rolled pasta by hand every morning before sunrise.
+            In 2014, her grandson brought that same recipe book to Sector 24 — along with her copper pots, her stubbornness
+            about "proper" tomatoes, and her belief that a meal should make you feel at home.
+          </p>
+          <p class="about__paragraph">
+            Today, our kitchen still rolls dough by hand and pulls espresso the slow way. Every plate that leaves
+            our pass carries a little of that Bologna morning with it.
+          </p>
+
+          <div class="counters">
+            <div class="counter">
+              <span class="counter__number" data-target="11" data-suffix="+">0</span>
+              <span class="counter__label">Years of Craft</span>
+            </div>
+            <div class="counter">
+              <span class="counter__number" data-target="48000" data-suffix="+">0</span>
+              <span class="counter__label">Dishes Served</span>
+            </div>
+            <div class="counter">
+              <span class="counter__number" data-target="9500" data-suffix="+">0</span>
+              <span class="counter__label">Happy Guests</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= -->
+    <!-- SIGNATURE MENU -->
+    <!-- ============================= -->
+    <section class="menu" id="menu">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow eyebrow--center">Signature Menu</p>
+          <h2 class="section-title section-title--center">Crafted in Small Batches, <em>Served with Love</em></h2>
+        </div>
+
+        <div class="menu__filters reveal" role="tablist" aria-label="Menu category filters">
+          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="filter-btn" data-filter="coffee" role="tab" aria-selected="false">Coffee</button>
+          <button class="filter-btn" data-filter="pizza" role="tab" aria-selected="false">Pizza</button>
+          <button class="filter-btn" data-filter="pasta" role="tab" aria-selected="false">Pasta</button>
+          <button class="filter-btn" data-filter="desserts" role="tab" aria-selected="false">Desserts</button>
+          <button class="filter-btn" data-filter="drinks" role="tab" aria-selected="false">Drinks</button>
+        </div>
+
+        <div class="menu__grid" id="menuGrid">
+          <!-- Coffee -->
+          <article class="menu-card" data-category="coffee">
+            <div class="menu-card__image" style="background-image:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop')"></div>
+            <div class="menu-card__body">
+              <div class="menu-card__top"><h3>Espresso Romano</h3><span class="menu-card__price">₹180</span></div>
+              <p>Double-shot espresso, slow-roasted, served with a twist of lemon.</p>
+            </div>
+          </article>
+          <article class="menu-card" data-category="coffee">
+            <div class="menu-card__image" style="background-image:url('https://images.unsplash.com/photo-1485808191679-5f86510681a2?q=80&w=800&auto=format&fit=crop')"></div>
+            <div class="menu-card__body">
+              <div class="menu-card__top"><h3>Cappuccino Classico</h3><span class="menu-card__price">₹220</span></div>
+              <p>Velvety steamed milk over espresso, dusted with cocoa.</p>
+            </div>
+          </article>
+          <article class="menu-card" data-category="coffee">
+            <div class="menu-card__image" style="background-image:url('https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=800&auto=format&fit=crop')"></div>
+            <div class="menu-card__body">
+              <div class="menu-card__top"><h3>Caramel Affogato</h3><span class="menu-card__price">₹260</span></div>
+              <p>Vanilla gelato drowned in hot espresso and salted caramel.</p>
+            </div>
+          </article>
+
+          <!-- Pizza -->
+          <article class="menu-card" data-category="pizza">
+            <div class="menu-card__image" style="background-image:url('https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=800&auto=format&fit=crop')"></div>
+            <div class="menu-card__body">
+              <div class="menu-card__top"><h3>Margherita D.O.P.</h3><span class="menu-card__price">₹520</span></div>
+              <p>San Marzano tomato, fior di latte, basil, wood-fired crust.</p>
+            </div>
+          </article>
+          <article class="menu-card" data-category="pizza">
+            <div class="menu-card__image" style="background-image:url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800&auto=format&fit=crop')"></div>
+            <div class="menu-card__body">
+              <div class="menu-card__top"><h3>Tartufo Funghi</h3><span class="menu-card__price">₹680</span></div>
+              <p>Wild mushroom, truffle cream, mozzarella, fresh thyme.</p>
+            </div>
+          </article>
+          <article class="menu-card" data-category="pizza">
+            <div class="menu-card__image" style="background-image:url('https://images.unsplash.com/photo-1593560708920-61b98ae243e6?q=80&w=800&auto=format&fit=crop')"></div>
+            <div class="menu-card__body">
+              <div class="menu-card__top"><h3>Diavola Piccante</h3><span class="menu-card__price">₹590</span></div>
+              <p>Spicy salami, chili oil, mozzarella, oregano.</p>
+            </div>
+          </article>
+
+          <!-- Pasta -->
+          <article class="menu-card" data-category="pasta">
+            <div class="menu-card__image" style="background-image:url('https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=800&auto=format&fit=crop')"></div>
+            <div class="menu-card__body">
+              <div class="menu-card__top"><h3>Tagliatelle al Tartufo</h3><span class="menu-card__price">₹640</span></div>
+              <p>Hand-cut ribbons, black truffle butter, parmesan.</p>
+            </div>
+          </article>
+          <article class="menu-card" data-category="pasta">
+            <div class="menu-card__image" style="background-image:url('https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=800&auto=format&fit=crop')"></div>
+            <div class="menu-card__body">
+              <div class="menu-card__top"><h3>Spaghetti alle Vongole</h3><span class="menu-card__price">₹710</span></div>
+              <p>Fresh clams, garlic, white wine, chili, parsley.</p>
+            </div>
+          </article>
+          <article class="menu-card" data-category="pasta">
+            <div class="menu-card__image" style="background-image:url('https://images.unsplash.com/photo-1633436374961-09b9cda7a7e5?q=80&w=800&auto=format&fit=crop')"></div>
+            <div class="menu-card__body">
+              <div class="menu-card__top"><h3>Cacio e Pepe</h3><span class="menu-card__price">₹480</span></div>
+              <p>Pecorino Romano, cracked black pepper, tonnarelli.</p>
+            </div>
+          </article>
+
+          <!-- Desserts -->
+          <article class="menu-card" data-category="desserts">
+            <div class="menu-card__image" style="background-image:url('https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?q=80&w=800&auto=format&fit=crop')"></div>
+            <div class="menu-card__body">
+              <div class="menu-card__top"><h3>Tiramisu Classico</h3><span class="menu-card__price">₹340</span></div>
+              <p>Espresso-soaked savoiardi, mascarpone, cocoa.</p>
+            </div>
+          </article>
+          <article class="menu-card" data-category="desserts">
+            <div class="menu-card__image" style="background-image:url('https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=800&auto=format&fit=crop')"></div>
+            <div class="menu-card__body">
+              <div class="menu-card__top"><h3>Panna Cotta</h3><span class="menu-card__price">₹300</span></div>
+              <p>Vanilla bean cream, wild berry coulis.</p>
+            </div>
+          </article>
+          <article class="menu-card" data-category="desserts">
+            <div class="menu-card__image" style="background-image:url('https://images.unsplash.com/photo-1551106652-a5bcf4b29ab6?q=80&w=800&auto=format&fit=crop')"></div>
+            <div class="menu-card__body">
+              <div class="menu-card__top"><h3>Cannoli Siciliani</h3><span class="menu-card__price">₹280</span></div>
+              <p>Crisp shells, sweet ricotta, candied orange, pistachio.</p>
+            </div>
+          </article>
+
+          <!-- Drinks -->
+          <article class="menu-card" data-category="drinks">
+            <div class="menu-card__image" style="background-image:url('https://images.unsplash.com/photo-1560508180-03f285f67ded?q=80&w=800&auto=format&fit=crop')"></div>
+            <div class="menu-card__body">
+              <div class="menu-card__top"><h3>Aperol Spritz</h3><span class="menu-card__price">₹450</span></div>
+              <p>Aperol, prosecco, soda, orange wheel.</p>
+            </div>
+          </article>
+          <article class="menu-card" data-category="drinks">
+            <div class="menu-card__image" style="background-image:url('https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=800&auto=format&fit=crop')"></div>
+            <div class="menu-card__body">
+              <div class="menu-card__top"><h3>Limonata Fresca</h3><span class="menu-card__price">₹220</span></div>
+              <p>Hand-squeezed lemon, mint, sparkling water.</p>
+            </div>
+          </article>
+          <article class="menu-card" data-category="drinks">
+            <div class="menu-card__image" style="background-image:url('https://images.unsplash.com/photo-1551538827-9c037cb4f32a?q=80&w=800&auto=format&fit=crop')"></div>
+            <div class="menu-card__body">
+              <div class="menu-card__top"><h3>Italian Soda</h3><span class="menu-card__price">₹190</span></div>
+              <p>House syrup, soda water, fresh fruit garnish.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= -->
+    <!-- BEST SELLERS CAROUSEL -->
+    <!-- ============================= -->
+    <section class="bestsellers" id="bestsellers">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow eyebrow--center eyebrow--light">Guest Favorites</p>
+          <h2 class="section-title section-title--center section-title--light">Our <em>Best Sellers</em></h2>
+        </div>
+      </div>
+
+      <div class="carousel reveal" id="carousel" aria-roledescription="carousel">
+        <div class="carousel__track" id="carouselTrack">
+          <div class="carousel__slide">
+            <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=1200&auto=format&fit=crop" alt="Margherita D.O.P. pizza fresh from the wood-fired oven" loading="lazy">
+            <div class="carousel__caption"><h3>Margherita D.O.P.</h3><p>Our most-ordered pizza, every single year.</p></div>
+          </div>
+          <div class="carousel__slide">
+            <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=1200&auto=format&fit=crop" alt="Tagliatelle al Tartufo with hand-cut pasta ribbons" loading="lazy">
+            <div class="carousel__caption"><h3>Tagliatelle al Tartufo</h3><p>Black truffle butter over hand-cut ribbons.</p></div>
+          </div>
+          <div class="carousel__slide">
+            <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=1200&auto=format&fit=crop" alt="Caramel Affogato dessert coffee" loading="lazy">
+            <div class="carousel__caption"><h3>Caramel Affogato</h3><p>Espresso meets gelato — guests order it twice.</p></div>
+          </div>
+          <div class="carousel__slide">
+            <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?q=80&w=1200&auto=format&fit=crop" alt="Tiramisu Classico dessert" loading="lazy">
+            <div class="carousel__caption"><h3>Tiramisu Classico</h3><p>Nonna Lucia's original recipe, unchanged since 2014.</p></div>
+          </div>
+        </div>
+
+        <button class="carousel__arrow carousel__arrow--prev" id="carouselPrev" aria-label="Previous slide"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="carousel__arrow carousel__arrow--next" id="carouselNext" aria-label="Next slide"><i class="fa-solid fa-chevron-right"></i></button>
+
+        <div class="carousel__dots" id="carouselDots" role="tablist" aria-label="Slide selection"></div>
+      </div>
+    </section>
+
+    <!-- ============================= -->
+    <!-- GALLERY -->
+    <!-- ============================= -->
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow eyebrow--center">Inside Amore</p>
+          <h2 class="section-title section-title--center">A Glimpse of <em>Our World</em></h2>
+        </div>
+
+        <div class="gallery__grid" id="galleryGrid">
+          <button class="gallery__item gallery__item--tall" data-full="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1600&auto=format&fit=crop" aria-label="View larger image: dining room">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=700&auto=format&fit=crop" alt="Amore Italian Cafe dining room at dusk" loading="lazy">
+          </button>
+          <button class="gallery__item" data-full="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=1600&auto=format&fit=crop" aria-label="View larger image: pizza oven">
+            <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=700&auto=format&fit=crop" alt="Wood-fired pizza oven" loading="lazy">
+          </button>
+          <button class="gallery__item" data-full="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1600&auto=format&fit=crop" aria-label="View larger image: espresso bar">
+            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=700&auto=format&fit=crop" alt="Espresso bar in action" loading="lazy">
+          </button>
+          <button class="gallery__item gallery__item--wide" data-full="https://images.unsplash.com/photo-1466637574441-749b8f19452f?q=80&w=1600&auto=format&fit=crop" aria-label="View larger image: pasta making">
+            <img src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?q=80&w=900&auto=format&fit=crop" alt="Hand-rolled pasta on the counter" loading="lazy">
+          </button>
+          <button class="gallery__item" data-full="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1600&auto=format&fit=crop" aria-label="View larger image: outdoor seating">
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=700&auto=format&fit=crop" alt="Cafe outdoor seating area" loading="lazy">
+          </button>
+          <button class="gallery__item gallery__item--tall" data-full="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1600&auto=format&fit=crop" aria-label="View larger image: tiramisu plating">
+            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=700&auto=format&fit=crop" alt="Dessert plating up close" loading="lazy">
+          </button>
+        </div>
+      </div>
+
+      <!-- Lightbox -->
+      <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+        <button class="lightbox__close" id="lightboxClose" aria-label="Close image viewer"><i class="fa-solid fa-xmark"></i></button>
+        <button class="lightbox__arrow lightbox__arrow--prev" id="lightboxPrev" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+        <img class="lightbox__image" id="lightboxImage" src="" alt="">
+        <button class="lightbox__arrow lightbox__arrow--next" id="lightboxNext" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </section>
+
+    <!-- ============================= -->
+    <!-- REVIEWS -->
+    <!-- ============================= -->
+    <section class="reviews" id="reviews">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="eyebrow eyebrow--center">Word of Mouth</p>
+          <h2 class="section-title section-title--center">What Our <em>Guests Say</em></h2>
+        </div>
+
+        <div class="testimonial-slider reveal" id="testimonialSlider">
+          <div class="testimonial-track" id="testimonialTrack">
+            <div class="testimonial">
+              <div class="testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p class="testimonial__text">"The truffle tagliatelle tastes like it flew in straight from Bologna. Our go-to for anniversaries."</p>
+              <div class="testimonial__author">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop" alt="Portrait of Ritika Malhotra" loading="lazy">
+                <div><strong>Ritika Malhotra</strong><span>Sector 21, Gurugram</span></div>
+              </div>
+            </div>
+            <div class="testimonial">
+              <div class="testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p class="testimonial__text">"Best espresso in the city, full stop. The staff remembers my order every single time."</p>
+              <div class="testimonial__author">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop" alt="Portrait of Arjun Kapoor" loading="lazy">
+                <div><strong>Arjun Kapoor</strong><span>DLF Phase 3</span></div>
+              </div>
+            </div>
+            <div class="testimonial">
+              <div class="testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p class="testimonial__text">"Booked a table for eight on short notice and they treated us like regulars. The pizza crust is unreal."</p>
+              <div class="testimonial__author">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&auto=format&fit=crop" alt="Portrait of Simran Kaur" loading="lazy">
+                <div><strong>Simran Kaur</strong><span>Sector 29</span></div>
+              </div>
+            </div>
+            <div class="testimonial">
+              <div class="testimonial__stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <p class="testimonial__text">"Quiet enough for a work lunch, romantic enough for a date night. Hard combination to get right — they nailed it."</p>
+              <div class="testimonial__author">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop" alt="Portrait of Dev Chauhan" loading="lazy">
+                <div><strong>Dev Chauhan</strong><span>Golf Course Road</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-dots" id="testimonialDots" role="tablist" aria-label="Review selection"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= -->
+    <!-- RESERVATION -->
+    <!-- ============================= -->
+    <section class="reserve" id="reserve">
+      <div class="container reserve__grid">
+        <div class="reserve__intro reveal" data-reveal="left">
+          <p class="eyebrow">Book Ahead</p>
+          <h2 class="section-title">Reserve Your <em>Table</em></h2>
+          <p class="reserve__copy">Weekends fill quickly, especially after 7 PM. Tell us when you'd like to join us and we'll have your table ready, candles lit.</p>
+          <ul class="reserve__notes">
+            <li><i class="fa-solid fa-clock"></i> Reservations held for 15 minutes past booking time</li>
+            <li><i class="fa-solid fa-users"></i> Parties larger than 10? Call us directly</li>
+            <li><i class="fa-solid fa-champagne-glasses"></i> Ask about our anniversary &amp; birthday setups</li>
+          </ul>
+        </div>
+
+        <form class="reserve__form reveal" id="reservationForm" data-reveal="right" novalidate>
+          <div class="form-success" id="formSuccess" hidden>
+            <i class="fa-solid fa-circle-check"></i>
+            <h3>Table Reserved!</h3>
+            <p>Grazie! A confirmation has been sent. We can't wait to host you.</p>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="resName">Full Name</label>
+              <input type="text" id="resName" name="name" placeholder="Your name" autocomplete="name">
+              <span class="form-error" id="errName"></span>
+            </div>
+            <div class="form-group">
+              <label for="resPhone">Phone Number</label>
+              <input type="tel" id="resPhone" name="phone" placeholder="98765 43210" autocomplete="tel">
+              <span class="form-error" id="errPhone"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="resDate">Date</label>
+              <input type="date" id="resDate" name="date">
+              <span class="form-error" id="errDate"></span>
+            </div>
+            <div class="form-group">
+              <label for="resTime">Time</label>
+              <input type="time" id="resTime" name="time">
+              <span class="form-error" id="errTime"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="resGuests">Number of Guests</label>
+            <select id="resGuests" name="guests">
+              <option value="">Select guests</option>
+              <option value="1">1 Guest</option>
+              <option value="2">2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+              <option value="5">5 Guests</option>
+              <option value="6">6 Guests</option>
+              <option value="7+">7+ Guests</option>
+            </select>
+            <span class="form-error" id="errGuests"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="resMessage">Special Requests <span class="optional">(optional)</span></label>
+            <textarea id="resMessage" name="message" rows="3" placeholder="Window seat, allergies, celebrations..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--terracotta reserve__submit">
+            <span class="btn-text">Confirm Reservation</span>
+            <span class="btn-spinner" hidden></span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============================= -->
+    <!-- CONTACT -->
+    <!-- ============================= -->
+    <section class="contact" id="contact">
+      <div class="container contact__grid">
+        <div class="contact__info reveal" data-reveal="left">
+          <p class="eyebrow">Find Us</p>
+          <h2 class="section-title">Visit <em>Amore</em></h2>
+
+          <ul class="contact__list">
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <div><strong>Address</strong><span>Shop 12, Market Road, Sector 24, Gurugram, Haryana</span></div>
+            </li>
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <div><strong>Phone</strong><span>+91 98765 43210</span></div>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              <div><strong>Email</strong><span>hello@amoreitaliancafe.in</span></div>
+            </li>
+          </ul>
+
+          <table class="hours-table">
+            <caption>Opening Hours</caption>
+            <tbody>
+              <tr><th>Mon &ndash; Thu</th><td>11:00 AM &ndash; 11:00 PM</td></tr>
+              <tr><th>Fri &ndash; Sat</th><td>11:00 AM &ndash; 12:30 AM</td></tr>
+              <tr><th>Sunday</th><td>10:00 AM &ndash; 11:00 PM</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="contact__map reveal" data-reveal="right">
+          <iframe
+            title="Amore Italian Cafe location map"
+            src="https://www.google.com/maps?q=Sector%2024%20Gurugram&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================= -->
+  <!-- FOOTER -->
+  <!-- ============================= -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a href="#home" class="navbar__logo">
+          <span class="navbar__logo-mark">A</span>
+          <span class="navbar__logo-text">Amore<small>Italian Cafe</small></span>
+        </a>
+        <p>Authentic Italian dining in the heart of Sector 24 since 2014.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div class="footer__links">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#about" data-link>About</a></li>
+          <li><a href="#menu" data-link>Menu</a></li>
+          <li><a href="#gallery" data-link>Gallery</a></li>
+          <li><a href="#reserve" data-link>Reserve</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__newsletter">
+        <h4>Stay in the Loop</h4>
+        <p>Seasonal menus, events, and the occasional secret discount.</p>
+        <form class="newsletter-form" id="newsletterForm" novalidate>
+          <div class="newsletter-form__row">
+            <input type="email" id="newsletterEmail" placeholder="you@example.com" aria-label="Email address">
+            <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+          </div>
+          <span class="form-error" id="errNewsletter"></span>
+          <span class="newsletter-success" id="newsletterSuccess" hidden>Subscribed! Benvenuto.</span>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>&copy; <span id="currentYear"></span> Amore Italian Cafe, Sector 24. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Decorative floating beans -->
+  <div class="floating-beans" aria-hidden="true" id="floatingBeans"></div>
+
+  <script src="/italiancafe/script.js"></script>
+</body>
+</html>

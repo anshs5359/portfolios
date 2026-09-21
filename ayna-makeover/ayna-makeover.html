@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ayna Makeover - Premium Bridal Makeup Studio. Professional Bridal Makeup, HD Makeup, Airbrush, Party Makeup & Hair Styling in your city. Book your appointment today.">
+<title>Ayna Makeover | Premium Bridal Makeup Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --rose-gold: #C9956B;
+    --rose-gold-light: #E8C4A8;
+    --rose-gold-dark: #A67550;
+    --blush: #F5E6E0;
+    --blush-deep: #EDD5CC;
+    --white: #FDFAF8;
+    --off-white: #F9F5F2;
+    --black: #1A1010;
+    --charcoal: #2D1E1E;
+    --soft-gray: #7A6868;
+    --gradient-gold: linear-gradient(135deg, #C9956B 0%, #E8C4A8 50%, #C9956B 100%);
+    --gradient-hero: linear-gradient(160deg, rgba(26,16,16,0.88) 0%, rgba(45,30,30,0.6) 60%, rgba(201,149,107,0.25) 100%);
+    --shadow-soft: 0 8px 40px rgba(201,149,107,0.15);
+    --shadow-card: 0 4px 24px rgba(26,16,16,0.08);
+    --radius-card: 20px;
+    --radius-btn: 50px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--white);
+    color: var(--charcoal);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  .display { font-family: 'Cormorant Garamond', serif; }
+  .script { font-family: 'Great Vibes', cursive; }
+
+  h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 500; line-height: 1.2; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+    transition: background 0.4s, box-shadow 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(26,16,16,0.97);
+    box-shadow: 0 2px 30px rgba(201,149,107,0.18);
+    backdrop-filter: blur(10px);
+  }
+  .nav-logo {
+    display: flex; flex-direction: column; line-height: 1;
+    text-decoration: none;
+  }
+  .nav-logo .script { color: var(--rose-gold-light); font-size: 2rem; }
+  .nav-logo .tagline { color: rgba(255,255,255,0.55); font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; font-family: 'Jost', sans-serif; margin-top: -4px; }
+
+  .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.82); font-size: 0.82rem;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    text-decoration: none; transition: color 0.2s;
+    font-weight: 500;
+  }
+  .nav-links a:hover { color: var(--rose-gold-light); }
+
+  .nav-cta {
+    background: var(--gradient-gold);
+    color: var(--charcoal) !important;
+    padding: 8px 22px;
+    border-radius: var(--radius-btn);
+    font-weight: 600 !important;
+    font-size: 0.78rem !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+  }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201,149,107,0.4); color: var(--charcoal) !important; }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--rose-gold-light); border-radius: 2px; transition: 0.3s; }
+
+  .mobile-menu {
+    display: none; position: fixed; top: 72px; left: 0; right: 0;
+    background: rgba(26,16,16,0.98); z-index: 999;
+    padding: 1.5rem 5%;
+    flex-direction: column; gap: 1rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 1rem; padding: 0.5rem 0; border-bottom: 1px solid rgba(201,149,107,0.1); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh; position: relative;
+    display: flex; align-items: center;
+    overflow: hidden;
+    background: var(--black);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url('https://images.unsplash.com/photo-1594938298603-c8148c4b4d8c?w=1600&q=80') center/cover no-repeat;
+    transform-origin: center;
+    animation: heroZoom 16s ease-in-out infinite alternate;
+  }
+  @keyframes heroZoom { from { transform: scale(1); } to { transform: scale(1.06); } }
+  .hero-overlay { position: absolute; inset: 0; background: var(--gradient-hero); }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 5%; max-width: 760px;
+    animation: fadeUp 1.1s ease both;
+  }
+  @keyframes fadeUp { from { opacity:0; transform: translateY(40px); } to { opacity:1; transform: translateY(0); } }
+
+  .hero-eyebrow {
+    display: inline-block;
+    color: var(--rose-gold-light);
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    animation: fadeUp 0.9s 0.2s ease both;
+  }
+  .hero-h1 {
+    font-size: clamp(2.6rem, 6vw, 5rem);
+    color: #FFF;
+    font-weight: 400;
+    margin-bottom: 1.2rem;
+    animation: fadeUp 0.9s 0.35s ease both;
+  }
+  .hero-h1 em { font-style: italic; color: var(--rose-gold-light); }
+  .hero-sub {
+    color: rgba(255,255,255,0.72);
+    font-size: clamp(0.88rem, 1.5vw, 1.02rem);
+    letter-spacing: 0.06em;
+    margin-bottom: 2.4rem;
+    font-weight: 300;
+    animation: fadeUp 0.9s 0.5s ease both;
+  }
+  .hero-sub span { color: var(--rose-gold-light); }
+
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.9s 0.65s ease both; }
+
+  .btn-primary {
+    background: var(--gradient-gold);
+    color: var(--charcoal);
+    border: none;
+    padding: 14px 34px;
+    border-radius: var(--radius-btn);
+    font-family: 'Jost', sans-serif;
+    font-weight: 600; font-size: 0.88rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; text-decoration: none;
+    display: inline-block;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(201,149,107,0.45); }
+
+  .btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 1.5px solid rgba(255,255,255,0.5);
+    padding: 13px 34px;
+    border-radius: var(--radius-btn);
+    font-family: 'Jost', sans-serif;
+    font-weight: 500; font-size: 0.88rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.25s, background 0.25s;
+  }
+  .btn-outline:hover { border-color: var(--rose-gold-light); background: rgba(201,149,107,0.1); }
+
+  .hero-stats {
+    position: absolute; bottom: 3rem; right: 5%;
+    display: flex; gap: 2.5rem; z-index: 2;
+    animation: fadeUp 0.9s 0.8s ease both;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat .num { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--rose-gold-light); font-weight: 500; }
+  .hero-stat .lbl { color: rgba(255,255,255,0.55); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 6rem 5%; }
+  .section-label {
+    display: block;
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.4rem;
+    color: var(--rose-gold);
+    margin-bottom: 0.3rem;
+  }
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--charcoal);
+    margin-bottom: 1rem;
+  }
+  .section-title span { color: var(--rose-gold); font-style: italic; }
+  .section-divider {
+    width: 60px; height: 2px;
+    background: var(--gradient-gold);
+    margin: 1.2rem 0;
+    border-radius: 2px;
+  }
+  .section-divider.center { margin: 1.2rem auto; }
+  .text-center { text-align: center; }
+
+  /* ── ABOUT ── */
+  #about { background: var(--off-white); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: center;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .about-image-wrap { position: relative; }
+  .about-image-wrap img {
+    width: 100%; border-radius: var(--radius-card);
+    object-fit: cover; height: 520px;
+    box-shadow: var(--shadow-soft);
+  }
+  .about-badge {
+    position: absolute; bottom: -1.5rem; right: -1.5rem;
+    background: var(--gradient-gold);
+    border-radius: 50%; width: 130px; height: 130px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif; text-align: center;
+    box-shadow: 0 8px 30px rgba(201,149,107,0.35);
+  }
+  .about-badge .num { font-size: 2.2rem; font-weight: 600; color: var(--charcoal); line-height: 1; }
+  .about-badge .txt { font-size: 0.68rem; color: var(--charcoal); letter-spacing: 0.06em; }
+
+  .about-text p { color: var(--soft-gray); margin-bottom: 1.2rem; font-size: 1.02rem; }
+  .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.8rem; }
+  .about-feat {
+    display: flex; align-items: center; gap: 0.7rem;
+    font-size: 0.88rem; font-weight: 500; color: var(--charcoal);
+  }
+  .about-feat i { color: var(--rose-gold); font-size: 1rem; }
+
+  /* ── SERVICES ── */
+  #services { background: var(--white); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem; max-width: 1200px; margin: 3rem auto 0;
+  }
+  .service-card {
+    background: var(--off-white);
+    border-radius: var(--radius-card);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border: 1px solid rgba(201,149,107,0.12);
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    cursor: default;
+  }
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-soft);
+    background: var(--white);
+  }
+  .service-icon {
+    width: 60px; height: 60px;
+    background: var(--gradient-gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.2rem;
+    font-size: 1.4rem; color: var(--charcoal);
+  }
+  .service-card h3 { font-size: 1.15rem; font-weight: 500; color: var(--charcoal); margin-bottom: 0.5rem; }
+  .service-card p { font-size: 0.82rem; color: var(--soft-gray); }
+
+  /* ── PRICING ── */
+  #pricing { background: var(--blush); }
+  .pricing-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 2rem; max-width: 1100px; margin: 3rem auto 0;
+  }
+  .price-card {
+    background: var(--white);
+    border-radius: var(--radius-card);
+    padding: 2.5rem 2rem;
+    position: relative; overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid rgba(201,149,107,0.1);
+  }
+  .price-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-soft); }
+  .price-card.featured {
+    background: var(--charcoal);
+    border-color: var(--rose-gold);
+  }
+  .price-card.featured h3,
+  .price-card.featured .price-amount,
+  .price-card.featured .price-feature { color: var(--white) !important; }
+  .price-card.featured .price-sub { color: rgba(255,255,255,0.55) !important; }
+  .price-card.featured .price-divider { background: rgba(201,149,107,0.3); }
+
+  .featured-tag {
+    position: absolute; top: 1.2rem; right: 1.2rem;
+    background: var(--gradient-gold);
+    color: var(--charcoal);
+    font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 20px;
+  }
+  .price-card h3 { font-size: 1.3rem; margin-bottom: 0.3rem; color: var(--charcoal); }
+  .price-sub { font-size: 0.8rem; color: var(--soft-gray); margin-bottom: 1.5rem; }
+  .price-amount { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 600; color: var(--rose-gold); line-height: 1; }
+  .price-amount small { font-size: 1rem; color: var(--soft-gray); }
+  .price-divider { height: 1px; background: rgba(201,149,107,0.15); margin: 1.5rem 0; }
+  .price-feature { display: flex; align-items: center; gap: 0.6rem; font-size: 0.86rem; color: var(--charcoal); margin-bottom: 0.7rem; }
+  .price-feature i { color: var(--rose-gold); font-size: 0.78rem; flex-shrink: 0; }
+  .price-card .btn-primary { width: 100%; text-align: center; margin-top: 1.8rem; display: block; }
+
+  /* ── GALLERY ── */
+  #gallery { background: var(--white); }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 1rem; max-width: 1200px; margin: 3rem auto 0;
+  }
+  .gallery-item {
+    position: relative; overflow: hidden;
+    border-radius: 16px; cursor: pointer;
+  }
+  .gallery-item.tall { grid-row: span 2; }
+  .gallery-item.wide { grid-column: span 2; }
+  .gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: transform 0.5s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.07); }
+  .gallery-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(26,16,16,0.7) 0%, transparent 60%);
+    opacity: 0; transition: opacity 0.3s;
+    display: flex; align-items: flex-end; padding: 1.2rem;
+  }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+  .gallery-overlay span { color: #fff; font-size: 0.85rem; letter-spacing: 0.06em; }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { background: var(--off-white); }
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem; max-width: 1100px; margin: 3rem auto 0;
+  }
+  .testi-card {
+    background: var(--white);
+    border-radius: var(--radius-card);
+    padding: 2rem;
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(201,149,107,0.1);
+    transition: transform 0.3s;
+    position: relative;
+  }
+  .testi-card:hover { transform: translateY(-4px); }
+  .testi-card::before {
+    content: '\201C';
+    position: absolute; top: 1rem; right: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; color: rgba(201,149,107,0.12);
+    line-height: 1;
+  }
+  .testi-stars { color: var(--rose-gold); font-size: 0.9rem; margin-bottom: 1rem; }
+  .testi-text { font-size: 0.92rem; color: var(--soft-gray); margin-bottom: 1.5rem; line-height: 1.8; }
+  .testi-author { display: flex; align-items: center; gap: 0.8rem; }
+  .testi-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--gradient-gold);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 600; color: var(--charcoal);
+    flex-shrink: 0;
+  }
+  .testi-name { font-weight: 600; font-size: 0.92rem; }
+  .testi-loc { font-size: 0.78rem; color: var(--soft-gray); }
+
+  /* ── WHY CHOOSE US ── */
+  #why { background: var(--charcoal); }
+  #why .section-label { color: var(--rose-gold-light); }
+  #why .section-title { color: var(--white); }
+  .why-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem; max-width: 1100px; margin: 3rem auto 0;
+  }
+  .why-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,149,107,0.2);
+    border-radius: var(--radius-card);
+    padding: 2rem;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .why-card:hover { background: rgba(201,149,107,0.08); transform: translateY(-4px); }
+  .why-icon {
+    width: 52px; height: 52px;
+    background: var(--gradient-gold);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; color: var(--charcoal);
+    margin-bottom: 1.2rem;
+  }
+  .why-card h3 { font-size: 1.1rem; color: var(--white); margin-bottom: 0.5rem; }
+  .why-card p { font-size: 0.84rem; color: rgba(255,255,255,0.52); }
+
+  /* ── BOOKING ── */
+  #booking { background: var(--blush); }
+  .booking-wrap {
+    max-width: 860px; margin: 3rem auto 0;
+    background: var(--white);
+    border-radius: 28px;
+    padding: 3rem;
+    box-shadow: var(--shadow-soft);
+  }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.45rem; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-group label { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; color: var(--charcoal); }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    border: 1.5px solid rgba(201,149,107,0.25);
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.92rem;
+    color: var(--charcoal);
+    background: var(--off-white);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    width: 100%;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--rose-gold);
+    box-shadow: 0 0 0 3px rgba(201,149,107,0.12);
+  }
+  .form-group textarea { resize: vertical; min-height: 110px; }
+  .booking-wrap .btn-primary { margin-top: 1.5rem; width: 100%; font-size: 0.95rem; padding: 16px; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--white); }
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 4rem; max-width: 1100px; margin: 3rem auto 0; align-items: start;
+  }
+  .contact-info h3 { font-size: 1.5rem; margin-bottom: 1.5rem; }
+  .contact-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .contact-item-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: var(--gradient-gold);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; color: var(--charcoal);
+  }
+  .contact-item-text strong { display: block; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--charcoal); margin-bottom: 0.2rem; }
+  .contact-item-text a,
+  .contact-item-text span { color: var(--soft-gray); font-size: 0.92rem; text-decoration: none; }
+  .contact-item-text a:hover { color: var(--rose-gold); }
+  .wa-btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: #25D366; color: #fff;
+    padding: 12px 24px; border-radius: var(--radius-btn);
+    font-weight: 600; font-size: 0.88rem;
+    text-decoration: none; margin-top: 0.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .wa-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,211,102,0.35); }
+
+  .social-links { display: flex; gap: 0.8rem; margin-top: 2rem; }
+  .social-link {
+    width: 42px; height: 42px;
+    border: 1.5px solid rgba(201,149,107,0.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--rose-gold);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background 0.25s, border-color 0.25s, transform 0.25s;
+  }
+  .social-link:hover { background: var(--rose-gold); color: var(--white); border-color: var(--rose-gold); transform: translateY(-3px); }
+
+  .map-container {
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    height: 360px;
+    background: var(--blush);
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(201,149,107,0.2);
+    position: relative;
+  }
+  .map-placeholder {
+    text-align: center; color: var(--soft-gray);
+    display: flex; flex-direction: column; align-items: center; gap: 0.8rem;
+  }
+  .map-placeholder i { font-size: 3rem; color: var(--rose-gold); }
+  .map-placeholder p { font-size: 0.9rem; }
+  .map-placeholder a {
+    color: var(--rose-gold); font-weight: 600;
+    font-size: 0.85rem; text-decoration: none;
+    border-bottom: 1px solid var(--rose-gold-light);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    padding: 4rem 5% 2rem;
+    color: rgba(255,255,255,0.55);
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 3rem; max-width: 1200px; margin: 0 auto 3rem;
+  }
+  .footer-brand .script { font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: var(--rose-gold-light); }
+  .footer-brand p { font-size: 0.84rem; margin-top: 0.8rem; line-height: 1.8; }
+
+  .footer-col h4 {
+    color: var(--rose-gold-light);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase;
+    font-weight: 600; margin-bottom: 1.2rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.6rem; }
+  .footer-col ul li a {
+    color: rgba(255,255,255,0.5); font-size: 0.88rem;
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-col ul li a:hover { color: var(--rose-gold-light); }
+  .footer-contact-item { display: flex; gap: 0.7rem; font-size: 0.88rem; margin-bottom: 0.8rem; align-items: flex-start; }
+  .footer-contact-item i { color: var(--rose-gold); margin-top: 3px; flex-shrink: 0; }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 2rem;
+    text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.3);
+    max-width: 1200px; margin: 0 auto;
+  }
+  .footer-bottom span { color: var(--rose-gold); }
+
+  /* ── FLOATING WHATSAPP ── */
+  .float-wa {
+    position: fixed; bottom: 2rem; right: 2rem;
+    z-index: 900;
+    width: 56px; height: 56px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; color: #fff;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+    animation: pulse-wa 2.5s ease-in-out infinite;
+    transition: transform 0.2s;
+  }
+  .float-wa:hover { transform: scale(1.1); }
+  @keyframes pulse-wa {
+    0%,100% { box-shadow: 0 4px 20px rgba(37,211,102,0.45); }
+    50% { box-shadow: 0 4px 40px rgba(37,211,102,0.7), 0 0 0 12px rgba(37,211,102,0.1); }
+  }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-image-wrap img { height: 380px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-item.wide { grid-column: span 2; }
+    .gallery-item.tall { grid-row: span 1; }
+  }
+
+  @media (max-width: 768px) {
+    section { padding: 4rem 5%; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero-stats { position: static; flex-direction: row; justify-content: center; padding: 2rem 5% 0; background: rgba(26,16,16,0.6); }
+    .hero { flex-direction: column; }
+    .form-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-item.wide, .gallery-item.tall { grid-column: span 1; grid-row: span 1; }
+    .gallery-item img { height: 220px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .about-badge { width: 100px; height: 100px; bottom: -1rem; right: -0.5rem; }
+    .about-badge .num { font-size: 1.6rem; }
+    .booking-wrap { padding: 2rem 1.5rem; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-h1 { font-size: 2.2rem; }
+    .hero-btns { flex-direction: column; }
+    .btn-primary, .btn-outline { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <span class="script">Ayna Makeover</span>
+    <span class="tagline">Premium Bridal Studio</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#booking" class="nav-cta">Book Now</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#pricing" onclick="closeMenu()">Pricing</a>
+  <a href="#gallery" onclick="closeMenu()">Gallery</a>
+  <a href="#testimonials" onclick="closeMenu()">Reviews</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <a href="#booking" onclick="closeMenu()" style="color: var(--rose-gold-light); font-weight: 600;">Book Appointment</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Welcome to</span>
+    <h1 class="hero-h1">Enhance Your Beauty<br>with <em>Ayna Makeover</em></h1>
+    <p class="hero-sub">
+      <span>Professional Bridal Makeup</span> &nbsp;·&nbsp; <span>Party Makeup</span> &nbsp;·&nbsp; <span>HD Makeup</span> &nbsp;·&nbsp; <span>Hair Styling</span>
+    </p>
+    <div class="hero-btns">
+      <a href="#booking" class="btn-primary">Book Appointment</a>
+      <a href="#services" class="btn-outline">View Services</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="num">8+</div>
+      <div class="lbl">Years Experience</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">2500+</div>
+      <div class="lbl">Happy Brides</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">4.9★</div>
+      <div class="lbl">Avg. Rating</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-image-wrap reveal">
+      <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=800&q=80" alt="Ayna Makeover Studio" loading="lazy">
+      <div class="about-badge">
+        <div class="num">2500+</div>
+        <div class="txt">Brides<br>Beautified</div>
+      </div>
+    </div>
+    <div class="about-text reveal reveal-delay-2">
+      <span class="section-label">Our Story</span>
+      <h2 class="section-title">Where Every Woman Becomes <span>Her Most Beautiful Self</span></h2>
+      <div class="section-divider"></div>
+      <p>Ayna Makeover was born from a single belief — every woman deserves to look and feel extraordinary on her most important days. Founded by passionate beauty artists, our studio has grown into one of the region's most trusted names in bridal and occasion makeup.</p>
+      <p>We combine artistry with technique, using only premium, skin-friendly products tailored to your unique features, skin tone, and personal style. From intimate mehndi ceremonies to grand wedding receptions, we create looks that photograph beautifully and last all day.</p>
+      <div class="about-features">
+        <div class="about-feat"><i class="fas fa-certificate"></i> Certified Artists</div>
+        <div class="about-feat"><i class="fas fa-leaf"></i> Skin-Safe Products</div>
+        <div class="about-feat"><i class="fas fa-heart"></i> Personalised Looks</div>
+        <div class="about-feat"><i class="fas fa-home"></i> Home Service Available</div>
+        <div class="about-feat"><i class="fas fa-camera"></i> Photo-Ready Finish</div>
+        <div class="about-feat"><i class="fas fa-shield-alt"></i> Hygienic Studio</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="text-center">
+    <span class="section-label reveal">What We Offer</span>
+    <h2 class="section-title reveal reveal-delay-1">Our <span>Premium Services</span></h2>
+    <div class="section-divider center reveal reveal-delay-2"></div>
+    <p class="reveal reveal-delay-2" style="color:var(--soft-gray);max-width:560px;margin:0 auto;font-size:0.95rem;">
+      From the moment you walk in, every service is crafted with precision, care, and a deep understanding of beauty artistry.
+    </p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-icon"><i class="fas fa-crown"></i></div>
+      <h3>Bridal Makeup</h3>
+      <p>Timeless, photo-ready bridal looks crafted to last all day.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-icon"><i class="fas fa-star"></i></div>
+      <h3>HD Makeup</h3>
+      <p>High-definition finish that looks flawless even on camera.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-icon"><i class="fas fa-magic"></i></div>
+      <h3>Airbrush Makeup</h3>
+      <p>Ultra-light, seamless coverage for that airbrushed perfection.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-4">
+      <div class="service-icon"><i class="fas fa-glass-cheers"></i></div>
+      <h3>Party Makeup</h3>
+      <p>Bold, glamorous looks for every celebration and event.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-icon"><i class="fas fa-ring"></i></div>
+      <h3>Engagement Makeup</h3>
+      <p>Elegant and radiant looks for your special roka & engagement.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-icon"><i class="fas fa-gem"></i></div>
+      <h3>Reception Makeup</h3>
+      <p>Sophisticated evening glam for your reception celebration.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-icon"><i class="fas fa-cut"></i></div>
+      <h3>Hair Styling</h3>
+      <p>From traditional judaseries to modern romantic waves.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-4">
+      <div class="service-icon"><i class="fas fa-tshirt"></i></div>
+      <h3>Saree Draping</h3>
+      <p>Expert draping in Nivi, Bengali, Gujarati & more styles.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-icon"><i class="fas fa-hand-sparkles"></i></div>
+      <h3>Nail Services</h3>
+      <p>Manicure, nail art & gel extensions for perfect finishing.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-icon"><i class="fas fa-spa"></i></div>
+      <h3>Facial & Skincare</h3>
+      <p>Pre-bridal facials and skincare prep for a glowing canvas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="text-center">
+    <span class="section-label reveal">Packages</span>
+    <h2 class="section-title reveal reveal-delay-1">Transparent <span>Pricing</span></h2>
+    <div class="section-divider center reveal reveal-delay-2"></div>
+    <p class="reveal reveal-delay-2" style="color:var(--soft-gray);max-width:500px;margin:0 auto;font-size:0.95rem;">
+      Premium beauty services at prices that celebrate every budget. All packages include trial session consultations.
+    </p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card reveal reveal-delay-1">
+      <h3>Party Makeup</h3>
+      <p class="price-sub">Perfect for events & celebrations</p>
+      <div class="price-amount">₹3,500 <small>onwards</small></div>
+      <div class="price-divider"></div>
+      <div class="price-feature"><i class="fas fa-check-circle"></i> Consultation included</div>
+      <div class="price-feature"><i class="fas fa-check-circle"></i> Foundation & contouring</div>
+      <div class="price-feature"><i class="fas fa-check-circle"></i> Eye makeup & lashes</div>
+      <div class="price-feature"><i class="fas fa-check-circle"></i> Lip colour & setting spray</div>
+      <a href="#booking" class="btn-primary">Book Now</a>
+    </div>
+    <div class="price-card featured reveal reveal-delay-2">
+      <span class="featured-tag">Most Popular</span>
+      <h3>Bridal Package</h3>
+      <p class="price-sub">Complete bridal transformation</p>
+      <div class="price-amount">₹18,000 <small>onwards</small></div>
+      <div class="price-divider"></div>
+      <div class="price-feature"><i class="fas fa-check-circle"></i> Pre-bridal consultation</div>
+      <div class="price-feature"><i class="fas fa-check-circle"></i> HD or Airbrush Makeup</div>
+      <div class="price-feature"><i class="fas fa-check-circle"></i> Bridal hair styling</div>
+      <div class="price-feature"><i class="fas fa-check-circle"></i> Saree or lehenga draping</div>
+      <div class="price-feature"><i class="fas fa-check-circle"></i> Touch-up kit provided</div>
+      <a href="#booking" class="btn-primary">Book Now</a>
+    </div>
+    <div class="price-card reveal reveal-delay-3">
+      <h3>HD Makeup</h3>
+      <p class="price-sub">Camera-perfect flawless finish</p>
+      <div class="price-amount">₹7,000 <small>onwards</small></div>
+      <div class="price-divider"></div>
+      <div class="price-feature"><i class="fas fa-check-circle"></i> HD products only</div>
+      <div class="price-feature"><i class="fas fa-check-circle"></i> Skin prep & primer</div>
+      <div class="price-feature"><i class="fas fa-check-circle"></i> Full face HD makeup</div>
+      <div class="price-feature"><i class="fas fa-check-circle"></i> Long-lasting setting</div>
+      <a href="#booking" class="btn-primary">Book Now</a>
+    </div>
+    <div class="price-card reveal reveal-delay-4">
+      <h3>Airbrush</h3>
+      <p class="price-sub">Feather-light seamless coverage</p>
+      <div class="price-amount">₹9,000 <small>onwards</small></div>
+      <div class="price-divider"></div>
+      <div class="price-feature"><i class="fas fa-check-circle"></i> Airbrush application</div>
+      <div class="price-feature"><i class="fas fa-check-circle"></i> Waterproof formula</div>
+      <div class="price-feature"><i class="fas fa-check-circle"></i> Full contouring & glow</div>
+      <div class="price-feature"><i class="fas fa-check-circle"></i> 12+ hour wear</div>
+      <a href="#booking" class="btn-primary">Book Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="text-center">
+    <span class="section-label reveal">Our Work</span>
+    <h2 class="section-title reveal reveal-delay-1">Beauty <span>Transformations</span></h2>
+    <div class="section-divider center reveal reveal-delay-2"></div>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item tall reveal">
+      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80" alt="Bridal Makeup">
+      <div class="gallery-overlay"><span>Bridal Transformation</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-1">
+      <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&q=80" alt="Party Makeup" style="height:220px;">
+      <div class="gallery-overlay"><span>Party Glam</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-2">
+      <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&q=80" alt="HD Makeup" style="height:220px;">
+      <div class="gallery-overlay"><span>HD Makeup</span></div>
+    </div>
+    <div class="gallery-item wide reveal reveal-delay-3">
+      <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=900&q=80" alt="Bridal Hair" style="height:260px;">
+      <div class="gallery-overlay"><span>Bridal Hair Styling</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-1">
+      <img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=600&q=80" alt="Airbrush" style="height:240px;">
+      <div class="gallery-overlay"><span>Airbrush Makeup</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-2">
+      <img src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=600&q=80" alt="Engagement" style="height:240px;">
+      <div class="gallery-overlay"><span>Engagement Look</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="text-center">
+    <span class="section-label reveal">Client Love</span>
+    <h2 class="section-title reveal reveal-delay-1">What Our <span>Brides Say</span></h2>
+    <div class="section-divider center reveal reveal-delay-2"></div>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testi-card reveal reveal-delay-1">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">I couldn't stop crying when I saw myself in the mirror — happy tears! The team understood exactly what I wanted and delivered something even better. My bridal look lasted the entire day and my photos look absolutely stunning.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">P</div>
+        <div>
+          <div class="testi-name">Priya Sharma</div>
+          <div class="testi-loc">Bride · Delhi</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal reveal-delay-2">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">Ayna Makeover is pure magic. The airbrush makeup was so light I forgot I had it on, but looked like a complete goddess in every photo. Highly recommend for any bride who wants a natural yet breathtaking look.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">A</div>
+        <div>
+          <div class="testi-name">Ananya Verma</div>
+          <div class="testi-loc">Bride · Gurgaon</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal reveal-delay-3">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">Got HD makeup done for my cousin's wedding — received so many compliments! The team is incredibly professional, hygienic and so warm. The look stayed fresh for 10+ hours. Will definitely be back for my own wedding!</p>
+      <div class="testi-author">
+        <div class="testi-avatar">S</div>
+        <div>
+          <div class="testi-name">Sneha Kapoor</div>
+          <div class="testi-loc">Client · Noida</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal reveal-delay-1">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">The home service was so convenient! They arrived on time with all their premium equipment. The saree draping was perfect and my mehndi function look got so many compliments. Genuinely the best in the business.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">R</div>
+        <div>
+          <div class="testi-name">Riya Gupta</div>
+          <div class="testi-loc">Bride · Faridabad</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal reveal-delay-2">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">Booked for my engagement and was blown away. The consultation before the appointment really helped them understand my style. Every detail of the makeup was perfect. Thank you Ayna Makeover for making me feel like a queen!</p>
+      <div class="testi-author">
+        <div class="testi-avatar">N</div>
+        <div>
+          <div class="testi-name">Neha Aggarwal</div>
+          <div class="testi-loc">Bride · Gurgaon</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal reveal-delay-3">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">I was nervous about finding the right makeup artist, but from the first trial I knew I was in the best hands. They are artists in the truest sense — understanding face structure, skin tone, and occasion perfectly. Absolutely flawless!</p>
+      <div class="testi-author">
+        <div class="testi-avatar">M</div>
+        <div>
+          <div class="testi-name">Megha Jain</div>
+          <div class="testi-loc">Bride · Delhi</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="why">
+  <div class="text-center">
+    <span class="section-label reveal">Our Promise</span>
+    <h2 class="section-title reveal reveal-delay-1" style="color:#fff;">Why Choose <span>Ayna Makeover?</span></h2>
+    <div class="section-divider center reveal reveal-delay-2"></div>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal reveal-delay-1">
+      <div class="why-icon"><i class="fas fa-certificate"></i></div>
+      <h3>Certified Makeup Artists</h3>
+      <p>Our team holds professional certifications from India's leading beauty academies with years of real-world bridal experience.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-2">
+      <div class="why-icon"><i class="fas fa-leaf"></i></div>
+      <h3>Premium Products Only</h3>
+      <p>We use only internationally certified, skin-safe products — MAC, Charlotte Tilbury, NARS, Kryolan & more. Never anything cheap.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-3">
+      <div class="why-icon"><i class="fas fa-tag"></i></div>
+      <h3>Transparent Pricing</h3>
+      <p>No hidden charges, no last-minute surprises. Our packages are clear, comprehensive, and genuinely great value.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-1">
+      <div class="why-icon"><i class="fas fa-shield-alt"></i></div>
+      <h3>Hygienic Environment</h3>
+      <p>Studio sanitised before every appointment. All brushes and tools individually sterilised. Your skin's safety is our priority.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-2">
+      <div class="why-icon"><i class="fas fa-home"></i></div>
+      <h3>Home Service Available</h3>
+      <p>We come to you — anywhere in the city and nearby areas. Full studio-quality makeup at your doorstep on your special day.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-3">
+      <div class="why-icon"><i class="fas fa-heart"></i></div>
+      <h3>100% Client Satisfaction</h3>
+      <p>We don't stop until you love what you see. Trial sessions, detailed consultations, and a team that genuinely cares about you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="text-center">
+    <span class="section-label reveal">Get In Touch</span>
+    <h2 class="section-title reveal reveal-delay-1">Book Your <span>Appointment</span></h2>
+    <div class="section-divider center reveal reveal-delay-2"></div>
+    <p class="reveal reveal-delay-2" style="color:var(--soft-gray);max-width:520px;margin:0 auto 1rem;font-size:0.95rem;">
+      Fill in your details and we'll confirm your appointment within 24 hours. For urgent bookings, please WhatsApp us directly.
+    </p>
+  </div>
+  <div class="booking-wrap reveal">
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Your Name *</label>
+        <input type="text" placeholder="Priya Sharma">
+      </div>
+      <div class="form-group">
+        <label>Phone Number *</label>
+        <input type="tel" placeholder="+91 9205002319">
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="priya@email.com">
+      </div>
+      <div class="form-group">
+        <label>Service Required *</label>
+        <select>
+          <option value="">Select a Service</option>
+          <option>Bridal Makeup</option>
+          <option>HD Makeup</option>
+          <option>Airbrush Makeup</option>
+          <option>Party Makeup</option>
+          <option>Engagement Makeup</option>
+          <option>Reception Makeup</option>
+          <option>Hair Styling</option>
+          <option>Saree Draping</option>
+          <option>Nail Services</option>
+          <option>Facial & Skincare</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Preferred Date *</label>
+        <input type="date">
+      </div>
+      <div class="form-group">
+        <label>Preferred Time *</label>
+        <select>
+          <option value="">Select Time</option>
+          <option>6:00 AM – 8:00 AM</option>
+          <option>8:00 AM – 10:00 AM</option>
+          <option>10:00 AM – 12:00 PM</option>
+          <option>12:00 PM – 2:00 PM</option>
+          <option>2:00 PM – 4:00 PM</option>
+          <option>4:00 PM – 6:00 PM</option>
+          <option>6:00 PM – 8:00 PM</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label>Message / Special Requirements</label>
+        <textarea placeholder="Tell us about your event, look preferences, skin type, or any special requirements..."></textarea>
+      </div>
+    </div>
+    <button class="btn-primary" onclick="submitBooking()">
+      <i class="fas fa-calendar-check" style="margin-right:0.5rem;"></i> Confirm My Appointment
+    </button>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="text-center">
+    <span class="section-label reveal">Find Us</span>
+    <h2 class="section-title reveal reveal-delay-1">Get In <span>Touch</span></h2>
+    <div class="section-divider center reveal reveal-delay-2"></div>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <h3 class="display">We'd love to hear from you</h3>
+      <div class="contact-item">
+        <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+        <div class="contact-item-text">
+          <strong>Call Us</strong>
+          <a href="tel:+919205002319">+91 9205002319</a><br>
+          <a href="tel:+919205002319">+91 9205002319</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon"><i class="fab fa-whatsapp"></i></div>
+        <div class="contact-item-text">
+          <strong>WhatsApp</strong>
+          <a href="https://wa.me/919205002319" class="wa-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+          </a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+        <div class="contact-item-text">
+          <strong>Email</strong>
+          <a href="mailto:hello@aynamakeover.com">hello@aynamakeover.com</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div class="contact-item-text">
+          <strong>Studio Address</strong>
+          <span>Pocket 1 , Sector 25 Rohini<br>Delhi</span>
+        </div>
+      </div>
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <div class="map-container">
+        <div class="map-placeholder">
+          <i class="fas fa-map-marker-alt"></i>
+          <strong style="font-size:1.1rem;color:var(--charcoal);">Ayna Makeover Studio</strong>
+          <p>Pocket 1 , Sector 25 Rohini<br>Delhi</p>
+          <a href="https://www.google.com/maps/place/Pocket+1,+Sector+25,+Rohini,+Delhi,+110085/@28.7323121,77.0904439,17z/data=!3m1!4b1!4m6!3m5!1s0x390d06cf3a249dc5:0xe3c65e28afbef492!8m2!3d28.7320013!4d77.0937237!16s%2Fg%2F1ptyl80d7?entry=ttu&g_ep=EgoyMDI2MDkxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank">Open in Google Maps →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="script">Ayna Makeover</div>
+      <p>Your beauty is our canvas. Crafting timeless bridal and occasion looks with premium artistry, personalised attention, and a touch of luxury.</p>
+      <div class="social-links" style="margin-top:1.5rem;">
+        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Our Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#booking">Book Appointment</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Bridal Makeup</a></li>
+        <li><a href="#services">HD Makeup</a></li>
+        <li><a href="#services">Airbrush Makeup</a></li>
+        <li><a href="#services">Party Makeup</a></li>
+        <li><a href="#services">Hair Styling</a></li>
+        <li><a href="#services">Saree Draping</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact-item"><i class="fas fa-phone"></i><span>+91 9205002319</span></div>
+      <div class="footer-contact-item"><i class="fab fa-whatsapp"></i><span>+91 9205002319</span></div>
+      <div class="footer-contact-item"><i class="fas fa-envelope"></i><span>hello@aynamakeover.com</span></div>
+      <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i><span>Pocket 1,Sector 25 Rohini Delhi</span></div>
+      <div class="footer-contact-item"><i class="fas fa-clock"></i><span>Mon–Sun: 7AM – 9PM</span></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 <span>Ayna Makeover</span>. All rights reserved. Crafted with <span>♥</span> for beautiful brides.</p>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/919205002319" class="float-wa" target="_blank" aria-label="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+  // NAVBAR SCROLL
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+  // Start scrolled if not at top
+  if (window.scrollY > 60) navbar.classList.add('scrolled');
+
+  // MOBILE MENU
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
+  // SCROLL REVEAL
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => observer.observe(r));
+
+  // BOOKING SUBMIT
+  function submitBooking() {
+    const inputs = document.querySelectorAll('#booking input, #booking select, #booking textarea');
+    let valid = true;
+    inputs.forEach(i => {
+      if (i.hasAttribute('placeholder') && !i.value && i.closest('.form-group').querySelector('label').textContent.includes('*')) {
+        i.style.borderColor = '#e05'; valid = false;
+        setTimeout(() => i.style.borderColor = '', 2000);
+      }
+    });
+    if (valid) {
+      alert('Thank you! Your appointment request has been received. We will confirm within 24 hours via WhatsApp / Call. ✨');
+    }
+  }
+
+  // Set min date for date inputs
+  const dateInputs = document.querySelectorAll('input[type="date"]');
+  dateInputs.forEach(d => {
+    const today = new Date().toISOString().split('T')[0];
+    d.min = today;
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Shop Name | Clothing Store</title>
+<meta name="description" content="Men's, women's, kids, ethnic and western wear. Visit our store or enquire on WhatsApp.">
+<meta name="keywords" content="clothing store, fashion boutique, ethnic wear, men's wear, women's wear, kids wear">
+<meta property="og:title" content="My Shop Name">
+<meta property="og:description" content="Style that speaks for you.">
+<meta property="og:image" content="assets/shop/main-gate.jpg">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://example.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json" id="ld"></script>
+</head>
+<body>
+<header class="nav" id="nav">
+  <a href="#top" class="logo" data-shop="name"></a>
+  <nav id="menu">
+    <a href="#collection">Collection</a><a href="#arrivals">New</a><a href="#store">Our Store</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a>
+    <a href="#" class="btn small" id="sizeBtn">Size Guide</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Menu">☰</button>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="hero-text">
+    <span class="badge" id="welcome"></span>
+    <h1>Style That Speaks For You</h1>
+    <p id="heroDesc"></p>
+    <div class="row"><a href="#collection" class="btn">Explore Collection</a><a href="#store" class="btn ghost">Visit Our Store</a></div>
+  </div>
+  <div class="hero-img"><div class="frame"><img id="heroImg" alt="Our store front"></div><i class="orb o1"></i><i class="orb o2"></i></div>
+</section>
+<div class="strip" id="strip"></div>
+
+<section class="sec about" id="about">
+  <div class="about-img"><img id="aboutImg" alt="Inside our store" loading="lazy"></div>
+  <div><h2 data-shop="name"></h2><p id="aboutText"></p><p class="muted" id="years"></p><div class="cards" id="aboutCards"></div></div>
+</section>
+
+<section class="sec" id="categories"><h2>Shop By Category</h2><div class="scroller" id="catCards"></div></section>
+
+<section class="sec" id="collection">
+  <h2>Our Collection</h2>
+  <div class="filters">
+    <input id="q" type="search" placeholder="Search products…">
+    <select id="fCat"></select>
+    <select id="fPrice"><option value="">Any price</option><option value="0-999">Under ₹1,000</option><option value="1000-2499">₹1,000 – ₹2,499</option><option value="2500-99999">₹2,500 +</option></select>
+    <select id="fSize"></select>
+  </div>
+  <div class="chips" id="chips"></div>
+  <div class="grid" id="grid"></div>
+  <p class="muted" id="empty" hidden>No products match. Try clearing a filter.</p>
+</section>
+
+<section class="sec" id="arrivals"><h2>New Arrivals</h2><div class="scroller" id="newRow"></div></section>
+
+<section class="edit" id="edit"><div class="edit-in"><h2>The Latest Edit</h2><p>Discover styles selected for the season.</p><a href="#collection" class="btn">Shop the edit</a></div><div class="edit-imgs" id="editImgs"></div></section>
+
+<section class="sec"><h2>Why Shop With Us</h2><div class="cards four" id="why"></div></section>
+
+<section class="sec" id="store"><h2>Visit Our Store</h2><div class="gallery" id="gallery"></div></section>
+
+<section class="sec" id="reviews"><h2>Customer Reviews</h2><div class="cards" id="revs"></div></section>
+
+<section class="sec contact" id="contact">
+  <div><h2 data-shop="name"></h2><p id="cAddr"></p><p id="cPhone"></p><p id="cHours"></p>
+    <div class="row"><a class="btn" id="callBtn">Call Now</a><a class="btn ghost" id="waBtn" target="_blank" rel="noopener">WhatsApp</a><a class="btn ghost" id="dirBtn" target="_blank" rel="noopener">Get Directions</a></div></div>
+  <iframe id="map" title="Map" loading="lazy" src=""></iframe>
+</section>
+</main>
+
+<footer class="foot">
+  <div><b class="logo" data-shop="name"></b><p id="fDesc"></p></div>
+  <div><b>Links</b><a href="#collection">Collection</a><a href="#arrivals">New Arrivals</a><a href="#store">Our Store</a></div>
+  <div><b>Categories</b><span id="fCats"></span></div>
+  <div><b>Connect</b><a id="fWa" target="_blank" rel="noopener">WhatsApp</a><a id="fIg" target="_blank" rel="noopener">Instagram</a><a id="fFb" target="_blank" rel="noopener">Facebook</a><a id="fMap" target="_blank" rel="noopener">Google Maps</a></div>
+  <p class="copy" id="copy"></p>
+</footer>
+
+<a class="wa-float" id="waFloat" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a>
+<nav class="bottom"><a href="#top">Home</a><a href="#collection">Shop</a><a href="#store">Store</a><a id="bCall">Call</a><a id="bWa" target="_blank" rel="noopener">Chat</a></nav>
+
+<div class="modal" id="modal"><div class="box" id="modalBox"></div></div>
+<div class="modal light" id="lightbox"><img id="lbImg" alt=""></div>
+<script src="script.js"></script>
+</body>
+</html>
